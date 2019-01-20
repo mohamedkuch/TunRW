@@ -380,3 +380,6 @@ header.masthead p {
   text-transform:capitalize;
   font-family: 'Kalam', cursive;
 }
+.dateEvent {
+  color: #e71425;
+}
