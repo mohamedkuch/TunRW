@@ -11,7 +11,7 @@ $(document).ready(function(){
   $('.carouselSlick').slick({
     infinite: true,
     slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     dots: true,
     speed: 300,
     adaptiveHeight: true,
