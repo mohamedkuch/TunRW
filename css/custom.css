@@ -391,7 +391,7 @@ header.masthead p {
   opacity: 0.9;
 }
 .slick-dots{
-  bottom: -80px !important;
+  bottom: -50px !important;
 }
 .slick-dots li button {
   height:   50%  !important;
@@ -404,4 +404,14 @@ header.masthead p {
 }
 .slick-dots li button:before {
   display: none!important;
+}
+.spacingEvent {
+  max-width: 10% !important;
+  height: 5px;
+  background-color: #e71425;
+}
+.spacingEvent2 {
+  max-width: 90% !important;
+  height: 1px;
+  background-color: #e71425;
 }
