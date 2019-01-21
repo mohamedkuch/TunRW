@@ -383,3 +383,25 @@ header.masthead p {
 .dateEvent {
   color: #e71425;
 }
+.slick-arrow {
+  background-color: #232323 !important;
+  border-radius: 2px;
+  height:  80px !important;
+  width: 40px !important;
+  opacity: 0.9;
+}
+.slick-dots{
+  bottom: -80px !important;
+}
+.slick-dots li button {
+  height:   50%  !important;
+  width: 100% !important;
+  background-color: #d9d9d9 !important;
+  border-radius: 2px;
+}
+.slick-dots .slick-active button {
+  background-color: #232323 !important;
+}
+.slick-dots li button:before {
+  display: none!important;
+}
