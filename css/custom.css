@@ -322,6 +322,13 @@ header.masthead p {
   .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
     font-size: 22px;
   }
+  .slick-arrow {
+    background-color: #232323 !important;
+    border-radius: 2px;
+    height:  80px !important;
+    width: 40px !important;
+    opacity: 0.9;
+  }
 }
 
 .text-primary {
@@ -383,13 +390,7 @@ header.masthead p {
 .dateEvent {
   color: #e71425;
 }
-.slick-arrow {
-  background-color: #232323 !important;
-  border-radius: 2px;
-  height:  80px !important;
-  width: 40px !important;
-  opacity: 0.9;
-}
+
 .slick-dots{
   bottom: -50px !important;
 }
