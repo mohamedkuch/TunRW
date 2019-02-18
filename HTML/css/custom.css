@@ -429,3 +429,8 @@ header.masthead p {
 .staffImage:hover {
   border: 5px solid #e71425;
 }
+
+.counter {
+  font-size: 3em;
+  font-family: 'Abel', sans-serif;
+}
