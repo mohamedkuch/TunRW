@@ -420,7 +420,12 @@ header.masthead p {
 .staffImage {
   border-radius: 50%;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
--moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
-border: 5px solid #323232;
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
+  border: 5px solid #323232;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+}
+.staffImage:hover {
+  border: 5px solid #e71425;
 }
