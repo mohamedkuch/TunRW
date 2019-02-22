@@ -249,6 +249,36 @@ header.masthead p {
   .pageUpArrow:hover{
     opacity: 1;
   }
+
+  .feedBack{
+    background-image: url(../img/feedBackIcon.png);
+    background-repeat: no-repeat;
+    width: 33px;
+    height: 130px;
+    background-size: 33px  130px;
+    position: fixed;
+    top: calc(30% + 150px);
+    left: 0%;
+    opacity: 0.33;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .newsLetter{
+    background-image: url(../img/newsletterIcon.png);
+    background-repeat: no-repeat;
+    width: 33px;
+    height: 130px;
+    background-size: 33px  130px;
+    position: fixed;
+    top: 30%;
+    left: 0%;
+    opacity: 0.33;
+    transition: all 0.5s ease-in-out;
+  }
+  .newsLetter:hover , .feedBack:hover{
+    opacity: 1;
+  }
+
 }
 
 @media (min-width: 1200px) {
@@ -256,6 +286,8 @@ header.masthead p {
     font-size: 4rem;
   }
 }
+
+
 
 .service-box {
   max-width: 400px;
