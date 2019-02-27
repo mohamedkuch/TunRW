@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ɵConsole } from '@angular/core';
 
 @Component({
   selector: 'app-project-create',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 
 
 export class ProjectCreateComponent {
+  enteredValue = '';
+  newProject = 'No Content';
 
+  onAddProject() {
+    this.newProject = this.enteredValue;
+  }
 }

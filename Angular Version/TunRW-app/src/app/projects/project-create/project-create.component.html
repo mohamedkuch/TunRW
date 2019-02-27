@@ -1,1 +1,27 @@
-<h2>project create</h2>
+<br/>
+<mat-card>
+    <mat-card-title>Add Project </mat-card-title>
+<form>
+  <div class="form-group">
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Project Title" value="">
+      </mat-form-field>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Project image</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <textarea rows="6" name="ProjectDescription" matInput placeholder="Leave a comment" [(ngModel)]="enteredValue"></textarea>
+    </mat-form-field>
+  </div>
+</form>
+</mat-card>
+<hr/>
+
+
+
+<button mat-raised-button color="primary" (click)="onAddProject()" type="button" class="float-right">Save Post</button>
+
+<p>{{ newProject }}</p>
