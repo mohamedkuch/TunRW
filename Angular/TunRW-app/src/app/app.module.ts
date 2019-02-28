@@ -6,6 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { TopCoverComponent } from './topcover/topcover.component';
 import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
+import { EventsComponent } from './events/events.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { PartnersComponent } from './partners/partners.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { ServicesComponent } from './services/services.component';
     HeaderComponent ,
     TopCoverComponent,
     AboutComponent,
-    ServicesComponent
+    ServicesComponent,
+    EventsComponent,
+    ProjectsComponent,
+    PartnersComponent
   ],
   imports: [
     BrowserModule

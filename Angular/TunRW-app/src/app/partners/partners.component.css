@@ -1,0 +1,10 @@
+.light {
+  color: white;
+  border-color: white;
+}
+.ml-auto, .mx-auto {
+  margin-left: auto!important;
+}
+.mr-auto, .mx-auto {
+  margin-right: auto!important;
+}
