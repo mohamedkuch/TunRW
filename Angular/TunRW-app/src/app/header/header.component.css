@@ -1,0 +1,85 @@
+
+/*--------------------
+2. Navigation
+--------------------*/
+.logoImg {
+  max-width: 175px ;
+  height: auto;
+}
+.navbar-default {
+	background-color: #222;
+	border-color: transparent
+}
+.navbar-default .navbar-brand {
+	color: #fff;
+	font-family: "Montserrat",sans-serif;
+    padding: 0px;
+}
+.navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:active,.navbar-default .navbar-brand.active {
+	color: #e71425
+}
+.navbar-default .navbar-collapse {
+	border-color: rgba(255,255,255,.02)
+}
+.navbar-default .navbar-toggle {
+	background-color: #e71425;
+	border-color: #e71425
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff
+}
+.navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {
+	background-color: #e71425
+}
+.navbar-default .nav li a {
+  font-family: 'Titillium Web', sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+	letter-spacing: 1px;
+	color:#fff
+}
+.navbar-default .nav li a:hover,.navbar-default .nav li a:focus {
+	color: #e71425;
+	outline: 0
+}
+
+.navbar-default .navbar-nav>.active>a {
+	border-radius: 0;
+	color: #fff;
+	background-color: #e71425
+}
+.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus {
+	color: #fff;
+	background-color: #e71425
+}
+
+@media (min-width:768px) {
+	.navbar-default
+	{
+		background-color: transparent;
+		padding: 25px 0;
+		-webkit-transition:padding .3s;
+		-moz-transition:padding .3s;
+		transition:padding .3s;
+		border:0
+	}
+	.navbar-default .navbar-brand {
+		font-size: 2em;
+		-webkit-transition:all .3s;
+		-moz-transition:all .3s;
+		transition:all .3s
+	}
+	.navbar-default .navbar-nav>.active>a {
+		border-radius: 3px
+	}
+	.navbar-default.navbar-shrink {
+		background-color: #222;
+    padding: 10px 0;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	}
+	.navbar-default.navbar-shrink .navbar-brand {
+		font-size: 1.5em
+	}
+}
