@@ -10,3 +10,21 @@
 .navbar-header {
   margin-top: 8px;
 }
+.saveButton {
+  background: #e71425;
+  color: white;
+  float: right;
+}
+
+.adminTitle{
+  border-left: 3px solid #e71425;
+  color: #e71425;
+}
+.adminShell{
+  background: #f9f9f9;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
+}
+

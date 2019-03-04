@@ -19,6 +19,7 @@ import { CreateEventComponent } from './admin/create-event/create-event.componen
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
+  { path: 'admin/Events', component: CreateEventComponent },
   { path: '', component: OnePageComponent }
 ];
 
