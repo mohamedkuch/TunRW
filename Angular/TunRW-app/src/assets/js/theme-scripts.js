@@ -1,11 +1,17 @@
+// hide #back-top first
+$("#back-top").hide();
+
 $(window).scroll(function() {
     if ($(document).scrollTop() > 100) {
         $('.navbar').addClass('navbar-shrink');
         $('#back-top').fadeIn();
+        $('#back-top').removeClass('hideButton');
     }
     else {
         $('.navbar').removeClass('navbar-shrink');
         $('#back-top').fadeOut();
+        $('#back-top').addClass('hideButton');
+
     }
 });
 
@@ -26,8 +32,7 @@ $(function() {
 });
 
 
-  // hide #back-top first
-  $("#back-top").hide();
+
 
   // fade in #back-top
 

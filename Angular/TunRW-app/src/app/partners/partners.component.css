@@ -8,3 +8,6 @@
 .mr-auto, .mx-auto {
   margin-right: auto!important;
 }
+.partnersImg {
+  max-width: 200px;
+}
