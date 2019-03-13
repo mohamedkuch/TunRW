@@ -1,0 +1,36 @@
+
+   <!-- Fixed navbar -->
+   <nav class="navbar  navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="logoAdmin navbar-brand" routerLink="/admin" routerLinkActive="active"></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
+          <li><a href="">Projects</a></li>
+          <li><a href="">Members</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+<br/><br/><br/>
+
+<div class="container mt-5">
+  <div class="row">
+    <app-create-event></app-create-event>
+  </div>
+  <hr/>
+
+  <div class="row mt-5">
+    <app-admin-list-event></app-admin-list-event>
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { OnePageComponent } from './onePage/onepage.component';
@@ -15,11 +15,13 @@ import { PartnersComponent } from './onePage/partners/partners.component';
 import { ContactComponent } from './onePage/contact/contact.component';
 
 import { AdminComponent } from './admin/admin.component';
-import { CreateEventComponent } from './admin/create-event/create-event.component';
+import { AdminEventsComponent } from './admin/admin-events/admin-events.component';
+import { CreateEventComponent } from './admin/admin-events/create-event/create-event.component';
+import { AdminListEventsComponent } from './admin/admin-events/list-event/list-event.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
-  { path: 'admin/Events', component: CreateEventComponent },
+  { path: 'admin/Events', component: AdminEventsComponent },
   { path: '', component: OnePageComponent }
 ];
 
@@ -36,14 +38,17 @@ const appRoutes: Routes = [
     PartnersComponent,
     ContactComponent,
     AdminComponent,
-    CreateEventComponent
+    AdminEventsComponent,
+    CreateEventComponent,
+    AdminListEventsComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

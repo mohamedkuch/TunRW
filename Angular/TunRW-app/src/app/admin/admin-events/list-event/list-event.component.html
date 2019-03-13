@@ -1,0 +1,27 @@
+<h3 class="adminTitle pl-3"> <strong>All Events</strong> </h3>
+<table class="table table-hover"  *ngIf="events.length > 0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Event Name</th>
+          <th>Address</th>
+          <th>Date</th>
+          <th>Description</th>
+          <th style="width: 5%">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events; let j = index">
+          <th scope=row>{{ j + 1 }}</th>
+          <td> {{event.title}}</td>
+          <td> {{event.adress}}</td>
+          <td> {{event.date}}</td>
+          <td> {{event.description}}</td>
+          <td class="text-center"><a href=""><i class="fas fa-trash"></i></a></td>
+        </tr>
+
+      </tbody>
+</table>
+<div class="row" *ngIf="events.length == 0">
+    <h3 class="text-center"> No events added yet !</h3>
+</div>
