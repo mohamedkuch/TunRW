@@ -107,6 +107,7 @@ $(document).ready(function(){
   });
 
 });
+/*
 $(document).ready(function(){
   $('.carouselSlick').slick({
     infinite: true,
@@ -137,3 +138,4 @@ $(document).ready(function(){
   });
 
 });
+*/

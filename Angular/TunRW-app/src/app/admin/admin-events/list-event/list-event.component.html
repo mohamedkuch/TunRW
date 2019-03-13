@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let event of events; let j = index">
-          <th scope=row>{{ j + 1 }}</th>
+          <th scope=row>{{ event.id }}</th>
           <td> {{event.title}}</td>
           <td> {{event.adress}}</td>
           <td> {{event.date}}</td>
