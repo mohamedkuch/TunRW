@@ -16,7 +16,7 @@ export class AdminListEventsComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-      this.events = this.eventsService.getEvent();
+      this.eventsService.getEvent();
       this.eventsSub = this.eventsService.getEventUpdateListener()
         .subscribe(
           (events: Event[]) => {

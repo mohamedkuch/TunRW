@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
 
 import { OnePageComponent } from './onePage/onepage.component';
 import { HeaderComponent } from './onePage/header/header.component';
@@ -19,10 +20,12 @@ import { AdminEventsComponent } from './admin/admin-events/admin-events.componen
 import { CreateEventComponent } from './admin/admin-events/create-event/create-event.component';
 import { AdminListEventsComponent } from './admin/admin-events/list-event/list-event.component';
 
+import { PageNotFoundComponent } from './404/pagenotfound.component';
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'admin/Events', component: AdminEventsComponent },
-  { path: '', component: OnePageComponent }
+  { path: '', component: OnePageComponent },
+  { path: '**', component : PageNotFoundComponent}
 ];
 
 @NgModule({
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     AdminComponent,
     AdminEventsComponent,
     CreateEventComponent,
-    AdminListEventsComponent
+    AdminListEventsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -48,7 +52,8 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
