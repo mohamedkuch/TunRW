@@ -1,10 +1,14 @@
 const express = require('express');
+const bodyParser = require("body-parser");
 
 const app = express();
 
+
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Header",
+  res.setHeader("Access-Control-Allow-Headers",
   "Origin, X-Requested-With, Content-Type, Accept");
   res.setHeader("Access-Control-Allow-Methods",
   "GET, POST , PATCH , DELETE , OPTIONS");
@@ -12,7 +16,16 @@ app.use((req, res, next) => {
 
 });
 
-app.use('/api/events', (req, res, next) => {
+
+app.post("/api/events", (req,res,next) => {
+  const post = req.body;
+  console.log(post);
+  res.status(201).json({
+    message: 'Post added Successfully'
+  });
+});
+
+app.get('/api/events', (req, res, next) => {
   const events = [
     {
              id: "100",

@@ -23,9 +23,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/slick-theme.css",
+              "src/assets/css/spacing.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/theme-scripts.js"
+            ]
           },
           "configurations": {
             "production": {

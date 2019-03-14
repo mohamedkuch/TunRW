@@ -28,7 +28,12 @@ export class EventService {
             adress: adress,
        description: description
     };
-    this.events.push(event);
-    this.eventsUpdated.next([...this.events]);
+    this.http.post<{message: string}>('http://localhost:3000/api/events', event)
+    .subscribe((data) => {
+      console.log(data.message);
+      this.events.push(event);
+      this.eventsUpdated.next([...this.events]);
+    });
+
   }
 }
