@@ -1,7 +1,19 @@
 const express = require('express');
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
+
+const Event = require("./models/events");
+
 
 const app = express();
+
+mongoose.connect("mongodb+srv://Mohamed:Ckq8Ve7JLxDnLXCY@tunrwcluster-nwi9h.mongodb.net/test?retryWrites=true")
+  .then(() => {
+    console.log('Connected to Database !');
+  })
+  .catch(() => {
+    console.log('Connection Failed !');
+  });
 
 
 app.use(bodyParser.json());
@@ -15,10 +27,15 @@ app.use((req, res, next) => {
   next();
 
 });
-
+// user mdp = Ckq8Ve7JLxDnLXCY
 
 app.post("/api/events", (req,res,next) => {
-  const post = req.body;
+  const post = new Event({
+    title : req.body.title,
+    date : req.body.date,
+    adress : req.body.adress,
+    description : req.body.description
+  });
   console.log(post);
   res.status(201).json({
     message: 'Post added Successfully'
