@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Event } from '../events.model';
 import { EventService } from '../events.service';
 import { Subscription } from 'rxjs';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-admin-list-event',
@@ -23,7 +24,9 @@ export class AdminListEventsComponent implements OnInit, OnDestroy {
             this.events = events;
           });
   }
-
+  onDelete(eventId: string){
+    this.eventsService.deleteEvent(eventId);
+  }
   ngOnDestroy() {
     this.eventsSub.unsubscribe();
   }

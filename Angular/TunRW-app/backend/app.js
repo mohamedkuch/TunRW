@@ -7,7 +7,7 @@ const Event = require("./models/events");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://Mohamed:Ckq8Ve7JLxDnLXCY@tunrwcluster-nwi9h.mongodb.net/test?retryWrites=true")
+mongoose.connect("mongodb+srv://Mohamed:Ckq8Ve7JLxDnLXCY@tunrwcluster-nwi9h.mongodb.net/node-angular?retryWrites=true", { useNewUrlParser: true })
   .then(() => {
     console.log('Connected to Database !');
   })
@@ -17,7 +17,7 @@ mongoose.connect("mongodb+srv://Mohamed:Ckq8Ve7JLxDnLXCY@tunrwcluster-nwi9h.mong
 
 
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({extended:false}));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers",
@@ -36,43 +36,32 @@ app.post("/api/events", (req,res,next) => {
     adress : req.body.adress,
     description : req.body.description
   });
-  console.log(post);
-  res.status(201).json({
-    message: 'Post added Successfully'
+  post.save().then(result => {
+    res.status(201).json({
+      message: 'Post added Successfully',
+      eventId: result._id
+    });
   });
+
 });
 
 app.get('/api/events', (req, res, next) => {
-  const events = [
-    {
-             id: "100",
-          title: "First Title",
-           date: "date",
-         adress: "adress",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor"
-    },
+  Event.find().then(documents => {
+      res.status(200).json({
+        message: 'Events fetched Succesfully!',
+        events: documents
+      });
+    });
 
-    {
-             id: "200",
-          title: "Second Title",
-           date: "date",
-         adress: "adress",
-    description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor"
-    },
-    {
-              id: "300",
-          title: "Third Title",
-            date: "datase",
-          adress: "adressdas",
-        description: "Lorem sd ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor"
-    }
+});
 
 
-  ];
-  res.status(200).json({
-    message: 'Events fetched Succesfully!',
-    events: events
+app.delete('/api/events/:id', (req, res, next) => {
+  Event.deleteOne({_id:req.params.id}).then(result =>{
+    console.log(result);
+    res.status(200).json({  message : "Post deleted!"});
   });
+
 });
 
 module.exports = app;

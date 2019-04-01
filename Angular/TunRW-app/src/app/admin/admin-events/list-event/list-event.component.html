@@ -12,12 +12,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let event of events; let j = index">
-          <th scope=row>{{ event.id }}</th>
+          <th scope=row>{{j+1}}</th>
           <td> {{event.title}}</td>
           <td> {{event.adress}}</td>
           <td> {{event.date}}</td>
           <td> {{event.description}}</td>
-          <td class="text-center"><a href=""><i class="fas fa-trash"></i></a></td>
+          <td class="text-center"><span (click)="onDelete(event.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
         </tr>
 
       </tbody>
