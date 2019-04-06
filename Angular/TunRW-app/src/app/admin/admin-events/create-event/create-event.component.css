@@ -17,3 +17,29 @@
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
 }
 
+
+.logoAdmin {
+  background-image: url(../../../../assets/images/logo.png);
+  height: 35px;
+  width : 150px;
+  background-repeat: no-repeat;
+  background-size: 150px 35px ;
+  background-position-x: 12px;
+}
+
+.navbar-header {
+  margin-top: 8px;
+}
+.saveButton {
+  background: #e71425;
+  color: white;
+  float: right;
+}
+.activePills, .activePills:hover, .activePills:active{
+  background: #e71425;
+  color: white;
+}
+.inactivePills{
+  background: #e7e7e7;
+  color: #232323;
+}

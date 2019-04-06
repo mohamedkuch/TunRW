@@ -1,24 +1,62 @@
-      <div class="col-lg-12 adminShell">
-          <h3 class="adminTitle pl-3"> <strong>New Event</strong> </h3>
+
+   <!-- Fixed navbar -->
+   <nav class="navbar  navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logoAdmin navbar-brand" routerLink="/admin" routerLinkActive="active"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
+            <li><a href="">Projects</a></li>
+            <li><a href="">Members</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  <br/><br/><br/>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+          <a class="btn btn-primary inactivePills" routerLink="/admin/Events" role="button">All Events</a>
+          <a class="btn btn-primary activePills " style="float: right" routerLink="/admin/Events/create" role="button">Add New Event</a>
+
+      </div>
+
+
+
+     <div class="col-xs-12 adminShell mt-5">
+          <h3 class="adminTitle pl-3">
+            <strong *ngIf="mode == 'create'">New Event</strong>
+            <strong *ngIf="mode == 'edit'">Edit Event</strong>
+          </h3>
           <div class="row">
             <div class="col-lg-11">
-                <form class="form-horizontal" (submit)="onAddEvent(postForm)" #postForm="ngForm">
+                <form class="form-horizontal" (submit)="onSaveEvent(postForm)" #postForm="ngForm">
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Event Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" name="enteredEventTitle" placeholder="Name" ngModel required>
+                        <input type="text" class="form-control" name="enteredEventTitle" placeholder="Name" [ngModel]="event?.title" required>
                       </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Address</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="enteredEventAddress" placeholder="Address" ngModel required>
+                          <input type="text" class="form-control"  name="enteredEventAddress" placeholder="Address" [ngModel]="event?.adress" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Date</label>
                         <div class="col-sm-9">
-                            <input type='text' class="form-control"  name="enteredEventDate" placeholder="dd/mm/yy"  ngModel required/>
+                            <input type='text' class="form-control"  name="enteredEventDate" placeholder="dd/mm/yy"  [ngModel]="event?.date" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -30,7 +68,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Description</label>
                         <div class="col-sm-9">
-                            <textarea name="enteredEventDescription" class="form-control" rows="3" ngModel required>
+                            <textarea name="enteredEventDescription" class="form-control" rows="3" [ngModel]="event?.description" required>
                             </textarea>
                         </div>
                     </div>
@@ -42,3 +80,7 @@
         </div>
       </div>
 
+    </div>
+
+
+  </div>

@@ -1,4 +1,4 @@
-<h3 class="adminTitle pl-3"> <strong>All Events</strong> </h3>
+
 <table class="table table-hover"  *ngIf="events.length > 0">
       <thead>
         <tr>
@@ -7,6 +7,7 @@
           <th>Address</th>
           <th>Date</th>
           <th>Description</th>
+          <th style="width: 5%">Edit</th>
           <th style="width: 5%">Delete</th>
         </tr>
       </thead>
@@ -17,6 +18,7 @@
           <td> {{event.adress}}</td>
           <td> {{event.date}}</td>
           <td> {{event.description}}</td>
+          <td><a [routerLink]="['/admin/Events/edit', event.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
           <td class="text-center"><span (click)="onDelete(event.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
         </tr>
 

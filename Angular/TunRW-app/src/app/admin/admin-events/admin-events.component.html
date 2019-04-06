@@ -25,12 +25,16 @@
 
 <div class="container mt-5">
   <div class="row">
-    <app-create-event></app-create-event>
-  </div>
-  <hr/>
+    <div class="col-12">
+        <a class="btn btn-primary activePills" routerLink="/admin/Events" role="button">All Events</a>
+        <a class="btn btn-primary inactivePills" style="float: right" routerLink="/admin/Events/create" role="button">Add New Event</a>
 
-  <div class="row mt-5">
-    <app-admin-list-event></app-admin-list-event>
+    </div>
+       <div class="mt-5">
+        <app-admin-list-event></app-admin-list-event>
+      </div>
   </div>
+
+
 
 </div>
