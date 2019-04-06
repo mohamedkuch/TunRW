@@ -1,5 +1,5 @@
-
-<table class="table table-hover"  *ngIf="events.length > 0">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table class="table table-hover"  *ngIf="events.length > 0 && !isLoading">
       <thead>
         <tr>
           <th>#</th>
@@ -24,6 +24,6 @@
 
       </tbody>
 </table>
-<div class="row" *ngIf="events.length == 0">
+<div class="row" *ngIf="events.length == 0 && !isLoading">
     <h3 class="text-center"> No events added yet !</h3>
 </div>

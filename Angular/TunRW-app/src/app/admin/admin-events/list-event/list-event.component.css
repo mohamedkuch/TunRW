@@ -10,3 +10,6 @@
 .deleteButton:hover {
   color: #e71425;
 }
+mat-spinner {
+  margin: auto;
+}

@@ -19,6 +19,7 @@ export class CreateEventComponent implements OnInit {
   mode = 'create';
   private eventId: string;
   event: Event;
+  isLoading = false;
   constructor(public eventsService: EventService,
               public route: ActivatedRoute) {}
 
@@ -27,7 +28,9 @@ export class CreateEventComponent implements OnInit {
       if (paramMap.has('eventId')){
         this.mode = 'edit';
         this.eventId = paramMap.get('eventId');
+        this.isLoading = true;
         this.eventsService.getSingleEvent(this.eventId).subscribe(postData =>{
+          this.isLoading = false;
           this.event = {id: postData._id, description: postData.description
                         , date: postData.date , adress: postData.adress, title: postData.title}
         });
@@ -42,6 +45,7 @@ export class CreateEventComponent implements OnInit {
       alert('Error , Please Fill in all the Data');
       return;
     }
+    this.isLoading = true;
     if (this.mode === 'create') {
       this.eventsService.addEvent( form.value.enteredEventTitle,
         form.value.enteredEventDate,

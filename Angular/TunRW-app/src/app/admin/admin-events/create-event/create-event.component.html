@@ -32,15 +32,17 @@
       </div>
 
 
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+     <div *ngIf="!isLoading" class="col-xs-12 adminShell mt-5">
 
-     <div class="col-xs-12 adminShell mt-5">
           <h3 class="adminTitle pl-3">
             <strong *ngIf="mode == 'create'">New Event</strong>
             <strong *ngIf="mode == 'edit'">Edit Event</strong>
           </h3>
+
           <div class="row">
             <div class="col-lg-11">
-                <form class="form-horizontal" (submit)="onSaveEvent(postForm)" #postForm="ngForm">
+                <form class="form-horizontal" (submit)="onSaveEvent(postForm)" #postForm="ngForm" >
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Event Name</label>
                       <div class="col-sm-9">

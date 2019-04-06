@@ -12,15 +12,18 @@ import { TouchSequence } from 'selenium-webdriver';
 export class AdminListEventsComponent implements OnInit, OnDestroy {
   events: Event[] = [];
   private eventsSub: Subscription;
+  isLoading = false;
 
   constructor(public eventsService: EventService) {}
 
 
   ngOnInit() {
+    this.isLoading = true;
       this.eventsService.getEvent();
       this.eventsSub = this.eventsService.getEventUpdateListener()
         .subscribe(
           (events: Event[]) => {
+            this.isLoading = false;
             this.events = events;
           });
   }

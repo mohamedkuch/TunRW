@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OnePageComponent } from './onePage/onepage.component';
 import { HeaderComponent } from './onePage/header/header.component';
 import { TopCoverComponent } from './onePage/topcover/topcover.component';
@@ -21,7 +21,7 @@ import { AdminListEventsComponent } from './admin/admin-events/list-event/list-e
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatProgressSpinnerModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,9 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
+    MatProgressSpinnerModule,
     HttpClientModule
   ],
   providers: [],
