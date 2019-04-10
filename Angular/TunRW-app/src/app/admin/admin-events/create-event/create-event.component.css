@@ -35,6 +35,10 @@
   color: white;
   float: right;
 }
+.uploadButton{
+  color: #232323;
+  background: #e6e6e6;
+}
 .activePills, .activePills:hover, .activePills:active{
   background: #e71425;
   color: white;

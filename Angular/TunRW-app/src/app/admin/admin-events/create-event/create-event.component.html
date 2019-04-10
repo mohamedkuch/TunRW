@@ -64,7 +64,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Event Image</label>
                         <div class="col-sm-9">
-                            <input type="file" name="enteredEventImage" ngModel>
+                            <button type="button" (click)="filePicker.click()" class="btn btn-default uploadButton">Select image</button>
+                            <input type="file" name="enteredEventImage"  style="visibility:hidden" ngModel #filePicker>
                         </div>
                     </div>
                     <div class="form-group">
@@ -74,6 +75,8 @@
                             </textarea>
                         </div>
                     </div>
+
+
                     <button type="submit" class="btn btn-default saveButton mb-5">Save Event</button>
 
                 </form>
