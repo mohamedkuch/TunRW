@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,8 +22,8 @@ import { AdminListEventsComponent } from './admin/admin-events/list-event/list-e
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatProgressSpinnerModule} from '@angular/material';
-
+import { MatProgressSpinnerModule , MatInputModule} from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -45,9 +46,13 @@ import { MatProgressSpinnerModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    MatInputModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

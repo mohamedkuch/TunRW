@@ -5,18 +5,33 @@
   float: right;
 }
 
-.adminTitle{
-  border-left: 3px solid #e71425;
-  color: #e71425;
+.adminTitleWrapper{
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 15px;
 }
 .adminShell{
-  background: #f9f9f9;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  border: 1px solid #d8d8d8;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
-  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.35);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  transition: 0.5s all;
+  cursor: default;
 }
-
+.adminShell:hover {
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  transition: 0.5s all;
+}
+.adminTitle{
+  color: #e71425;
+}
+.btn:active , .btn-default:active, .btn-primary:active, .activePills:active{
+  background: #e71425 !important;
+}
 
 .logoAdmin {
   background-image: url(../../../../assets/images/logo.png);
@@ -51,3 +66,33 @@ mat-spinner {
   margin: auto;
   margin-top: 80px;
 }
+.errorValidation{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  background: #e71425;
+  color: white;
+  width: fit-content;
+  position: absolute;
+  z-index: 1;
+  left: 38%;
+  top: 45%;
+  -webkit-box-shadow: 0px 0px 201px 0px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 201px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 201px 0px rgba(0,0,0,1);
+}
+.errorValidation h4{
+  color: white;
+}
+.closeErrorValidation {
+
+  background:white;
+  color: black;
+  padding : 5px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+

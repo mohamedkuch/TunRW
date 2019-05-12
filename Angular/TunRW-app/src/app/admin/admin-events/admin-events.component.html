@@ -17,24 +17,58 @@
           <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
           <li><a href="">Projects</a></li>
           <li><a href="">Members</a></li>
+          <li><a href=""><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-<br/><br/><br/>
+ <!-- Sub Menu Section -->
+ <div class="subHeaderWrapper">
+   <div class="container">
+     <div class="row justify-content-between">
+       <div class="col-xs-4">
+         <h4 class="ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
+       </div>
+       <div class="col-xs-4 text-center">
+         <h5 class="userAlias">Mohamed Kechaou  | <span class="roleUser"> Admin</span></h5>
+       </div>
+       <div class="col-xs-4 subHeaderMenu ">
+         <h4>
+           <a routerLink="/admin" class="subHeaderMenuElement">Home </a><i class="fas fa-caret-right ml-2 mr-2"></i>
+           <a routerLink="/admin/Events" class="subHeaderMenuElement" style="color: #e71425;">Events </a><i class="fas fa-caret-right ml-2 mr-5"></i>
+         </h4>
 
-<div class="container mt-5">
+       </div>
+     </div>
+   </div>
+ </div>
+
+<div class="mainContainerEvent container mt-5">
   <div class="row">
-    <div class="col-12">
-        <a class="btn btn-primary activePills" routerLink="/admin/Events" role="button">All Events</a>
-        <a class="btn btn-primary inactivePills" style="float: right" routerLink="/admin/Events/create" role="button">Add New Event</a>
 
-    </div>
-       <div class="mt-5">
+    <!-- Event Tab -->
+      <div class="eventTab">
+        <div class="widgetTitleWrapper pb-2">
+          <h3 class="widgetTitle pl-3">All Events
+
+            <a routerLink="/admin/Events/create" class="addNewEventBadge"><i class="fas fa-plus"></i> | Add New Event</a>
+
+          </h3>
+
+        </div>
         <app-admin-list-event></app-admin-list-event>
       </div>
+
+
   </div>
 
 
 
+
+
 </div>
+   <footer >
+     <div class="container text-center">
+       <p>Designed by <a href="#"><span>Funcheta Studio</span></a></p>
+     </div>
+   </footer>

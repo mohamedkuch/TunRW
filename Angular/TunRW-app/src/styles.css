@@ -1,2 +1,125 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.logoAdmin {
+  height: 35px;
+  width : 150px;
+  background: url(assets/images/logo.png) no-repeat;
+  background-size: 150px 35px ;
+  background-position-x: 12px;
+}
+.navbar-header {
+  margin-top: 8px;
+}
+.subHeaderWrapper{
+  background: #e8e8e8;
+  margin-top: 50px;
+  padding: 8px;
+
+}
+.subHeaderMenu{
+  text-align: right;
+}
+.subHeaderMenuElement{
+  color: #232323;
+}
+.subHeaderMenuElement:hover{
+  color: #e71425;
+  text-decoration: none;
+}
+.subHeaderMenuElement:active{
+  color: #e71425;
+  text-decoration: none;
+}
+.subHeaderMenu h4 {
+  font-size: 14px;
+  margin-top: 12px;
+}
+.cardContainer{
+  height: 200px;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  transition: 0.5s all;
+  cursor: default;
+}
+.historyTab, .eventTab, .membersTab{
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+  transition: 0.5s all;
+  cursor: default;
+}
+
+.cardValue{
+  position: absolute;
+  right: 40px;
+  font-size: 60px;
+}
+.cardValueDate{
+  position: absolute;
+  right: 40px;
+  font-size: 50px;
+}
+.cardIcon{
+  border-left: 5px solid #e71425;
+}
+.cardContainer:hover , .historyTab:hover, .eventTab:hover, .membersTab:hover {
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.32);
+  transition: 0.5s all;
+}
+.widgetTitle{
+  font-weight: bold;
+  border-left: 3px solid #e71425;
+}
+.widgetTitleWrapper{
+  border-bottom: 1px solid #d8d8d8;
+}
+.eventDate{
+  position: absolute;
+  right: 30px;
+}
+.viewAllBadge, .addNewEventBadge{
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  background: #e71425;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.5s all;
+}
+.viewAllBadge:hover, .addNewEventBadge:hover {
+  background: #96030f;
+  color: white;
+  text-decoration: none;
+  transition: 0.5s all;
+}
+.mainContainerEvent{
+  min-height: calc(100vh - 218px);
+}
+.userAlias{
+  position: relative;
+  top: 5px;
+}
+.roleUser{
+  background:#e71425 ;
+  color: white;
+  border-radius: 4px;
+  font-size: 10px;
+  position: relative;
+  bottom: 1px;
+  padding: 5px;
+}
+.navSeperator{
+  border-left: 1px solid #9d9d9d;
+  text-indent: -9999px;
+  white-space: nowrap;
+}

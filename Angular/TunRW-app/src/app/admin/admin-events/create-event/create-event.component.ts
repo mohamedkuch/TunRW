@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { EventService } from '../events.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Event } from '../events.model';
@@ -11,28 +11,41 @@ import { Event } from '../events.model';
 })
 
 export class CreateEventComponent implements OnInit {
-  enteredEventTitle = '';
-  enteredEventDate = '';
-  enteredEventAddress = '';
-  enteredEventDescription = '';
-  enteredEventImage;
+  title = '';
+  date = '';
+  adress = '';
+  description = '';
+  image;
   mode = 'create';
   private eventId: string;
+  private errorFlag = false;
   event: Event;
   isLoading = false;
+  form: FormGroup;
+
   constructor(public eventsService: EventService,
               public route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      title : new FormControl(null, {validators: [Validators.required , Validators.minLength(0)]}),
+      adress: new FormControl(null, {validators: [Validators.required ]}),
+      date: new FormControl(null, {validators: [Validators.required ]}),
+      description: new FormControl(null, {validators: [Validators.required ]}),
+      image: new FormControl()
+    });
+
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('eventId')){
+      if (paramMap.has('eventId')) {
         this.mode = 'edit';
         this.eventId = paramMap.get('eventId');
         this.isLoading = true;
-        this.eventsService.getSingleEvent(this.eventId).subscribe(postData =>{
+        this.eventsService.getSingleEvent(this.eventId).subscribe(postData => {
           this.isLoading = false;
           this.event = {id: postData._id, description: postData.description
-                        , date: postData.date , adress: postData.adress, title: postData.title}
+                        , date: postData.date , adress: postData.adress, title: postData.title };
+          this.form.setValue({title: this.event.title , adress: this.event.adress ,
+                                      description: this.event.description , date: this.event.date, image: null});
         });
       } else {
         this.mode = 'create';
@@ -40,24 +53,33 @@ export class CreateEventComponent implements OnInit {
       }
     });
   }
-  onSaveEvent(form: NgForm) {
-    if (form.invalid) {
-      alert('Error , Please Fill in all the Data');
-      return;
+  onImagePicked(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: file});
+    this.form.get('image').updateValueAndValidity();
+    console.log(file);
+    console.log(this.form);
+  }
+  onSaveEvent() {
+    if (this.form.invalid) {
+       this.errorFlag = true;
+       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.eventsService.addEvent( form.value.enteredEventTitle,
-        form.value.enteredEventDate,
-        form.value.enteredEventAddress,
-        form.value.enteredEventDescription);
+      this.eventsService.addEvent( this.form.value.title,
+        this.form.value.date,
+        this.form.value.adress,
+        this.form.value.description);
+
 
     } else {
-      this.eventsService.updateEvent(this.eventId, form.value.enteredEventTitle,
-        form.value.enteredEventDate,
-        form.value.enteredEventAddress,
-        form.value.enteredEventDescription);
+      this.eventsService.updateEvent(this.eventId, this.form.value.title,
+        this.form.value.date,
+        this.form.value.adress,
+        this.form.value.description);
     }
-    form.resetForm();
+    this.errorFlag = false;
+    this.form.reset();
   }
 }

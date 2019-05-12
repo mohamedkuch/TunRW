@@ -16,11 +16,20 @@
   color: white;
   float: right;
 }
-.activePills, .activePills:hover, .activePills:active{
+.activePills, .activePills:hover, .activePills:active, .addNewEventBadge:active{
   background: #e71425;
   color: white;
 }
 .inactivePills{
   background: #e7e7e7;
   color: #232323;
+}
+.addNewEventBadge{  position: relative;
+  top: 0px;
+  float: right;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 10px;
+  right: 10px;
+  top:-8px;
 }

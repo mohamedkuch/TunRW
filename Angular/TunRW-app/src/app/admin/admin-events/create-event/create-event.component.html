@@ -1,91 +1,126 @@
 
    <!-- Fixed navbar -->
    <nav class="navbar  navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="logoAdmin navbar-brand" routerLink="/admin" routerLinkActive="active"></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">Members</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="logoAdmin navbar-brand" routerLink="/admin" routerLinkActive="active"></a>
       </div>
-    </nav>
-  <br/><br/><br/>
+      <div id="navbar" class="navbar-collapse collapse">
 
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-12">
-          <a class="btn btn-primary inactivePills" routerLink="/admin/Events" role="button">All Events</a>
-          <a class="btn btn-primary activePills " style="float: right" routerLink="/admin/Events/create" role="button">Add New Event</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
+          <li><a href="">Projects</a></li>
+          <li><a href="">Members</a></li>
+          <li><a href=""><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+ <!-- Sub Menu Section -->
+ <div class="subHeaderWrapper">
+   <div class="container">
+     <div class="row justify-content-between">
+       <div class="col-xs-4">
+         <h4 class="ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
+       </div>
+       <div class="col-xs-4 text-center">
+         <h5 class="userAlias">Mohamed Kechaou  | <span class="roleUser"> Admin</span></h5>
+       </div>
+       <div class="col-xs-4 subHeaderMenu ">
+         <h4>
+           <a routerLink="/admin" class="subHeaderMenuElement">Home </a><i class="fas fa-caret-right ml-2 mr-2"></i>
+           <a routerLink="/admin/Events" class="subHeaderMenuElement">Events </a><i class="fas fa-caret-right ml-2 mr-2"></i>
+           <a routerLink="/admin/Events" class="subHeaderMenuElement" style="color: #e71425;">
+             <span *ngIf="mode == 'create'">
+             Create Event
+             </span>
+             <span *ngIf="mode == 'edit'">
+             Edit Event
+             </span>
+           </a>
+           <i class="fas fa-caret-right ml-2 mr-5"></i>
+         </h4>
 
-      </div>
+       </div>
+     </div>
+   </div>
+ </div>
 
+<div class="container mainContainerEvent mt-5">
+  <div class="row">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+   <div *ngIf="!isLoading" class="col-xs-12 adminShell">
 
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
-     <div *ngIf="!isLoading" class="col-xs-12 adminShell mt-5">
-
-          <h3 class="adminTitle pl-3">
+        <div class="adminTitleWrapper">
+          <h3 class="widgetTitle pl-3">
             <strong *ngIf="mode == 'create'">New Event</strong>
             <strong *ngIf="mode == 'edit'">Edit Event</strong>
           </h3>
+        </div>
 
-          <div class="row">
-            <div class="col-lg-11">
-                <form class="form-horizontal" (submit)="onSaveEvent(postForm)" #postForm="ngForm" >
-                    <div class="form-group">
-                      <label class="col-sm-3 control-label">Event Name</label>
+        <div class="row">
+
+          <div class="col-lg-11 mt-5">
+              <form [formGroup]="form " class="form-horizontal" (submit)="onSaveEvent()">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Event Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" formControlName="title" placeholder="Name" >
+                      <mat-error *ngIf="form.get('title').invalid && errorFlag">Please enter a Title</mat-error>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">Address</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" name="enteredEventTitle" placeholder="Name" [ngModel]="event?.title" required>
+                        <input type="text" class="form-control"  formControlName="adress" placeholder="Address" >
+                        <mat-error *ngIf="form.get('adress').invalid && errorFlag">Please enter a valid adress</mat-error>
                       </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Address</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control"  name="enteredEventAddress" placeholder="Address" [ngModel]="event?.adress" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Date</label>
-                        <div class="col-sm-9">
-                            <input type='text' class="form-control"  name="enteredEventDate" placeholder="dd/mm/yy"  [ngModel]="event?.date" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Event Image</label>
-                        <div class="col-sm-9">
-                            <button type="button" (click)="filePicker.click()" class="btn btn-default uploadButton">Select image</button>
-                            <input type="file" name="enteredEventImage"  style="visibility:hidden" ngModel #filePicker>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Description</label>
-                        <div class="col-sm-9">
-                            <textarea name="enteredEventDescription" class="form-control" rows="3" [ngModel]="event?.description" required>
-                            </textarea>
-                        </div>
-                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">Date</label>
+                      <div class="col-sm-9">
+                          <input type='text' class="form-control"  formControlName="date" placeholder="dd/mm/yy" />
+                          <mat-error *ngIf="form.get('date').invalid && errorFlag">Please enter a valid date</mat-error>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">Event Image</label>
+                      <div class="col-sm-9">
+                          <button type="button" (click)="filePicker.click()" class="btn btn-default uploadButton">Select image</button>
+                          <input type="file"  style="visibility:hidden" (change)="onImagePicked($event)"  #filePicker>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">Description</label>
+                      <div class="col-sm-9">
+                          <textarea class="form-control" formControlName="description" rows="3" >
+
+                          </textarea>
+                        <mat-error *ngIf="form.get('description').invalid && errorFlag">Please enter a valid description</mat-error>
+                      </div>
+                  </div>
 
 
-                    <button type="submit" class="btn btn-default saveButton mb-5">Save Event</button>
+                  <button type="submit" class="btn btn-default saveButton mb-5">Save Event</button>
 
-                </form>
+              </form>
 
-          </div>
         </div>
       </div>
-
     </div>
 
-
   </div>
+
+
+</div>
+   <footer class="mt-5">
+     <div class="container text-center">
+       <p>Designed by <a href="#"><span>Funcheta Studio</span></a></p>
+     </div>
+   </footer>
