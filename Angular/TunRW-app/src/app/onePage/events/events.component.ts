@@ -11,13 +11,17 @@ import { Subscription } from 'rxjs';
 export class EventsComponent implements OnInit , OnDestroy{
   events: Event[] = [];
   private eventsSub: Subscription;
+  postsPerPage = 2;
+  currentPage = 1;
+  totalEvents = 0;
 
   constructor(public eventsService: EventService) {
-    this.eventsService.getEvent();
+    this.eventsService.getEvent(this.postsPerPage, this.currentPage);
     this.eventsSub = this.eventsService.getEventUpdateListener()
       .subscribe(
-        (data: Event[]) =>  {
-          this.events = data;
+        (data:{events:  Event[], postCount : number}) =>  {
+          this.events = data.events;
+          this.totalEvents = data.postCount;
         });
 
   }

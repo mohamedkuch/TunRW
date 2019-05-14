@@ -22,7 +22,7 @@ import { AdminListEventsComponent } from './admin/admin-events/list-event/list-e
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatProgressSpinnerModule , MatInputModule} from '@angular/material';
+import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule} from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
@@ -52,6 +52,7 @@ import { ChartsModule } from 'ng2-charts';
     MatInputModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    MatPaginatorModule,
     ChartsModule
   ],
   providers: [],

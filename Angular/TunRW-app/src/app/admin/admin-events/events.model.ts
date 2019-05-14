@@ -4,4 +4,5 @@ export interface Event {
        date: string;
      adress: string;
 description: string;
+  imagePath: string;
 }

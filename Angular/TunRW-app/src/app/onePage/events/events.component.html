@@ -1,4 +1,4 @@
-<section class="eventsSection light-bg"  id="events">
+<section class="eventsSection"  id="events">
     <div class="container">
       <div class="row ">
 
@@ -9,7 +9,7 @@
 
             <div *ngFor="let event of events " class="col-lg-6 mt-5">
                 <div class="eventShell">
-                    <img class="img-fluid" src="../../assets/images/Events/1.jpg" alt="Event1"/>
+                    <img class="img-fluid eventImage" [src]="event.imagePath" [alt]="event.title"/>
 
                     <div class="eventDescBG ">
                       <p class="titleEvent">
@@ -35,7 +35,6 @@
                     </div>
                 </div>
             </div>
-
           </div>
 
           <div class="row" *ngIf="events.length == 0">

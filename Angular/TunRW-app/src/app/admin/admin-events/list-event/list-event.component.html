@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-spinner class="mt-5 mb-5" *ngIf="isLoading"></mat-spinner>
 <table class="table table-hover"  *ngIf="events.length > 0 && !isLoading">
       <thead>
         <tr>
@@ -24,6 +24,7 @@
 
       </tbody>
 </table>
-<div class="row" *ngIf="events.length == 0 && !isLoading">
+<div class="row mt-5 mb-5" *ngIf="events.length == 0 && !isLoading">
     <h3 class="text-center"> No events added yet !</h3>
 </div>
+<mat-paginator  *ngIf="events.length > 0 " [length]="totalEvents" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)"></mat-paginator>
