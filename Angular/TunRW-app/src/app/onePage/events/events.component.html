@@ -1,4 +1,4 @@
-<section class="eventsSection"  id="events">
+<section class="eventsSection pb-0 mb-0"  id="events">
     <div class="container">
       <div class="row ">
 
@@ -35,6 +35,12 @@
                     </div>
                 </div>
             </div>
+
+          </div>
+          <div  *ngIf="events.length > 0" class="mt-5 pt-5 text-center">
+            <span (click)="onLoadMoreEvent()" class="viewMoreButton">
+               Load More
+            </span>
           </div>
 
           <div class="row" *ngIf="events.length == 0">

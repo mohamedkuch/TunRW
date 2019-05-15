@@ -130,15 +130,24 @@ section {
 
 .staffImage {
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
-  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.37);
-  border: 5px solid #323232;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.37);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.37);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.37);
+  border: 3px solid #323232;
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+  cursor: pointer;
+}
+.staffImage:hover {
+  border: 3px solid #e71425;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.67);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.67);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.67);
   -webkit-transition: 1s; /* Safari */
   transition: 1s;
 }
-.staffImage:hover {
-  border: 5px solid #e71425;
+.slick-prev, .slick-next {
+  top: 42% !important;
 }
 @media (min-width: 768px) {
   .slick-arrow {

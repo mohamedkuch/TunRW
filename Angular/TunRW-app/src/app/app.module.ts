@@ -19,11 +19,15 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminEventsComponent } from './admin/admin-events/admin-events.component';
 import { CreateEventComponent } from './admin/admin-events/create-event/create-event.component';
 import { AdminListEventsComponent } from './admin/admin-events/list-event/list-event.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { MembersAdminComponent } from './admin/admin-members/admin-members.component';
+import { CreateMemberComponent } from './admin/admin-members/create-member/create-member.component'
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule} from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
+import { LoginComponent } from './admin/auth/login/login.component';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -34,12 +38,16 @@ import { ChartsModule } from 'ng2-charts';
     ServicesComponent,
     EventsComponent,
     ProjectsComponent,
+    MembersAdminComponent,
     PartnersComponent,
     ContactComponent,
     AdminComponent,
+    CreateMemberComponent,
     AdminEventsComponent,
     CreateEventComponent,
     AdminListEventsComponent,
+    LoginComponent,
+    HeaderAdminComponent,
     PageNotFoundComponent
   ],
   imports: [

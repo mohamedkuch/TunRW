@@ -14,6 +14,7 @@ export class EventsComponent implements OnInit , OnDestroy{
   postsPerPage = 2;
   currentPage = 1;
   totalEvents = 0;
+  eventsRequested = 0;
 
   constructor(public eventsService: EventService) {
     this.eventsService.getEvent(this.postsPerPage, this.currentPage);
@@ -23,13 +24,22 @@ export class EventsComponent implements OnInit , OnDestroy{
           this.events = data.events;
           this.totalEvents = data.postCount;
         });
-
+    if (this.totalEvents > 0 ) {
+        this.eventsRequested += this.postsPerPage;
+    }
   }
 
   ngOnInit() {
 
-  }
 
+  }
+  onLoadMoreEvent(){
+    if(this.eventsRequested < this.totalEvents ) {
+      this.postsPerPage += 2;
+      this.eventsService.getEvent(this.postsPerPage, this.currentPage);
+      this.eventsRequested += this.postsPerPage;
+    }
+  }
   ngOnDestroy() {
     this.eventsSub.unsubscribe();
 

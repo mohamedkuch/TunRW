@@ -1,47 +1,6 @@
 
-   <!-- Fixed navbar -->
-   <nav class="navbar  navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="logoAdmin navbar-brand" routerLink="/admin" routerLinkActive="active"></a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a routerLink="/admin/Events" routerLinkActive="active">Events</a></li>
-          <li><a href="">Projects</a></li>
-          <li><a href="">Members</a></li>
-          <li><a href=""><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </nav>
- <!-- Sub Menu Section -->
- <div class="subHeaderWrapper">
-   <div class="container">
-     <div class="row justify-content-between">
-       <div class="col-xs-4">
-         <h4 class="ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
-       </div>
-       <div class="col-xs-4 text-center">
-         <h5 class="userAlias">Mohamed Kechaou  | <span class="roleUser"> Admin</span></h5>
-       </div>
-       <div class="col-xs-4 subHeaderMenu ">
-         <h4>
-           <a routerLink="/admin" class="subHeaderMenuElement">Home </a><i class="fas fa-caret-right ml-2 mr-2"></i>
-           <a routerLink="/admin/Events" class="subHeaderMenuElement" style="color: #e71425;">Events </a><i class="fas fa-caret-right ml-2 mr-5"></i>
-         </h4>
-
-       </div>
-     </div>
-   </div>
- </div>
+   <!-- Header -->
+<app-header-admin></app-header-admin>
 
 <div class="mainContainerEvent container mt-5">
   <div class="row">

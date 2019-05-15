@@ -6,7 +6,7 @@ import { Component , OnInit } from '@angular/core';
 })
 
 export class AdminComponent implements OnInit {
-  constructor() { }
+
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -18,7 +18,7 @@ export class AdminComponent implements OnInit {
     {data: [0, 3, 3, 2, 5, 6, 10], label: 'Projects'},
     {data: [0, 0, 1, 2, 2, 3, 4], label: 'Events'}
   ];
-
+  constructor() { }
   ngOnInit() {
   }
 }

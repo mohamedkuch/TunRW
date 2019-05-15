@@ -90,7 +90,7 @@
   position: absolute;
   right: 30px;
 }
-.viewAllBadge, .addNewEventBadge{
+.viewAllBadge{
   position: absolute;
   top: 18px;
   right: 30px;
@@ -101,7 +101,7 @@
   cursor: pointer;
   transition: 0.5s all;
 }
-.viewAllBadge:hover, .addNewEventBadge:hover {
+.viewAllBadge:hover{
   background: #96030f;
   color: white;
   text-decoration: none;
@@ -137,11 +137,21 @@
   background-color: #f8f8f8f8 !important;
 }
 .eventShell{
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
   border-radius: 8px;
   border: 2px solid #232323;
+
+  position: relative;
+  top:0px;
+  left:0px;
+
+transition: top 0.5s;
+-moz-transition: top  0.5s;
+-webkit-transition:top 0.5s;
+-o-transition: top 0.5s;
+}
+.eventShell:hover{
+  top:-10px;
+  cursor: pointer;
 }
 .eventImage{
   border-radius: 5px 5px 0 0;
@@ -184,4 +194,25 @@ box-shadow: inset -6px 8px 42px 0px rgba(0,0,0,0.26);
 }
 .eventsSection{
   background: #232323;
+}
+.viewMoreButton{
+  background: #e5e5e5;
+  color: #232323;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  top: -12px;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px 5px 0 0 ;
+transition: all 0.5s;
+-moz-transition: all  0.5s;
+-webkit-transition:all 0.5s;
+-o-transition: all 0.5s;
+opacity: 0.5;
+}
+.viewMoreButton:hover{
+  background: white;
+  border: 1px solid white;
+  opacity: 1;
 }
