@@ -38,7 +38,7 @@
      <div class="row justify-content-between">
       <div class="col-xs-4">
        <h4 *ngIf="homeFlag" class="subMenuTitle ml-5"><i class="fab fa-buffer mr-2"></i>Dashboard</h4>
-       <h4 *ngIf="membersFlag" class="subMenuTitle ml-5"><i class="fas fa-users mr-2"></i>Members</h4>
+       <h4 *ngIf="membersFlag || membersCreateFlag" class="subMenuTitle ml-5"><i class="fas fa-users mr-2"></i>Members</h4>
        <h4 *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="subMenuTitle ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
       </div>
        <div class="col-xs-4 text-center">
@@ -64,10 +64,16 @@
             </a>
 
             <!-- Members Submenu-->
-            <a  *ngIf="membersFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
-            <i *ngIf="membersFlag" class="fas fa-caret-right ml-2 mr-3"></i>
-            <a *ngIf="membersFlag" routerLink="/admin/Members" class="subHeaderMenuElement" style="color: #e71425;">Members </a>
+            <a  *ngIf="membersFlag || membersCreateFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
+            <i *ngIf="membersFlag || membersCreateFlag" class="fas fa-caret-right ml-2 mr-3"></i>
+            <a *ngIf="membersFlag " routerLink="/admin/Members" class="subHeaderMenuElement" style="color: #e71425;">Members </a>
             <i *ngIf="membersFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
+            <!-- Members create SubMenu-->
+            <a *ngIf="membersCreateFlag " routerLink="/admin/Members" class="subHeaderMenuElement" >Members </a>
+            <i *ngIf="membersCreateFlag" class="fas fa-caret-right ml-2 mr-3 "></i>
+            <a *ngIf="membersCreateFlag " routerLink="/admin/Members/create" class="subHeaderMenuElement" style="color: #e71425;">create </a>
+            <i *ngIf="membersCreateFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
+
 
 
         </h4>

@@ -21,7 +21,7 @@
                     <form #loginForm="ngForm" (submit)="onLogin(loginForm)">
                       <div class="form-group">
                         <label >Username</label>
-                        <input type="text" name="Username" ngModel #usernameInput="ngModel"  class="form-control" id="InputUsername"  placeholder="Username" required>
+                        <input type="text" name="username" ngModel #usernameInput="ngModel"  class="form-control" id="InputUsername"  placeholder="Username" required>
                         <mat-error *ngIf="usernameInput.invalid && invalidFlag">Please enter valid username</mat-error>
 
                       </div>

@@ -1,5 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
+import { NgForm } from '@angular/forms';
 @Component ({
   selector : 'app-create-member',
   templateUrl : './create-member.component.html',
@@ -7,8 +9,17 @@ import { Router } from '@angular/router';
 })
 
 export class CreateMemberComponent implements OnInit {
-  constructor() {
+  invalidFlag = false;
+  constructor(public authService : AuthService) {
    }
   ngOnInit() {
+  }
+  onSaveMember(form: NgForm) {
+    this.invalidFlag = true;
+    if (form.invalid) {
+      return;
+    } else {
+      this.authService.createUser(form.value.username,  form.value.password);
+    }
   }
 }

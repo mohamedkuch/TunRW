@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OnePageComponent } from './onePage/onepage.component';
 import { HeaderComponent } from './onePage/header/header.component';
@@ -28,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule} from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './admin/auth/login/login.component';
+import { AuthInterceptor } from './admin/auth/auth-interceptor';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -63,7 +64,7 @@ import { LoginComponent } from './admin/auth/login/login.component';
     MatPaginatorModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [{provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
