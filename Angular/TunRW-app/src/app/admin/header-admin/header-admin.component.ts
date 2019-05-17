@@ -15,6 +15,8 @@ export class HeaderAdminComponent implements OnInit {
   homeFlag = false;
   membersFlag = false;
   membersCreateFlag = false;
+  userIsAuthenticated = false;
+
   constructor(private router: Router,
               private authService: AuthService ) {
     this.currentUrl = this.router.url;
@@ -49,7 +51,9 @@ export class HeaderAdminComponent implements OnInit {
     }
    }
   ngOnInit() {
-    console.log(this.router.url);
-
+    console.log("user Connected", this.authService.getAuthStatus());
+  }
+  onLogout(){
+    console.log("user Logged out !");
   }
 }

@@ -2,18 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs';
+import { Token } from '@angular/compiler';
+import { tryParse } from 'selenium-webdriver/http';
 
 @Injectable({providedIn: "root"})
 export class AuthService {
-  private token: string;
-  private authStatusListener = new Subject<boolean>();
   constructor(private http: HttpClient) {}
 
   getToken() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser){
+      return;
+    }
     const token = currentUser.token;
     console.log(token);
     return token;
+
+  }
+  getAuthStatus(){
+    const tmp = JSON.parse(localStorage.getItem('isLogged'));
+    if ( tmp ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   createUser(username: string, password: string) {
@@ -29,6 +41,7 @@ export class AuthService {
       .subscribe(response =>{
         console.log("zezeze" , response);
         localStorage.setItem('currentUser', JSON.stringify({ token: response.token }));
+        localStorage.setItem('isLogged', 'true');
 
       });
 
