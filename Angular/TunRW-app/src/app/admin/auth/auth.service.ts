@@ -15,7 +15,6 @@ export class AuthService {
       return;
     }
     const token = currentUser.token;
-    console.log(token);
     return token;
 
   }
@@ -39,11 +38,14 @@ export class AuthService {
     const authData: AuthData = {username: username, password: password};
     this.http.post<{token: string}>('http://localhost:3000/api/user/login', authData)
       .subscribe(response =>{
-        console.log("zezeze" , response);
         localStorage.setItem('currentUser', JSON.stringify({ token: response.token }));
         localStorage.setItem('isLogged', 'true');
 
       });
 
+  }
+  logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('isLogged');
   }
 }
