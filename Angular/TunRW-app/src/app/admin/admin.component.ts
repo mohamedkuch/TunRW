@@ -1,4 +1,5 @@
 import { Component , OnInit } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 @Component ({
   selector : 'app-admin',
   templateUrl : './admin.component.html',
@@ -18,7 +19,9 @@ export class AdminComponent implements OnInit {
     {data: [0, 3, 3, 2, 5, 6, 10], label: 'Projects'},
     {data: [0, 0, 1, 2, 2, 3, 4], label: 'Events'}
   ];
-  constructor() { }
+  constructor(private authService: AuthService) { }
   ngOnInit() {
+    // Check user Auth
+    this.authService.autoAuthUser();
   }
 }

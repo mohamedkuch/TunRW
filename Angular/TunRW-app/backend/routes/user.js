@@ -62,7 +62,7 @@ router.post("/login", (req, res, next) =>{
     })
 
 });
-router.get('', checkAuth, (req, res, next) => {
+router.get('', (req, res, next) => {
   const postQuery = User.find();
   let fetchedMembers;
   postQuery.find().then(documents => {

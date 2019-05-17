@@ -24,13 +24,15 @@ export class EventService {
                 date : post.date,
                 adress : post.adress,
                 description : post.description,
-                imagePath: post.imagePath
+                imagePath: post.imagePath,
+                creator: post.creator
               };
             }) ,
             maxPosts : data.maxPosts
         };
       }))
       .subscribe((finalData) => {
+            console.log(finalData);
             this.events = finalData.events;
             this.eventsUpdated.next({events: [...this.events] , postCount : finalData.maxPosts});
       });
