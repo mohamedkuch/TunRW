@@ -51,7 +51,8 @@ router.post("/login", (req, res, next) =>{
          {expiresIn: '1h' }
          );
       return res.status(200).json({
-        token: token
+        token: token,
+        expiresIn: 3600
       });
 
     }).catch (err => {
@@ -61,5 +62,19 @@ router.post("/login", (req, res, next) =>{
     })
 
 });
+router.get('', checkAuth, (req, res, next) => {
+  const postQuery = User.find();
+  let fetchedMembers;
+  postQuery.find().then(documents => {
+        fetchedMembers = documents
+        return User.count();
+    }).then(count =>{
+      res.status(200).json({
+        message: 'Members fetched Succesfully!',
+        users: fetchedMembers,
+        maxPosts: count
+      });
+    });
 
+});
 module.exports = router;

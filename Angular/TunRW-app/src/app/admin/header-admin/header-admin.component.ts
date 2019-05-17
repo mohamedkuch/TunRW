@@ -52,7 +52,9 @@ export class HeaderAdminComponent implements OnInit {
    }
   ngOnInit() {
     this.userIsAuthenticated = this.authService.getAuthStatus();
-    console.log('user Connected', this.authService.getToken() );
+    console.log('user Connected', this.authService.getAuthStatus() );
+    console.log('Token is', this.authService.getToken() );
+    console.log('Token Expires In ', this.authService.getTokenExpirationDate() );
   }
   onLogout(){
     this.authService.logout();

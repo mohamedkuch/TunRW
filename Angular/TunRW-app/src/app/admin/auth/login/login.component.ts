@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm} from "@angular/forms";
 import { AuthService } from "../auth.service";
-import { Router } from "@angular/router";
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -9,8 +8,7 @@ import { Router } from "@angular/router";
 export class LoginComponent {
    isLoading = false;
    invalidFlag = false;
-   constructor(public authService: AuthService,
-               private router: Router) {
+   constructor(public authService: AuthService) {
 
     console.log('user status', this.authService.getAuthStatus());
                }
@@ -21,6 +19,6 @@ export class LoginComponent {
       return;
     }
     this.authService.loginUser(form.value.username, form.value.password);
-    this.router.navigate(['/admin/Events']);
+
    }
 }
