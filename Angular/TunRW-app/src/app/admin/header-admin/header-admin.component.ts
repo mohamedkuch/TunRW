@@ -1,6 +1,7 @@
 import { Component , OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { Member } from '../admin-members/member.model';
 @Component ({
   selector : 'app-header-admin',
   templateUrl : './header-admin.component.html',
@@ -9,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 
 export class HeaderAdminComponent implements OnInit {
   currentUrl: string;
+  currentUser: Member;
   eventCreateFlag = false;
   eventEditFlag = false;
   eventFlag = false;
@@ -20,6 +22,10 @@ export class HeaderAdminComponent implements OnInit {
   constructor(private router: Router,
               private authService: AuthService ) {
     this.currentUrl = this.router.url;
+    console.log(this.currentUrl);
+    if (this.currentUrl.includes('/admin/Events/edit')) {
+      this.eventEditFlag = true;
+    }
     switch(this.currentUrl) {
       case '/admin': {
         this.homeFlag = true;
@@ -41,10 +47,6 @@ export class HeaderAdminComponent implements OnInit {
          this.eventCreateFlag = true;
          break;
       }
-      case '/admin/Events/edit': {
-        this.eventEditFlag = true;
-        break;
-     }
       default: {
          break;
       }
@@ -52,6 +54,8 @@ export class HeaderAdminComponent implements OnInit {
    }
   ngOnInit() {
     this.authService.autoAuthUser();
+    this.currentUser = this.authService.getcurrentUser();
+    console.log('user', this.currentUser);
   }
   onLogout(){
     this.authService.logout();

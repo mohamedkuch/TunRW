@@ -22,6 +22,6 @@ export class AdminComponent implements OnInit {
   constructor(private authService: AuthService) { }
   ngOnInit() {
     // Check user Auth
-    this.authService.autoAuthUser();
+   // this.authService.autoAuthUser();
   }
 }

@@ -14,17 +14,17 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- Events Flag -->
-          <li *ngIf="homeFlag || membersFlag">
+          <li *ngIf="homeFlag || membersFlag || membersCreateFlag">
               <a routerLink="/admin/Events">Events</a>
             </li>
           <li *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="active">
               <a routerLink="/admin/Events">Events</a>
           </li>
           <li><a href="">Projects</a></li>
-          <li *ngIf="!membersFlag">
+          <li *ngIf="!membersFlag && !membersCreateFlag">
               <a routerLink="/admin/Members">Members</a>
           </li>
-          <li class="active" *ngIf="membersFlag">
+          <li class="active" *ngIf="membersFlag || membersCreateFlag">
               <a routerLink="/admin/Members" >Members</a>
           </li>
           <li><a (click)="onLogout()"><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
@@ -56,10 +56,10 @@
              <!-- Event create/add SubMenu-->
             <a *ngIf="eventCreateFlag || eventEditFlag"  routerLink="/admin/Events" class="subHeaderMenuElement">Events </a>
               <i *ngIf="eventCreateFlag || eventEditFlag"  class="fas fa-caret-right ml-2 mr-2"></i>
-            <a *ngIf="eventCreateFlag" routerLink="currentUrl" class="subHeaderMenuElement" style="color: #e71425;">
+            <a *ngIf="eventCreateFlag"  class="subHeaderMenuElement" style="color: #e71425;">
               Create Event
             </a>
-            <a *ngIf="eventEditFlag" routerLink="currentUrl" class="subHeaderMenuElement" style="color: #e71425;">
+            <a *ngIf="eventEditFlag" class="subHeaderMenuElement" style="color: #e71425;">
               Edit Event
             </a>
 
