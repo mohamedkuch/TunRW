@@ -56,6 +56,7 @@ export class HeaderAdminComponent implements OnInit {
     this.authService.autoAuthUser();
     this.currentUser = this.authService.getcurrentUser();
     console.log('user', this.currentUser);
+    console.log('user', this.authService.getTokenExpirationDate());
   }
   onLogout(){
     this.authService.logout();

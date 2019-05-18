@@ -118,10 +118,20 @@
   background:#e71425 ;
   color: white;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 13px;
   position: relative;
-  bottom: 1px;
+  bottom: 3px;
+  padding: 10px;
+  left: 8px;
+}
+.userRole{
+  background:#232323 ;
+  color: white;
+  border-radius: 4px;
+  font-size: 10px;
   padding: 5px;
+  position: absolute;
+  bottom: 15px;
 }
 .navSeperator{
   border-left: 1px solid #9d9d9d;

@@ -29,6 +29,7 @@ import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule} from '@a
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './admin/auth/login/login.component';
 import { AuthInterceptor } from './admin/auth/auth-interceptor';
+import { AdminMemberListComponent } from './admin/admin-members/list-members/list-members.component';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -48,6 +49,7 @@ import { AuthInterceptor } from './admin/auth/auth-interceptor';
     CreateEventComponent,
     AdminListEventsComponent,
     LoginComponent,
+    AdminMemberListComponent,
     HeaderAdminComponent,
     PageNotFoundComponent
   ],

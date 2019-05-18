@@ -40,8 +40,14 @@ export class EventService {
 
   // get one Event
   getSingleEvent(id: string){
-    return this.http.get<{_id: string, title: string,
-      date: string, adress: string, description: string, imagePath: string}>('http://localhost:3000/api/events/' + id);
+    return this.http.get<{_id: string;
+       title: string;
+       date: string;
+        adress: string;
+         description: string;
+          imagePath: string;
+        creator: string
+      }>('http://localhost:3000/api/events/' + id);
   }
 
   // Add New Event
@@ -78,7 +84,8 @@ export class EventService {
               date: date,
             adress: adress,
         description: description,
-        imagePath: image
+        imagePath: image,
+        creator: null
       }
     }
     this.http.put('http://localhost:3000/api/events/' + id, postData)

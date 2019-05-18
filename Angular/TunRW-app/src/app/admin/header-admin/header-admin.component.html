@@ -42,7 +42,16 @@
        <h4 *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="subMenuTitle ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
       </div>
        <div class="col-xs-4 text-center">
-         <h5 class="userAlias">Mohamed Kechaou  | <span class="roleUser"> Admin</span></h5>
+         <h5 class="userAlias">
+            <span class="roleUser">
+              <strong style="text-transform: uppercase"><i class="fas fa-user mr-1"></i>
+                {{currentUser.name}}
+              </strong>
+            </span>
+            <span class="userRole">
+               Admin
+            </span>
+          </h5>
        </div>
        <div class="col-xs-4 subHeaderMenu ">
          <h4 >

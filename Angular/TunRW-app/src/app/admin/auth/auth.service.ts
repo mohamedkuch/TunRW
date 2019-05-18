@@ -3,16 +3,52 @@ import { HttpClient } from '@angular/common/http';
 import { AuthData } from './auth-data.model';
 import { Router } from '@angular/router';
 import { Member } from '../admin-members/member.model';
+import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
-@Injectable({providedIn: "root"})
+@Injectable({providedIn: 'root'})
 export class AuthService {
   private tokenTimer;
   private currentuser: Member;
+  private Members: Member[] = [];
+  private memberUpdated = new Subject<{Members: Member[] , postCount: number}>();
   constructor(private http: HttpClient,
               private router: Router ) {}
 
   getcurrentUser() {
     return this.currentuser;
+  }
+  getUser(id: string) {
+    return this.http.get<{_id: string;
+      username: string;
+       name: string;
+      }>('http://localhost:3000/api/user/' + id);
+  }
+
+  getMemberUpdateListener() {
+    return this.memberUpdated.asObservable();
+  }
+
+  getAllMembers(postsPerPage: number, currentPage: number) {
+    const queryParams = `?pageSize=${postsPerPage}&page=${currentPage}`;
+    this.http.get<{users: any, maxPosts: number}>('http://localhost:3000/api/user' + queryParams)
+      .pipe(map((data) => {
+          return {
+            users : data.users.map(post => {
+              return {
+                id : post._id,
+                name : post.name,
+                username : post.username
+              };
+            }) ,
+            maxPosts : data.maxPosts
+        };
+      }))
+      .subscribe((finalData) => {
+            console.log(finalData);
+            this.Members = finalData.users;
+            this.memberUpdated.next({Members: [...this.Members] , postCount : finalData.maxPosts});
+      });
   }
   getToken() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));

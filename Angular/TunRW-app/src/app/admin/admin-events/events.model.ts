@@ -5,4 +5,5 @@ export interface Event {
      adress: string;
 description: string;
   imagePath: string;
+    creator: string;
 }

@@ -49,7 +49,7 @@ export class CreateEventComponent implements OnInit {
         this.eventsService.getSingleEvent(this.eventId).subscribe(postData => {
           this.isLoading = false;
           this.event = {id: postData._id, description: postData.description
-                        , date: postData.date , adress: postData.adress, title: postData.title, imagePath: postData.imagePath };
+                        , date: postData.date , adress: postData.adress, title: postData.title, imagePath: postData.imagePath , creator:postData.creator};
           this.form.setValue({title: this.event.title , adress: this.event.adress ,
                                       description: this.event.description , date: this.event.date, image: this.event.imagePath});
         });

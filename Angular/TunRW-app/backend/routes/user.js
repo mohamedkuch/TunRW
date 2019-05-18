@@ -65,19 +65,41 @@ router.post("/login", (req, res, next) =>{
     })
 
 });
+
 router.get('', (req, res, next) => {
+  const pageSize = +req.query.pageSize;
+  const currentPage = +req.query.page;
   const postQuery = User.find();
-  let fetchedMembers;
+  let fetchedPosts;
+  if( pageSize && currentPage) {
+    postQuery
+      .skip(pageSize * (currentPage - 1))
+      .limit(pageSize);
+  }
   postQuery.find().then(documents => {
-        fetchedMembers = documents
+        fetchedPosts = documents
         return User.count();
     }).then(count =>{
       res.status(200).json({
         message: 'Members fetched Succesfully!',
-        users: fetchedMembers,
+        users: fetchedPosts,
         maxPosts: count
       });
     });
+
+});
+
+
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id).then(userData =>{
+   if(userData){
+      res.status(200).json(userData);
+   } else {
+     res.status(404).json({message: 'Event not found!'});
+   }
+
+  });
+
 
 });
 module.exports = router;
