@@ -11,6 +11,7 @@ router.post("/signup", checkAuth, (req, res, next) =>{
     .then(hash =>{
       const user = new User({
         username: req.body.username,
+        name: req.body.name,
         password: hash
       });
       user.save()

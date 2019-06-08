@@ -108,7 +108,8 @@
   transition: 0.5s all;
 }
 .mainContainerEvent{
-  min-height: calc(100vh - 218px);
+  min-height: calc(100vh - 203px);
+  margin-top: 120px !important;
 }
 .userAlias{
   position: relative;

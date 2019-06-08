@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Member } from '../admin-members/member.model';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AuthDataCreate } from './create-user.model';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -109,11 +110,12 @@ export class AuthService {
 
   }
 
-  createUser(username: string, password: string) {
-    const authData: AuthData = {username: username, password: password};
+  createUser(username: string, password: string,  name: string) {
+    const authData: AuthDataCreate = {username: username, password: password, name: name};
     this.http.post('http://localhost:3000/api/user/signup', authData)
       .subscribe(response => {
           console.log(response);
+          this.router.navigate(['/admin/Members']);
       });
   }
   loginUser(username: string, password: string ) {

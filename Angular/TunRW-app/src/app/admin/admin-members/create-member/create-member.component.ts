@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
 
 export class CreateMemberComponent implements OnInit {
   invalidFlag = false;
-  constructor(public authService : AuthService) {
+  constructor(public authService : AuthService,
+              private router: Router) {
    }
   ngOnInit() {
   }
@@ -19,7 +20,7 @@ export class CreateMemberComponent implements OnInit {
     if (form.invalid) {
       return;
     } else {
-      this.authService.createUser(form.value.username,  form.value.password);
+      this.authService.createUser(form.value.username,  form.value.password, form.value.name);
     }
   }
 }
