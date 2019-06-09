@@ -51,7 +51,9 @@ router.post("", checkAuth, multer({storage : storage}).single("image"),(req,res,
     });
   })
   .catch(err =>{
-    console.log(err);
+    res.status(500).json({
+      message : "Creating Event Failed!"
+    });
   });
 
 });
@@ -114,7 +116,11 @@ router.put('/:id',checkAuth, multer({storage : storage}).single("image"), (req, 
     }else {
       res.status(401).json({  message : "Not Authorized!"});
     }
-   });
+   }).catch(error => {
+    res.status(500).json({
+      message : "Update Event Failed!"
+    });
+  });
 });
 
 router.delete('/:id', checkAuth, (req, res, next) => {
@@ -124,6 +130,10 @@ router.delete('/:id', checkAuth, (req, res, next) => {
     }else {
       res.status(401).json({  message : "Not Authorized!"});
     }
+  }).catch(error => {
+    res.status(500).json({
+      message : "Deleting Event Failed!"
+    });
   });
 
 });
