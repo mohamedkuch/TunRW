@@ -23,7 +23,6 @@ export class CreateEventComponent implements OnInit {
   isLoading = false;
   form: FormGroup;
   imagePreview: any;
-  errorImageFlag = false;
 
   constructor(public eventsService: EventService,
               public route: ActivatedRoute) {}
@@ -70,7 +69,7 @@ export class CreateEventComponent implements OnInit {
     };
     reader.readAsDataURL(file);
     this.imagePreview = this.imagePreview.toString();
-    this.errorImageFlag = true;
+  
   }
   onSaveEvent() {
     if (this.form.invalid) {

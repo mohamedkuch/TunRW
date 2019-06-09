@@ -20,7 +20,11 @@ export class CreateMemberComponent implements OnInit {
     if (form.invalid) {
       return;
     } else {
-      this.authService.createUser(form.value.username,  form.value.password, form.value.name);
+      this.authService.createUser(form.value.username,  form.value.password, form.value.name)
+      .subscribe(response => {
+          console.log(response);
+          this.router.navigate(['/admin/Members']);
+      });
     }
   }
 }

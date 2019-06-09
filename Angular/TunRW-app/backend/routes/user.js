@@ -23,7 +23,7 @@ router.post("/signup", checkAuth, (req, res, next) =>{
         })
         .catch(err =>{
           res.status(500).json({
-            error: err
+            message: 'Create User failed, Username is taken !'
           });
         });
     });
@@ -61,7 +61,7 @@ router.post("/login", (req, res, next) =>{
 
     }).catch (err => {
       return res.status(401).json({
-        message: 'Login failed'
+        message: 'Login failed , Username or password are incorrect'
       });
     })
 

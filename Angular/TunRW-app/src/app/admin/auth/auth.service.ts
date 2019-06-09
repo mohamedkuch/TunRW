@@ -112,11 +112,7 @@ export class AuthService {
 
   createUser(username: string, password: string,  name: string) {
     const authData: AuthDataCreate = {username: username, password: password, name: name};
-    this.http.post('http://localhost:3000/api/user/signup', authData)
-      .subscribe(response => {
-          console.log(response);
-          this.router.navigate(['/admin/Members']);
-      });
+    return this.http.post('http://localhost:3000/api/user/signup', authData);
   }
   loginUser(username: string, password: string ) {
     const authData: AuthData = {username: username, password: password};

@@ -44,7 +44,7 @@
                       <div class="col-sm-9">
                           <button type="button" (click)="filePicker.click()" class="btn btn-default uploadButton">Select image</button>
                           <input type="file"  style="visibility:hidden" (change)="onImagePicked($event)"  #filePicker>
-                         <mat-error *ngIf="form.get('image').invalid && errorImageFlag">Please enter a valid image</mat-error>
+                         <mat-error *ngIf="form.get('image').invalid && errorFlag">Please enter a valid image</mat-error>
                       </div>
                   </div>
                   <div class="form-group">

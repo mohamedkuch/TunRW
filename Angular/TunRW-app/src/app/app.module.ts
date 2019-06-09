@@ -25,11 +25,13 @@ import { CreateMemberComponent } from './admin/admin-members/create-member/creat
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule} from '@angular/material';
+import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule, MatDialogModule} from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './admin/auth/login/login.component';
 import { AuthInterceptor } from './admin/auth/auth-interceptor';
 import { AdminMemberListComponent } from './admin/admin-members/list-members/list-members.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -51,6 +53,7 @@ import { AdminMemberListComponent } from './admin/admin-members/list-members/lis
     LoginComponent,
     AdminMemberListComponent,
     HeaderAdminComponent,
+    ErrorComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -64,10 +67,16 @@ import { AdminMemberListComponent } from './admin/admin-members/list-members/lis
     MatProgressSpinnerModule,
     HttpClientModule,
     MatPaginatorModule,
+    MatDialogModule,
     ChartsModule
   ],
-  providers: [{provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide : HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule {
 

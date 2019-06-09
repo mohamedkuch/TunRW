@@ -8,6 +8,7 @@ import { AuthService } from "../auth.service";
 export class LoginComponent {
    isLoading = false;
    invalidFlag = false;
+   invalidPass = false ;
    constructor(public authService: AuthService) {
 
     console.log('user status', this.authService.getAuthStatus());
@@ -15,10 +16,11 @@ export class LoginComponent {
 
    onLogin(form: NgForm){
     this.invalidFlag = true;
+    this.isLoading = true;
     if (form.invalid) {
       return;
     }
     this.authService.loginUser(form.value.username, form.value.password);
-
+ 
    }
 }
