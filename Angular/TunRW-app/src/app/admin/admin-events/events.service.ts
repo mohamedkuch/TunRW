@@ -4,7 +4,9 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
+const BACKEND_URL = environment.apiUrl + "/events";
 @Injectable({providedIn: 'root'})
 export class EventService {
   private events: Event[] = [];
@@ -14,7 +16,7 @@ export class EventService {
   // get All Event
   getEvent(postsPerPage: number, currentPage: number) {
     const queryParams = `?pageSize=${postsPerPage}&page=${currentPage}`;
-    this.http.get<{message: string, events: any, maxPosts: number}>('http://localhost:3000/api/events' + queryParams)
+    this.http.get<{message: string, events: any, maxPosts: number}>(BACKEND_URL + queryParams)
       .pipe(map((data) => {
           return {
             events : data.events.map(post => {
@@ -47,7 +49,7 @@ export class EventService {
          description: string;
           imagePath: string;
         creator: string
-      }>('http://localhost:3000/api/events/' + id);
+      }>(BACKEND_URL + "/" + id);
   }
 
   // Add New Event
@@ -58,7 +60,7 @@ export class EventService {
     postData.append('adress', adress);
     postData.append('description', description);
     postData.append('image', image, title);
-    this.http.post<{message: string, event: Event}>('http://localhost:3000/api/events', postData)
+    this.http.post<{message: string, event: Event}>(BACKEND_URL, postData)
     .subscribe((data) => {
       this.router.navigate(['/admin/Events']);
     });
@@ -88,7 +90,7 @@ export class EventService {
         creator: null
       }
     }
-    this.http.put('http://localhost:3000/api/events/' + id, postData)
+    this.http.put(BACKEND_URL + "/" +  id, postData)
     .subscribe((data) => {
        const updatedEvents = [...this.events];
        const oldEventIndex = updatedEvents.findIndex(p => p.id === id);
@@ -98,7 +100,7 @@ export class EventService {
 
   // delete Event
   deleteEvent(eventId: string) {
-    return this.http.delete("http://localhost:3000/api/events/" + eventId);
+    return this.http.delete(BACKEND_URL + "/" + eventId);
   }
 
   // Event Update Listener (listen on every change)

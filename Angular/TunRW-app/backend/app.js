@@ -9,7 +9,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://Mohamed:Ckq8Ve7JLxDnLXCY@tunrwcluster-nwi9h.mongodb.net/node-angular", { useNewUrlParser: true }
+    "mongodb+srv://Mohamed:"+ process.env.MONGO_ATLAS_PW + "@tunrwcluster-nwi9h.mongodb.net/node-angular", { useNewUrlParser: true }
   )
   .then(() => {
     console.log('Connected to Database !');

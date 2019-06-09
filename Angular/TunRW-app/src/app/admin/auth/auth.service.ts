@@ -6,7 +6,9 @@ import { Member } from '../admin-members/member.model';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthDataCreate } from './create-user.model';
+import { environment } from '../../../environments/environment';
 
+const BACKEND_URL = environment.apiUrl + "/user";
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private tokenTimer;
@@ -23,7 +25,7 @@ export class AuthService {
     return this.http.get<{_id: string;
       username: string;
        name: string;
-      }>('http://localhost:3000/api/user/' + id);
+      }>(BACKEND_URL + "/" + id);
   }
 
   getMemberUpdateListener() {
@@ -32,7 +34,7 @@ export class AuthService {
 
   getAllMembers(postsPerPage: number, currentPage: number) {
     const queryParams = `?pageSize=${postsPerPage}&page=${currentPage}`;
-    this.http.get<{users: any, maxPosts: number}>('http://localhost:3000/api/user' + queryParams)
+    this.http.get<{users: any, maxPosts: number}>(BACKEND_URL+ queryParams)
       .pipe(map((data) => {
           return {
             users : data.users.map(post => {
@@ -112,12 +114,12 @@ export class AuthService {
 
   createUser(username: string, password: string,  name: string) {
     const authData: AuthDataCreate = {username: username, password: password, name: name};
-    return this.http.post('http://localhost:3000/api/user/signup', authData);
+    return this.http.post(BACKEND_URL + '/signup', authData);
   }
   loginUser(username: string, password: string ) {
     const authData: AuthData = {username: username, password: password};
     this.http
-      .post<{token: string, expiresIn: number, username: string, id: string, name: string}>('http://localhost:3000/api/user/login',
+      .post<{token: string, expiresIn: number, username: string, id: string, name: string}>(BACKEND_URL + '/login',
        authData).subscribe(response => {
         this.saveAuthData(response);
         this.router.navigate(['/admin']);

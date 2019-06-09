@@ -25,13 +25,13 @@ import { CreateMemberComponent } from './admin/admin-members/create-member/creat
 
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatProgressSpinnerModule , MatInputModule, MatPaginatorModule, MatDialogModule} from '@angular/material';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './admin/auth/login/login.component';
 import { AuthInterceptor } from './admin/auth/auth-interceptor';
 import { AdminMemberListComponent } from './admin/admin-members/list-members/list-members.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { AngularMaterialModule } from './angular-material.module';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -62,12 +62,8 @@ import { ErrorComponent } from './error/error.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
+    AngularMaterialModule,
     HttpClientModule,
-    MatPaginatorModule,
-    MatDialogModule,
     ChartsModule
   ],
   providers: [

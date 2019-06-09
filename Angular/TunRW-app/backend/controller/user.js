@@ -16,11 +16,11 @@ exports.loginUser = (req, res, next) =>{
       }).then ( result => {
         if(!result){
           return res.status(401).json({
-            message: 'Login failed , password is incorrect'
+            message: 'Login failed'
           });
         }
         const token = jwt.sign({username: fetchedUser.username, userId: fetchedUser._id},
-           'TunRW_Funcheta_Studio_komos_nikos',
+           process.env.JWT_KEY,
            {expiresIn: '1h' }
            );
         return res.status(200).json({
@@ -33,7 +33,7 @@ exports.loginUser = (req, res, next) =>{
   
       }).catch (err => {
         return res.status(401).json({
-          message: 'Login failed , Username or password are incorrect'
+          message: 'Login failed '
         });
       })
   
