@@ -22,7 +22,6 @@ mongoose
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use("/images", express.static(path.join("images")));
-app.use("/", express.static(path.join(__dirname, "angular")));
 
 
 app.use((req, res, next) => {
@@ -38,9 +37,5 @@ app.use((req, res, next) => {
 
 app.use("/api/events", postRoutes);
 app.use("/api/user", userRoutes);
-
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "angular", "index.html"));
-});
 
 module.exports = app;
