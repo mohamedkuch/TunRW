@@ -4,7 +4,7 @@ const extractFile = require('../middleware/file');
 const eventController = require("../controller/events");
 const router = express.Router();
 
-router.post("", checkAuth, extractFile,eventController.createEvent);
+router.post('', checkAuth, extractFile,eventController.createEvent);
 
 router.get('', eventController.getAllEvents);
 
