@@ -11,12 +11,20 @@ import { Member } from '../admin-members/member.model';
 export class HeaderAdminComponent implements OnInit {
   currentUrl: string;
   currentUser: Member;
+
   eventCreateFlag = false;
   eventEditFlag = false;
   eventFlag = false;
+
+  projectFlag = false; 
+  projectCreateFlag = false;
+  projectEditFlag = false;
+
   homeFlag = false;
+
   membersFlag = false;
   membersCreateFlag = false;
+
   userIsAuthenticated = false;
 
   constructor(private router: Router,
@@ -26,6 +34,9 @@ export class HeaderAdminComponent implements OnInit {
     if (this.currentUrl.includes('/admin/Events/edit')) {
       this.eventEditFlag = true;
     }
+    if (this.currentUrl.includes('/admin/Projects/edit')) {
+      this.projectEditFlag = true;
+    }
     switch(this.currentUrl) {
       case '/admin': {
         this.homeFlag = true;
@@ -33,6 +44,10 @@ export class HeaderAdminComponent implements OnInit {
       }
       case '/admin/Events': {
         this.eventFlag = true;
+        break;
+      }
+      case '/admin/Projects': {
+        this.projectFlag = true;
         break;
       }
       case '/admin/Members': {
@@ -47,6 +62,10 @@ export class HeaderAdminComponent implements OnInit {
          this.eventCreateFlag = true;
          break;
       }
+      case '/admin/Projects/create': {
+        this.projectCreateFlag  = true;
+        break;
+     }
       default: {
          break;
       }

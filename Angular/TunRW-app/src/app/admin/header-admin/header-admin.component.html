@@ -14,13 +14,20 @@
 
         <ul class="nav navbar-nav navbar-right">
           <!-- Events Flag -->
-          <li *ngIf="homeFlag || membersFlag || membersCreateFlag">
+          <li *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
               <a routerLink="/admin/Events">Events</a>
             </li>
           <li *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="active">
               <a routerLink="/admin/Events">Events</a>
           </li>
-          <li><a href="">Projects</a></li>
+           <!-- Projects Flag -->
+          <li *ngIf="!(projectFlag || projectCreateFlag || projectEditFlag) ">
+            <a routerLink="/admin/Projects">Projects</a>
+          </li>
+          <li *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="active">
+              <a routerLink="/admin/Projects">Projects</a>
+          </li>
+           <!-- Members Flag -->
           <li *ngIf="!membersFlag && !membersCreateFlag">
               <a routerLink="/admin/Members">Members</a>
           </li>

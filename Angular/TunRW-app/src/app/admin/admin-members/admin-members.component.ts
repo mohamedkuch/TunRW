@@ -1,5 +1,4 @@
 import { Component , OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 @Component ({
   selector : 'app-members-admin',
   templateUrl : './admin-members.component.html',

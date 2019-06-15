@@ -1,8 +1,8 @@
-const Event = require("../models/events");
+const Project = require("../models/projects");
 
-exports.createEvent = (req,res,next) => {
+exports.createProject = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
-    const post = new Event({
+    const post = new Project({
       title : req.body.title,
       date : req.body.date,
       adress : req.body.adress,
@@ -13,7 +13,7 @@ exports.createEvent = (req,res,next) => {
     post.save().then(result => {
       res.status(201).json({
         message: 'Post added Successfully',
-        event: {
+        project: {
          /*
           title: result.title,
           date: result.date,     // Equal To
@@ -27,14 +27,14 @@ exports.createEvent = (req,res,next) => {
     })
     .catch(err =>{
       res.status(500).json({
-        message : "Creating Event Failed!"
+        message : "Creating Project Failed!"
       });
     });
   }
-  exports.getAllEvents = (req, res, next) => {
+  exports.getAllProjects = (req, res, next) => {
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
-    const postQuery = Event.find();
+    const postQuery = Project.find();
     let fetchedPosts;
     if( pageSize && currentPage) {
       postQuery
@@ -43,34 +43,34 @@ exports.createEvent = (req,res,next) => {
     }
     postQuery.find().then(documents => {
           fetchedPosts = documents
-          return Event.count();
+          return Project.count();
       }).then(count =>{
         res.status(200).json({
-          message: 'Events fetched Succesfully!',
-          events: fetchedPosts,
+          message: 'Projects fetched Succesfully!',
+          projects: fetchedPosts,
           maxPosts: count
         });
       });
   
   }
-  exports.getOneEvent = (req, res, next) => {
-    Event.findById(req.params.id).then(post =>{
+  exports.getOneProject = (req, res, next) => {
+    Project.findById(req.params.id).then(post =>{
      if(post){
         res.status(200).json(post);
      } else {
-       res.status(404).json({message: 'Event not found!'});
+       res.status(404).json({message: 'Project not found!'});
      }
   
     });
   }
 
-  exports.updateEvent = (req, res, next) => {
+  exports.updateProject = (req, res, next) => {
     let imageURL = req.body.imagePath;
     if(req.file){
       const url = req.protocol + '://' + req.get("host");
       imageURL = url + "/images/" + req.file.filename;
     }
-    const post = new Event({
+    const post = new Project({
       _id: req.body.id,
       title : req.body.title,
       date : req.body.date,
@@ -80,7 +80,7 @@ exports.createEvent = (req,res,next) => {
       creator: req.body.userId
     });
     console.log(post);
-    Event.updateOne( post).then(result =>{
+    Project.updateOne( post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {
@@ -88,21 +88,21 @@ exports.createEvent = (req,res,next) => {
       }
      }).catch(error => {
       res.status(500).json({
-        message : "Update Event Failed!"
+        message : "Update Project Failed!"
       });
     });
   }
 
-  exports.deleteEvent = (req, res, next) => {
-    Event.deleteOne().then(result =>{
+  exports.deleteProject = (req, res, next) => {
+    Project.deleteOne().then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "Event Deleted !"});
+        res.status(200).json({ message: "Project Deleted !"});
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
     }).catch(error => {
       res.status(500).json({
-        message : "Deleting Event Failed!"
+        message : "Deleting Project Failed!"
       });
     });
   

@@ -3,8 +3,9 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require('path');
 
-const postRoutes = require("./routes/events");
+const eventsRoutes = require("./routes/events");
 const userRoutes = require("./routes/user");
+const projectsRoutes = require("./routes/projects");
 const app = express();
 
 mongoose
@@ -35,7 +36,8 @@ app.use((req, res, next) => {
 });
 // user mdp = Ckq8Ve7JLxDnLXCY
 
-app.use("/api/events", postRoutes);
+app.use("/api/events", eventsRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/projects", projectsRoutes);
 
 module.exports = app;

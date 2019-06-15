@@ -9,16 +9,18 @@ import { LoginComponent } from './admin/auth/login/login.component';
 import { MembersAdminComponent } from './admin/admin-members/admin-members.component';
 import { CreateMemberComponent } from './admin/admin-members/create-member/create-member.component';
 import { AuthGuard } from './admin/auth/auth.guard';
+import { AdminProjectsComponent } from './admin/admin-projects/admin-projects.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'admin/**', component: LoginComponent },
   { path: 'admin/Events', component: AdminEventsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/Projects', component: AdminProjectsComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members', component: MembersAdminComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members/create', component: CreateMemberComponent, canActivate: [AuthGuard] },
-  { path: 'admin/Events/create', component: CreateEventComponent, canActivate: [AuthGuard] },
-  { path: 'admin/Events/edit/:eventId', component: CreateEventComponent, canActivate: [AuthGuard] },
+  //{ path: 'admin/Projects/create', component: CreateEventComponent, canActivate: [AuthGuard] },
+ // { path: 'admin/Projects/edit/:eventId', component: CreateEventComponent, canActivate: [AuthGuard] },
   { path: '', component: OnePageComponent },
   { path: '**', component : PageNotFoundComponent}
 ];
