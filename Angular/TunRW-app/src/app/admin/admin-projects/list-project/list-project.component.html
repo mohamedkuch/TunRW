@@ -15,11 +15,8 @@
           <td> {{project.title}}</td>
           <td> {{project.creator}}</td>
 
-          <td *ngIf="currentUser.name != project.creator" class="text-center"><a [routerLink]="['/admin/Projects/edit', project.id]" class="deleteButton"><i class="fas fa-eye"></i></a></td>
-          <td *ngIf="currentUser.name != project.creator" class="text-center"><span class="cancelButton"><i class="fas fa-window-close"></i></span></td>
-
-          <td *ngIf="currentUser.name == project.creator" class="text-center"><a [routerLink]="['/admin/Projects/edit', project.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
-          <td *ngIf="currentUser.name == project.creator" class="text-center"><span (click)="onDelete(project.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
+          <td class="text-center"><a [routerLink]="['/admin/Projects/edit', project.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
+          <td  class="text-center"><span (click)="onDelete(project.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
         </tr>
 
       </tbody>
