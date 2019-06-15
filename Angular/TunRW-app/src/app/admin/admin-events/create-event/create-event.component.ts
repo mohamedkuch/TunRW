@@ -82,7 +82,8 @@ export class CreateEventComponent implements OnInit {
         this.form.value.date,
         this.form.value.adress,
         this.form.value.description,
-        this.form.value.image);
+        this.form.value.image
+        );
 
 
     } else {
@@ -90,7 +91,8 @@ export class CreateEventComponent implements OnInit {
         this.form.value.date,
         this.form.value.adress,
         this.form.value.description,
-        this.form.value.image);
+        this.form.value.image
+        );
     }
     this.errorFlag = false;
     this.form.reset();

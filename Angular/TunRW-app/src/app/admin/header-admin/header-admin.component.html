@@ -67,7 +67,7 @@
             <!-- Event SubMenu-->
             <a  *ngIf="eventFlag || eventCreateFlag || eventEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
               <i *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
-            <a *ngIf="eventFlag" routerLink="/admin/Events" class="subHeaderMenuElement" style="color: #e71425;">Event </a>
+            <a *ngIf="eventFlag" routerLink="/admin/Events" class="subHeaderMenuElement" style="color: #e71425;">Events </a>
               <i *ngIf="eventFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
              <!-- Event create/add SubMenu-->
             <a *ngIf="eventCreateFlag || eventEditFlag"  routerLink="/admin/Events" class="subHeaderMenuElement">Events </a>
@@ -78,6 +78,18 @@
             <a *ngIf="eventEditFlag" class="subHeaderMenuElement" style="color: #e71425;">
               Edit Event
             </a>
+
+            <!-- Project SubMenu-->
+            <a  *ngIf="projectFlag || projectCreateFlag || projectEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
+            <i *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
+            <a *ngIf="projectFlag" routerLink="/admin/Project" class="subHeaderMenuElement" style="color: #e71425;">Projects </a>
+            <i *ngIf="projectFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
+           
+            <!-- Project create/add SubMenu-->
+            <a *ngIf="projectCreateFlag || projectEditFlag"  routerLink="/admin/Project" class="subHeaderMenuElement">Projects </a>
+            <i *ngIf="projectCreateFlag || projectEditFlag"  class="fas fa-caret-right ml-2 mr-2"></i>
+            <a *ngIf="projectCreateFlag"  class="subHeaderMenuElement" style="color: #e71425;">Create Project</a>
+            <a *ngIf="projectEditFlag" class="subHeaderMenuElement" style="color: #e71425;"> Edit Project</a>
 
             <!-- Members Submenu-->
             <a  *ngIf="membersFlag || membersCreateFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>

@@ -15,11 +15,8 @@
           <td> {{event.title}}</td>
           <td> {{event.creator}}</td>
 
-          <td *ngIf="currentUser.name != event.creator" class="text-center"><a [routerLink]="['/admin/Events/edit', event.id]" class="deleteButton"><i class="fas fa-eye"></i></a></td>
-          <td *ngIf="currentUser.name != event.creator" class="text-center"><span class="cancelButton"><i class="fas fa-window-close"></i></span></td>
-
-          <td *ngIf="currentUser.name == event.creator" class="text-center"><a [routerLink]="['/admin/Events/edit', event.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
-          <td *ngIf="currentUser.name == event.creator" class="text-center"><span (click)="onDelete(event.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
+          <td class="text-center"><a [routerLink]="['/admin/Events/edit', event.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
+          <td class="text-center"><span (click)="onDelete(event.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
         </tr>
 
       </tbody>

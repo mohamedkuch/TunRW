@@ -16,11 +16,11 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin/**', component: LoginComponent },
   { path: 'admin/Events', component: AdminEventsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/Events/create', component: CreateEventComponent, canActivate: [AuthGuard] },
+  { path: 'admin/Events/edit/:eventId', component: CreateEventComponent, canActivate: [AuthGuard] },
   { path: 'admin/Projects', component: AdminProjectsComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members', component: MembersAdminComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members/create', component: CreateMemberComponent, canActivate: [AuthGuard] },
-  //{ path: 'admin/Projects/create', component: CreateEventComponent, canActivate: [AuthGuard] },
- // { path: 'admin/Projects/edit/:eventId', component: CreateEventComponent, canActivate: [AuthGuard] },
   { path: '', component: OnePageComponent },
   { path: '**', component : PageNotFoundComponent}
 ];
