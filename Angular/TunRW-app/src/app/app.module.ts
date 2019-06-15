@@ -35,6 +35,7 @@ import { AdminMemberListComponent } from './admin/admin-members/list-members/lis
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { CreateProjectComponent } from './admin/admin-projects/ceate-project/create-project.component';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -52,6 +53,7 @@ import { AngularMaterialModule } from './angular-material.module';
     CreateMemberComponent,
     AdminEventsComponent,
     AdminProjectsComponent,
+    CreateProjectComponent,
     CreateEventComponent,
     AdminListEventsComponent,
     AdminListProjectsComponent,
