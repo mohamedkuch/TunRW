@@ -15,6 +15,9 @@ import { ProjectsComponent } from './onePage/projects/projects.component';
 import { PartnersComponent } from './onePage/partners/partners.component';
 import { ContactComponent } from './onePage/contact/contact.component';
 
+
+import { PageNotFoundComponent } from './404/pagenotfound.component';
+
 // Admin imports
 import { AdminComponent } from './admin/admin.component';
 import { AdminEventsComponent } from './admin/admin-events/admin-events.component';
@@ -25,17 +28,20 @@ import { MembersAdminComponent } from './admin/admin-members/admin-members.compo
 import { CreateMemberComponent } from './admin/admin-members/create-member/create-member.component'
 import { AdminProjectsComponent } from './admin/admin-projects/admin-projects.component';
 import { AdminListProjectsComponent } from './admin/admin-projects/list-project/list-project.component';
-
-import { PageNotFoundComponent } from './404/pagenotfound.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ChartsModule } from 'ng2-charts';
+import { CreateProjectComponent } from './admin/admin-projects/ceate-project/create-project.component';
 import { LoginComponent } from './admin/auth/login/login.component';
 import { AuthInterceptor } from './admin/auth/auth-interceptor';
 import { AdminMemberListComponent } from './admin/admin-members/list-members/list-members.component';
+
+
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
-import { CreateProjectComponent } from './admin/admin-projects/ceate-project/create-project.component';
+import { NgwWowModule } from 'ngx-wow';
+
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -70,6 +76,7 @@ import { CreateProjectComponent } from './admin/admin-projects/ceate-project/cre
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
+    NgwWowModule,
     HttpClientModule,
     ChartsModule
   ],
