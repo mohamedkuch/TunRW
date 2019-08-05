@@ -26,12 +26,10 @@
               "src/styles.css",
               "src/assets/css/slick.css",
               "src/assets/css/slick-theme.css",
-              "src/assets/css/spacing.min.css",
-              "src/assets/css/animate.css"
+              "src/assets/css/spacing.min.css"
             ],
             "scripts": [
-              "src/assets/js/theme-scripts.js",
-              "node_modules/wowjs/dist/wow.js"
+              "src/assets/js/theme-scripts.js"
             ]
           },
           "configurations": {

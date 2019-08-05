@@ -1,0 +1,7 @@
+#QuoteSection{
+    background-image: url("../../../assets/images/quoteBG.png");
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-blend-mode: multiply;
+    background-position-x: 5%;
+}

@@ -1,3 +1,15 @@
 .text-primary {
   color: #e71425;
 }
+.service-box{
+  padding: 1.8rem;
+  transition: 0.5s all;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  cursor: default;
+}
+.service-box:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.51);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.51);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.51);
+}
