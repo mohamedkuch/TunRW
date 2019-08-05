@@ -40,7 +40,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
-import { NgwWowModule } from 'ngx-wow';
 
 @NgModule({
   declarations: [
@@ -76,7 +75,6 @@ import { NgwWowModule } from 'ngx-wow';
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
-    NgwWowModule,
     HttpClientModule,
     ChartsModule
   ],
