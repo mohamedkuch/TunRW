@@ -13,9 +13,9 @@
           <div  *ngFor="let project of projects; let j = index;" class="col-md-4 ">
               <div class="ot-portfolio-item">
                 <figure class="effect-bubba">
-                  <img [src]="project.imagePath" [alt]="project.title" class="img-responsive" />
+                  <img [src]="project.imagePath" [alt]="project.title" width="500" class="img-responsive" />
                   <figcaption>
-                    <h2>{{project.title}}</h2>
+                    <h2 ><span class="projectTitle">{{project.title}}</span></h2>
                     <p>Branding, Design</p>
                     <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
                   </figcaption>

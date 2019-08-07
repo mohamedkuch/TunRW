@@ -163,7 +163,6 @@ transition: top 0.5s;
 .eventShell:hover{
   top:-10px;
   cursor: pointer;
-  
 }
 .eventImage{
   border-radius: 5px 5px 0 0;

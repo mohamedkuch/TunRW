@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class ProjectsComponent implements OnInit, OnDestroy{
   projects: Project[] = [];
   private projectsSub: Subscription;
-  postsPerPage = 2;
+  postsPerPage = 6;
   currentPage = 1;
   totalProjects = 0;
   isLoading = false;
