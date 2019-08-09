@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './404/pagenotfound.component';
 // Admin imports
 import { AdminComponent } from './admin/admin.component';
 import { AdminEventsComponent } from './admin/admin-events/admin-events.component';
+import { AdminPartnersComponent } from './admin/admin-partners/admin-partners.component';
 import { CreateEventComponent } from './admin/admin-events/create-event/create-event.component';
 import { AdminListEventsComponent } from './admin/admin-events/list-event/list-event.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
@@ -40,6 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
+import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
 
 @NgModule({
   declarations: [
@@ -57,11 +59,13 @@ import { AngularMaterialModule } from './angular-material.module';
     AdminComponent,
     CreateMemberComponent,
     AdminEventsComponent,
+    AdminPartnersComponent,
     AdminProjectsComponent,
     CreateProjectComponent,
     CreateEventComponent,
     AdminListEventsComponent,
     AdminListProjectsComponent,
+    AdminListPartnersComponent,
     LoginComponent,
     AdminMemberListComponent,
     HeaderAdminComponent,
