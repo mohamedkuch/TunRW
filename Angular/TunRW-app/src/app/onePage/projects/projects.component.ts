@@ -44,6 +44,7 @@ export class ProjectsComponent implements OnInit, OnDestroy{
   openDialog(tmp): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '450px',
+      maxHeight: '90vh',
       data: {project: tmp}
     });
 
@@ -57,6 +58,7 @@ export class ProjectsComponent implements OnInit, OnDestroy{
 @Component({
   selector: 'app-projects-dialog',
   templateUrl : './projects-dialog.component.html',
+  styleUrls : ['./projects-dialog.component.scss']
 })
 export class DialogOverviewExampleDialog {
 
