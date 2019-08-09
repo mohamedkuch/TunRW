@@ -11,7 +11,7 @@ import { TopCoverComponent } from './onePage/topcover/topcover.component';
 import { AboutComponent } from './onePage/about/about.component';
 import { ServicesComponent } from './onePage/services/services.component';
 import { EventsComponent } from './onePage/events/events.component';
-import { ProjectsComponent } from './onePage/projects/projects.component';
+import { ProjectsComponent, DialogOverviewExampleDialog } from './onePage/projects/projects.component';
 import { PartnersComponent } from './onePage/partners/partners.component';
 import { ContactComponent } from './onePage/contact/contact.component';
 
@@ -66,6 +66,7 @@ import { AngularMaterialModule } from './angular-material.module';
     AdminMemberListComponent,
     HeaderAdminComponent,
     ErrorComponent,
+    DialogOverviewExampleDialog,
     PageNotFoundComponent
   ],
   imports: [
@@ -84,7 +85,7 @@ import { AngularMaterialModule } from './angular-material.module';
   
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [ErrorComponent, DialogOverviewExampleDialog]
 })
 export class AppModule {
 

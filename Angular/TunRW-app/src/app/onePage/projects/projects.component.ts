@@ -1,7 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { ProjectService } from 'src/app/admin/admin-projects/projects.service';
 import { Project } from 'src/app/admin/admin-projects/projects.modal';
 import { Subscription } from 'rxjs';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+export interface DialogData {
+  project: Project;
+}
 
 @Component({
   selector : 'app-projects',
@@ -16,7 +21,8 @@ export class ProjectsComponent implements OnInit, OnDestroy{
   totalProjects = 0;
   isLoading = false;
 
-  constructor(public projectService: ProjectService) {
+  constructor(public dialog: MatDialog,
+              public projectService: ProjectService) {
   }
 
   ngOnInit(): void {
@@ -33,6 +39,37 @@ export class ProjectsComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.projectsSub.unsubscribe();
+  }
+
+  openDialog(tmp): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '450px',
+      data: {project: tmp}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      var navbar = document.getElementsByClassName("navbar")[0].classList.remove("hidden");
+    });
+  }
+}
+
+
+@Component({
+  selector: 'app-projects-dialog',
+  templateUrl : './projects-dialog.component.html',
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      var navbar = document.getElementsByClassName("navbar")[0].classList.add("hidden");
+      navbar
+      console.log("zzzz", navbar);
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
