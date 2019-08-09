@@ -13,6 +13,13 @@
       <div id="navbar" class="navbar-collapse collapse">
 
         <ul class="nav navbar-nav navbar-right">
+          <!-- Partners Flag -->
+          <li *ngIf="!(partnersFlag || partnersCreateFlag || partnersEditFlag) ">
+              <a routerLink="/admin/Partners">Partners</a>
+            </li>
+          <li *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="active">
+              <a routerLink="/admin/Partners">Partners</a>
+          </li>
           <!-- Events Flag -->
           <li *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
               <a routerLink="/admin/Events">Events</a>
@@ -28,10 +35,10 @@
               <a routerLink="/admin/Projects">Projects</a>
           </li>
            <!-- Members Flag -->
-          <li *ngIf="!membersFlag && !membersCreateFlag">
+          <li *ngIf="!(membersFlag || membersCreateFlag)">
               <a routerLink="/admin/Members">Members</a>
           </li>
-          <li class="active" *ngIf="membersFlag || membersCreateFlag">
+          <li *ngIf="membersFlag || membersCreateFlag" class="active" >
               <a routerLink="/admin/Members" >Members</a>
           </li>
           <li><a (click)="onLogout()"><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
@@ -44,9 +51,11 @@
    <div class="container">
      <div class="row justify-content-between">
       <div class="col-xs-4">
-       <h4 *ngIf="homeFlag" class="subMenuTitle ml-5"><i class="fab fa-buffer mr-2"></i>Dashboard</h4>
-       <h4 *ngIf="membersFlag || membersCreateFlag" class="subMenuTitle ml-5"><i class="fas fa-users mr-2"></i>Members</h4>
-       <h4 *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="subMenuTitle ml-5"><i class="fas fa-bullhorn mr-2"></i>Events</h4>
+       <h4 *ngIf="homeFlag" class="subMenuTitle ml-4"><i class="fab fa-buffer mr-3"></i>Dashboard</h4>
+       <h4 *ngIf="membersFlag || membersCreateFlag" class="subMenuTitle ml-4"><i class="fas fa-users mr-3"></i>Members</h4>
+       <h4 *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="subMenuTitle ml-4"><i class="fas fa-bullhorn mr-3"></i>Events</h4>
+       <h4 *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="subMenuTitle ml-4"><i class="fas fa-gem mr-3"></i>Projects</h4>
+       <h4 *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="subMenuTitle ml-4"><i class="fas fa-hands-helping mr-3"></i>Partners</h4>
       </div>
        <div class="col-xs-4 text-center">
          <h5 class="userAlias">
@@ -64,6 +73,13 @@
          <h4 >
             <a *ngIf="homeFlag" routerLink="/admin" class="subHeaderMenuElement" style="color: #e71425;">Home </a>
               <i *ngIf="homeFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
+
+            <!-- Partner SubMenu-->
+            <a  *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
+            <i *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
+            <a *ngIf="partnersFlag" routerLink="/admin/Partners" class="subHeaderMenuElement" style="color: #e71425;">Partners </a>
+            <i *ngIf="partnersFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
+
             <!-- Event SubMenu-->
             <a  *ngIf="eventFlag || eventCreateFlag || eventEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
               <i *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
@@ -82,11 +98,11 @@
             <!-- Project SubMenu-->
             <a  *ngIf="projectFlag || projectCreateFlag || projectEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
             <i *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
-            <a *ngIf="projectFlag" routerLink="/admin/Project" class="subHeaderMenuElement" style="color: #e71425;">Projects </a>
+            <a *ngIf="projectFlag" routerLink="/admin/Projects" class="subHeaderMenuElement" style="color: #e71425;">Projects </a>
             <i *ngIf="projectFlag" class="fas fa-caret-right ml-2 mr-5 "></i>
            
             <!-- Project create/add SubMenu-->
-            <a *ngIf="projectCreateFlag || projectEditFlag"  routerLink="/admin/Project" class="subHeaderMenuElement">Projects </a>
+            <a *ngIf="projectCreateFlag || projectEditFlag"  routerLink="/admin/Projects" class="subHeaderMenuElement">Projects </a>
             <i *ngIf="projectCreateFlag || projectEditFlag"  class="fas fa-caret-right ml-2 mr-2"></i>
             <a *ngIf="projectCreateFlag"  class="subHeaderMenuElement" style="color: #e71425;">Create Project</a>
             <a *ngIf="projectEditFlag" class="subHeaderMenuElement" style="color: #e71425;"> Edit Project</a>

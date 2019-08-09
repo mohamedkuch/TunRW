@@ -20,6 +20,10 @@ export class HeaderAdminComponent implements OnInit {
   projectCreateFlag = false;
   projectEditFlag = false;
 
+  partnersFlag = false;
+  partnersCreateFlag = false;
+  partnersEditFlag = false;
+
   homeFlag = false;
 
   membersFlag = false;
@@ -48,6 +52,10 @@ export class HeaderAdminComponent implements OnInit {
       }
       case '/admin/Projects': {
         this.projectFlag = true;
+        break;
+      }
+      case '/admin/Partners': {
+        this.partnersFlag = true;
         break;
       }
       case '/admin/Members': {
