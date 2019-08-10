@@ -41,6 +41,9 @@ export class HeaderAdminComponent implements OnInit {
     if (this.currentUrl.includes('/admin/Projects/edit')) {
       this.projectEditFlag = true;
     }
+    if (this.currentUrl.includes('/admin/Partners/edit')) {
+      this.partnersEditFlag = true;
+    }
     switch(this.currentUrl) {
       case '/admin': {
         this.homeFlag = true;
@@ -73,7 +76,11 @@ export class HeaderAdminComponent implements OnInit {
       case '/admin/Projects/create': {
         this.projectCreateFlag  = true;
         break;
-     }
+      }
+      case '/admin/Partners/create': {
+          this.partnersCreateFlag  = true;
+          break;
+      }
       default: {
          break;
       }
