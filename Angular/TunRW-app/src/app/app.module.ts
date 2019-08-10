@@ -42,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
+import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/
     AdminProjectsComponent,
     CreateProjectComponent,
     CreateEventComponent,
+    CreatePartnerComponent,
     AdminListEventsComponent,
     AdminListProjectsComponent,
     AdminListPartnersComponent,

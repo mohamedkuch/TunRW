@@ -77,6 +77,9 @@
             <div *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid" class="imagePreview">
               <img class="img-fluid" [src]="imagePreview" [alt]="form.value.title"/>
             </div>
+            <div *ngIf="mode == 'edit'">
+                <img class="img-fluid" [src]="form.value.image" [alt]="form.value.title"/>
+            </div>
 
             <div class="eventDescBG ">
               <p class="titleEvent">
@@ -108,8 +111,4 @@
 
 
 </div>
-   <footer class="mt-5">
-     <div class="container text-center">
-       <p>Designed by <a href="#"><span>Funcheta Studio</span></a></p>
-     </div>
-   </footer>
+  

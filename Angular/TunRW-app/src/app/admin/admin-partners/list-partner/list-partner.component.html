@@ -3,7 +3,7 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>PArtner Name</th>
+          <th>Partner Name</th>
           <th>Created By</th>
           <th class="text-center" style="width: 5%">Edit</th>
           <th class="text-center" style="width: 5%">Delete</th>
@@ -14,10 +14,8 @@
           <th scope=row>{{j+1}}</th>
           <td> {{partner.title}}</td>
           <td> {{partner.creator}}</td>
-            <!--
-             <td class="text-center"><a [routerLink]="['/admin/Partners/edit', partner.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
-            <td class="text-center"><span (click)="onDelete(partner.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
-            -->
+          <td class="text-center"><a [routerLink]="['/admin/Partners/edit', partner.id]" class="deleteButton"><i class="fas fa-edit"></i></a></td>
+          <td class="text-center"><span (click)="onDelete(partner.id)" class="deleteButton"><i class="fas fa-trash deleteButton"></i></span></td>
         </tr>
 
       </tbody>
