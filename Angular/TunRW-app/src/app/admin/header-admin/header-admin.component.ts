@@ -24,6 +24,10 @@ export class HeaderAdminComponent implements OnInit {
   partnersCreateFlag = false;
   partnersEditFlag = false;
 
+  servicesFlag = false;
+  servicesCreateFlag = false;
+  servicesEditFlag = false;
+
   homeFlag = false;
 
   membersFlag = false;
@@ -44,6 +48,9 @@ export class HeaderAdminComponent implements OnInit {
     if (this.currentUrl.includes('/admin/Partners/edit')) {
       this.partnersEditFlag = true;
     }
+    if (this.currentUrl.includes('/admin/Services/edit')) {
+      this.servicesEditFlag = true;
+    }
     switch(this.currentUrl) {
       case '/admin': {
         this.homeFlag = true;
@@ -55,6 +62,10 @@ export class HeaderAdminComponent implements OnInit {
       }
       case '/admin/Projects': {
         this.projectFlag = true;
+        break;
+      }
+      case '/admin/Services': {
+        this.servicesFlag = true;
         break;
       }
       case '/admin/Partners': {
@@ -69,6 +80,10 @@ export class HeaderAdminComponent implements OnInit {
         this.membersCreateFlag = true;
         break;
       }
+      case '/admin/Services/create': {
+        this.servicesCreateFlag  = true;
+        break;
+    }
       case '/admin/Events/create': {
          this.eventCreateFlag = true;
          break;

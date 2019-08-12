@@ -24,8 +24,6 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/slick.css",
-              "src/assets/css/slick-theme.css",
               "src/assets/css/spacing.min.css"
             ],
             "scripts": [

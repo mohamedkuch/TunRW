@@ -2,7 +2,7 @@
    <nav class="navbar  navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -12,37 +12,43 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
 
-        <ul class="nav navbar-nav navbar-right">
-        
+        <ul class="nav navbar-nav navbar-right navAdmin">
+          <!-- Services Flag -->
+          <li *ngIf="!(servicesFlag || servicesCreateFlag || servicesEditFlag) ">
+            <a routerLink="/admin/Services"><i class="fas fa-dice-d6 mr-3"></i>Services</a>
+          </li>
+          <li *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" class="active">
+              <a routerLink="/admin/Services"><i class="fas fa-dice-d6 mr-3"></i>Services</a>
+          </li>
           <!-- Events Flag -->
           <li *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
-              <a routerLink="/admin/Events">Events</a>
+              <a routerLink="/admin/Events"><i class="fas fa-bullhorn mr-3"></i>Events</a>
             </li>
           <li *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="active">
-              <a routerLink="/admin/Events">Events</a>
+              <a routerLink="/admin/Events"><i class="fas fa-bullhorn mr-3"></i>Events</a>
           </li>
            <!-- Projects Flag -->
           <li *ngIf="!(projectFlag || projectCreateFlag || projectEditFlag) ">
-            <a routerLink="/admin/Projects">Projects</a>
+            <a routerLink="/admin/Projects"><i class="fas fa-gem mr-3"></i>Projects</a>
           </li>
           <li *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="active">
-              <a routerLink="/admin/Projects">Projects</a>
+              <a routerLink="/admin/Projects"><i class="fas fa-gem mr-3"></i>Projects</a>
           </li>
             <!-- Partners Flag -->
             <li *ngIf="!(partnersFlag || partnersCreateFlag || partnersEditFlag) ">
-                <a routerLink="/admin/Partners">Partners</a>
+                <a routerLink="/admin/Partners"><i class="fas fa-hands-helping mr-3"></i>Partners</a>
               </li>
             <li *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="active">
-                <a routerLink="/admin/Partners">Partners</a>
+                <a routerLink="/admin/Partners"><i class="fas fa-hands-helping mr-3"></i>Partners</a>
             </li>
            <!-- Members Flag -->
           <li *ngIf="!(membersFlag || membersCreateFlag)">
-              <a routerLink="/admin/Members">Members</a>
+              <a routerLink="/admin/Members"><i class="fas fa-users mr-3"></i>Members</a>
           </li>
           <li *ngIf="membersFlag || membersCreateFlag" class="active" >
-              <a routerLink="/admin/Members" >Members</a>
+              <a routerLink="/admin/Members" > <i class="fas fa-users mr-3"></i>Members</a>
           </li>
-          <li><a (click)="onLogout()"><span class="navSeperator"> </span>  <i class="fas fa-power-off ml-5"></i></a></li>
+          <li><a class="logoutButton " (click)="onLogout()"> <i class="fas fa-power-off "></i></a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -54,6 +60,7 @@
       <div class="col-xs-4">
        <h4 *ngIf="homeFlag" class="subMenuTitle ml-2"><i class="fab fa-buffer mr-3"></i>Dashboard</h4>
        <h4 *ngIf="membersFlag || membersCreateFlag" class="subMenuTitle ml-2"><i class="fas fa-users mr-3"></i>Members</h4>
+       <h4 *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" class="subMenuTitle ml-2"><i class="fas fa-dice-d6 mr-3"></i>Services</h4>
        <h4 *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="subMenuTitle ml-2"><i class="fas fa-bullhorn mr-3"></i>Events</h4>
        <h4 *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="subMenuTitle ml-2"><i class="fas fa-gem mr-3"></i>Projects</h4>
        <h4 *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="subMenuTitle ml-2"><i class="fas fa-hands-helping mr-3"></i>Partners</h4>
@@ -77,7 +84,21 @@
          <h4 >
             <a *ngIf="homeFlag" routerLink="/admin" class="subHeaderMenuElement" style="color: #e71425;">Home </a>
               <i *ngIf="homeFlag" class="fas fa-caret-right ml-2 "></i>
-
+            <!-- Service SubMenu-->
+            <a  *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" routerLink="/admin" class="subHeaderMenuElement" >Home </a>
+            <i *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" class="fas fa-caret-right ml-2 mr-3"></i>
+            <a *ngIf="servicesFlag" routerLink="/admin/Services" class="subHeaderMenuElement" style="color: #e71425;">Services </a>
+            <i *ngIf="servicesFlag" class="fas fa-caret-right ml-2 "></i>
+            <!-- Event create/add SubMenu-->
+            <a *ngIf="servicesCreateFlag || servicesEditFlag"  routerLink="/admin/Services" class="subHeaderMenuElement">Services </a>
+            <i *ngIf="servicesCreateFlag || servicesEditFlag"  class="fas fa-caret-right ml-2 mr-2"></i>
+          <a *ngIf="servicesCreateFlag"  class="subHeaderMenuElement" style="color: #e71425;">
+            Create Service
+          </a>
+          <a *ngIf="servicesEditFlag" class="subHeaderMenuElement" style="color: #e71425;">
+            Edit Service
+          </a>
+        
         
 
             <!-- Event SubMenu-->

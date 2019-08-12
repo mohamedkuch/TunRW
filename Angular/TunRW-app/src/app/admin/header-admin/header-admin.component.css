@@ -20,3 +20,13 @@
 
   border-width: 0 0 0px !important;
  }
+ .navAdmin li a {
+   border-left: 1px solid #343434;
+ }
+ .logoutButton{
+  cursor: pointer;
+  border-right: 1px solid #343434;
+}
+.adminNavbar{
+  min-width: 800px !important;
+}
