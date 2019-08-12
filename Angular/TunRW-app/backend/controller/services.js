@@ -7,6 +7,7 @@ exports.createService = (req,res,next) => {
       description : req.body.description,
       creator: req.userData.userId
     });
+    console.log(post);
     post.save().then(result => {
       res.status(201).json({
         message: 'Post added Successfully',
@@ -20,6 +21,8 @@ exports.createService = (req,res,next) => {
       res.status(500).json({
         message : "Creating Service Failed!"
       });
+      console.log("zaab ", err);
+
     });
   }
   exports.getAllServices = (req, res, next) => {

@@ -1,0 +1,78 @@
+
+   <!-- Fixed navbar -->
+   <app-header-admin></app-header-admin>
+
+   <div class="container mainContainerEvent ">
+     <div class="row">
+       <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <div *ngIf="!isLoading" class="col-xs-7 adminShell">
+   
+           <div class="adminTitleWrapper">
+             <h3 class="widgetTitle pl-3">
+               <strong *ngIf="mode == 'create'">New Service</strong>
+               <strong *ngIf="mode == 'edit'">Edit Service</strong>
+             </h3>
+           </div>
+   
+           <div class="row">
+   
+             <div class="col-lg-11 mt-5">
+                 <form [formGroup]="form " class="form-horizontal" (submit)="onSaveService()">
+                     <div class="form-group">
+                       <label class="col-sm-3 control-label">Service Title</label>
+                       <div class="col-sm-9">
+                         <input type="text" class="form-control" formControlName="title" placeholder="Name" >
+                         <mat-error *ngIf="form.get('title').invalid && errorFlag">Please enter a Title</mat-error>
+                       </div>
+                     </div>
+                     <div class="form-group">
+                         <label class="col-sm-3 control-label">Description</label>
+                         <div class="col-sm-9">
+                             <textarea class="form-control" formControlName="description" rows="3" >
+   
+                             </textarea>
+                           <mat-error *ngIf="form.get('description').invalid && errorFlag">Please enter a valid description</mat-error>
+                         </div>
+                     </div>
+   
+   
+                     <button type="submit" class="btn btn-default saveButton mb-5">Save Service</button>
+   
+                 </form>
+   
+           </div>
+         </div>
+       </div>
+       <div *ngIf="!isLoading" class="col-xs-4 col-xs-offset-1 adminShell">
+   
+         <div class="adminTitleWrapper">
+           <h3 class="widgetTitle pl-3">
+             <strong >Preview Service</strong>
+           </h3>
+         </div>
+   
+             <div>
+           
+  
+               <div class="eventDescBG ">
+                 <p class="titleEvent">
+                   {{form.value.title}}
+                 </p>
+                 <div class="spacingEvent ml-3" ></div>
+                 <div class="spacingEvent2 ml-3"></div>
+                 <p class="mb-4 text-left m-3 eventDesc ">
+                   {{form.value.description}}
+                 </p>
+   
+   
+               </div>
+             </div>
+   
+   
+       </div>
+     </div>
+   
+   
+   </div>
+   
+   

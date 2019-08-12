@@ -43,6 +43,9 @@ import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
+import { AdminServicesComponent } from './admin/admin-services/admin-services.component';
+import { AdminListServicesComponent } from './admin/admin-services/list-service/list-service.component';
+import { CreateServiceComponent } from './admin/admin-services/create-service/create-service.component';
 
 @NgModule({
   declarations: [
@@ -54,22 +57,30 @@ import { CreatePartnerComponent } from './admin/admin-partners/create-partner/cr
     ServicesComponent,
     EventsComponent,
     ProjectsComponent,
-    MembersAdminComponent,
     PartnersComponent,
     ContactComponent,
     AdminComponent,
-    CreateMemberComponent,
+
+    MembersAdminComponent,
     AdminEventsComponent,
     AdminPartnersComponent,
     AdminProjectsComponent,
+    AdminServicesComponent,
+
+    CreateMemberComponent,
     CreateProjectComponent,
     CreateEventComponent,
     CreatePartnerComponent,
+    CreateServiceComponent,
+
+
+    AdminMemberListComponent,
     AdminListEventsComponent,
     AdminListProjectsComponent,
     AdminListPartnersComponent,
+    AdminListServicesComponent,
+
     LoginComponent,
-    AdminMemberListComponent,
     HeaderAdminComponent,
     ErrorComponent,
     DialogOverviewExampleDialog,

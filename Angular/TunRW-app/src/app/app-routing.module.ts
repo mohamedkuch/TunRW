@@ -13,11 +13,17 @@ import { AdminProjectsComponent } from './admin/admin-projects/admin-projects.co
 import { CreateProjectComponent } from './admin/admin-projects/ceate-project/create-project.component';
 import { AdminPartnersComponent } from './admin/admin-partners/admin-partners.component';
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
+import { AdminServicesComponent } from './admin/admin-services/admin-services.component';
+import { CreateServiceComponent } from './admin/admin-services/create-service/create-service.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'admin/**', component: LoginComponent },
+
+  { path: 'admin/Services', component: AdminServicesComponent, canActivate: [AuthGuard] },
+  { path: 'admin/Services/create', component: CreateServiceComponent, canActivate: [AuthGuard] },
+  { path: 'admin/Services/edit/:serviceId', component: CreateServiceComponent, canActivate: [AuthGuard] },
 
   { path: 'admin/Events', component: AdminEventsComponent, canActivate: [AuthGuard] },
   { path: 'admin/Events/create', component: CreateEventComponent, canActivate: [AuthGuard] },
