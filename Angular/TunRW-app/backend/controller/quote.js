@@ -1,9 +1,9 @@
-const Service = require("../models/services");
+const Quote = require("../models/quote");
 
-exports.createService = (req,res,next) => {
+exports.createQuote = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
-    const post = new Service({
-      title : req.body.title,
+    const post = new Quote({
+      writer : req.body.writer,
       description : req.body.description,
       creator: req.userData.userId
     });
@@ -18,14 +18,14 @@ exports.createService = (req,res,next) => {
     })
     .catch(err =>{
       res.status(500).json({
-        message : "Creating Service Failed!"
+        message : "Creating Quote Failed!"
       });
     });
   }
-  exports.getAllServices = (req, res, next) => {
+  exports.getAllQuotes = (req, res, next) => {
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
-    const postQuery = Service.find();
+    const postQuery = Quote.find();
     let fetchedPosts;
     if( pageSize && currentPage) {
       postQuery
@@ -34,36 +34,36 @@ exports.createService = (req,res,next) => {
     }
     postQuery.find().then(documents => {
           fetchedPosts = documents
-          return Service.count();
+          return Quote.count();
       }).then(count =>{
         res.status(200).json({
-          message: 'Services fetched Succesfully!',
-          services: fetchedPosts,
+          message: 'Quotes fetched Succesfully!',
+          quotes: fetchedPosts,
           maxPosts: count
         });
       });
   
   }
-  exports.getOneService= (req, res, next) => {
-    Service.findById(req.params.id).then(post =>{
+  exports.getOneQoute= (req, res, next) => {
+    Quote.findById(req.params.id).then(post =>{
      if(post){
         res.status(200).json(post);
      } else {
-       res.status(404).json({message: 'Service not found!'});
+       res.status(404).json({message: 'Quote not found!'});
      }
   
     });
   }
 
-  exports.updateService = (req, res, next) => {
-    const post = new Service({
+  exports.updateQuote = (req, res, next) => {
+    const post = new Quote({
       _id: req.body.id,
-      title : req.body.title,
+      writer : req.body.writer,
       description : req.body.description,
       creator: req.body.userId
     });
     console.log(post);
-    Service.updateOne( post).then(result =>{
+    Quote.updateOne( post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {
@@ -71,21 +71,21 @@ exports.createService = (req,res,next) => {
       }
      }).catch(error => {
       res.status(500).json({
-        message : "Update Service Failed!"
+        message : "Update Quote Failed!"
       });
     });
   }
 
-  exports.deleteService = (req, res, next) => {
-    Service.deleteOne().then(result =>{
+  exports.deleteQuote = (req, res, next) => {
+    Quote.deleteOne().then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "Service Deleted !"});
+        res.status(200).json({ message: "Quote Deleted !"});
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
     }).catch(error => {
       res.status(500).json({
-        message : "Deleting Service Failed!"
+        message : "Deleting Quote Failed!"
       });
     });
   
