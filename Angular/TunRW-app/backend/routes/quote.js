@@ -11,6 +11,6 @@ router.get('/:id',  quoteController.getOneQoute);
 
 router.put('/:id',  quoteController.updateQuote);
 
-router.delete('/:id', quoteController.deleteQuote);
+router.delete('/:id',checkAuth, quoteController.deleteQuote);
 
 module.exports = router;

@@ -11,6 +11,6 @@ router.get('/:id',  serviceController.getOneService);
 
 router.put('/:id',  serviceController.updateService);
 
-router.delete('/:id', serviceController.deleteService);
+router.delete('/:id',checkAuth, serviceController.deleteService);
 
 module.exports = router;
