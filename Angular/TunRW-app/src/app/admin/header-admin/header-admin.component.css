@@ -22,7 +22,10 @@
  }
  .navAdmin li a {
    border-left: 1px solid #343434;
+   border-bottom: 2px solid #222;
+   transition: 0.8s all;
  }
+
  .logoutButton{
   cursor: pointer;
   border-right: 1px solid #343434;

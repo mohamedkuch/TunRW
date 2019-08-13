@@ -10,7 +10,19 @@
 }
 .partnersImg {
    padding:  2rem;
-   margin-top: 2rem;
+   max-height: 100px;
+}
+.imageContainer {
+  transition: 1s all; 
+  border-radius: 20px;
+  min-height: 100px;
+  text-align: center;
+}
+.imageContainer:hover{
+  -webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.42);
+  box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.42);
+
 }
 #PartenersSection{
   background-image: url("../../../assets/images/bgPartners.png");

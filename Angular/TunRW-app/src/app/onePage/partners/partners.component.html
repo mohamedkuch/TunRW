@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <div class="row text-white">
-            <div class="col-lg-12 text-center ">
+            <div class="col-lg-12 text-center mb-4">
               <h2 class="section-heading" style="color : white;">Partners</h2>
 
               <hr class="light"/>
@@ -11,15 +11,10 @@
             </div>
             <br/>
 
-            <div  class="col-md-4 imageContainer ">
-              <img class="img-fluid partnersImg text-center" src="../assets/images/Parteners/sparkasse-logo-1024x356.png" alt="sparkasse"/>
+            <div *ngFor="let partner of partners" class="col-md-4 imageContainer ">
+              <img class="img-fluid partnersImg text-center" [src]="partner.imagePath" [alt]="partner.title" />
             </div>
-            <div class="col-md-4 imageContainer ">
-              <img class="img-fluid partnersImg text-center" src="../assets/images/Parteners/rwth.png" alt="rwth"/>
-            </div>
-            <div class="col-md-4 imageContainer  ">
-              <img class="img-fluid partnersImg text-center" src="../assets/images/Parteners/Tunisair_logo.png" alt="tunisair"/>
-            </div>
+        
 
         </div>
 
