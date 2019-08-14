@@ -18,6 +18,34 @@
    
              <div class="col-lg-11 mt-5">
                  <form [formGroup]="form " class="form-horizontal" (submit)="onSaveService()">
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label">Service Icon</label>
+                        <div class="col-sm-9">
+                            <ul class="list-group list-group-horizontal iconServiceList">
+                                <li class="list-group-item arrowContainer">
+                                  <i class="fas fa-2x fa-angle-left serviceIcon"></i>
+                                </li>
+                                <li class="list-group-item noBorderItem">
+                                   <i class="fas fa-bullhorn serviceIcon " style="color: #d5d5d5"></i>
+                                </li>
+                                <li class="list-group-item scdItem">
+                                    <i class="fas fa-2x fa-bullhorn serviceIcon " style="color: #474747"></i>
+                                </li>
+                                <li class="list-group-item activeItem">
+                                    <i class="fas fa-3x fa-bullhorn serviceIcon " ></i>
+                                </li>
+                                <li class="list-group-item noBorderItem">
+                                    <i class="fas fa-2x fa-bullhorn serviceIcon " style="color: #474747"></i>
+                                </li>
+                                <li class="list-group-item scdItem" >
+                                    <i class="fas fa-bullhorn serviceIcon " style="color: #d5d5d5"></i>
+                                </li>
+                                <li class="list-group-item arrowContainer">
+                                    <i class="fas fa-2x fa-angle-right serviceIcon"></i>
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
                      <div class="form-group">
                        <label class="col-sm-3 control-label">Service Title</label>
                        <div class="col-sm-9">
@@ -52,7 +80,7 @@
          </div>
    
              <div class="servicePreview">
-                  <i class="fas fa-4x fa-bullhorn serviceIcon mb-3 sr-icon-1"></i>
+                  <i style="color: #e71425" class="fas fa-4x fa-bullhorn mb-3 sr-icon-1"></i>
                   <h3 class="mb-3">{{form.value.title}}</h3>
                   <hr class="serviceSeperator"/>
                   <p  class="text-muted mb-0">
