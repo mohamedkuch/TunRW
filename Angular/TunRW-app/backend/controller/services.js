@@ -44,6 +44,10 @@ exports.createService = (req,res,next) => {
           services: fetchedPosts,
           maxPosts: count
         });
+      }).catch(error => {
+        res.status(500).json({
+          message : "Services fetching Failed!"
+        });
       });
   
   }
