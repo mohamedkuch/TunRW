@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +41,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
+import { GestureConfig } from '@angular/material';
+import {MatSliderModule} from '@angular/material/slider';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
 import { AdminServicesComponent } from './admin/admin-services/admin-services.component';
@@ -94,11 +96,13 @@ import { CreateServiceComponent } from './admin/admin-services/create-service/cr
     FormsModule,
     AngularMaterialModule,
     HttpClientModule,
+    MatSliderModule,
     ChartsModule
   ],
   providers: [
-    {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    {provide : HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},  
+    {provide : HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
   
   ],
   bootstrap: [AppComponent],

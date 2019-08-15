@@ -160,3 +160,11 @@ mat-spinner {
   color: #e71425 !important;
 
 }
+
+mat-slider {
+  width: 100%;
+}
+/* CSS to change Default/'Accent' color */
+.mat-accent .mat-slider-thumb-label{
+  background-color: green !important;
+}
