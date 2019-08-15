@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, NgZone, AfterViewChecked } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Service } from '../services.modal';
@@ -9,7 +9,7 @@ import { AdminService } from '../adminService.service';
   styleUrls : ['./create-service.component.scss']
 })
 
-export class CreateServiceComponent implements OnInit, AfterViewInit {
+export class CreateServiceComponent implements OnInit, AfterViewChecked {
   @ViewChild('firstIcon', {static: false}) private firstIcon: any;;
   @ViewChild('scdIcon', {static: false}) scdIcon: ElementRef;
   @ViewChild('thirdIcon', {static: false}) thirdIcon: ElementRef;
@@ -56,16 +56,19 @@ export class CreateServiceComponent implements OnInit, AfterViewInit {
           this.form.setValue({title: this.service.title ,  description: this.service.description });
         });
   
-      
 
       } else {
         this.mode = 'create';
         this.serviceId = null;
       }
+ 
+   
     });
-    if(this.mode == "edit")
-      this.setServicesIcons();
 
+    if( this.mode == 'edit') {
+      this.activeSliderCounter = 50;
+      this.activeCounterStart = this.activeSliderCounter -2;
+    }
   }
   onChangeSlider(event){
     this.activeCounterStart = event.value -2;
@@ -86,27 +89,33 @@ export class CreateServiceComponent implements OnInit, AfterViewInit {
     this.setServicesIcons();
 
   }
-  ngAfterViewInit() {
+
+  ngAfterViewChecked(){
     if(this.firstIcon){
       this.setServicesIcons();
     }
-
   }
   onNextClick(){
     this.activeCounterStart ++;
     this.activeSliderCounter++;
     this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart+ 5);
     this.setServicesIcons();
+  }
+  onPrevClick(){
+    this.activeCounterStart --;
+    this.activeSliderCounter--;
+    this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart+ 5);
+    this.setServicesIcons();
 
   }
   setServicesIcons(){
+    console.log("setting Element", this.firstIcon);
     this.firstIcon.nativeElement.firstChild.className = "serviceIcon";
     this.scdIcon.nativeElement.firstChild.className = "fa-2x serviceIcon ";
     this.thirdIcon.nativeElement.firstChild.className = "fa-3x serviceIcon ";
     this.fourthIcon.nativeElement.firstChild.className = "fa-2x serviceIcon ";
     this.fifthIcon.nativeElement.firstChild.className = "serviceIcon";
-
-    
+  
     // first Icon
     if(this.activeCounterStart >= 0) {
       const spaceIndex = this.activeIconList[0].indexOf(' ');
@@ -161,7 +170,6 @@ export class CreateServiceComponent implements OnInit, AfterViewInit {
       this.fifthIcon.nativeElement.firstChild.classList.add(this.activeIconList[4]);
     }
     
-
   }
   onSaveService() {
     if (this.form.invalid) {
