@@ -22,25 +22,25 @@
                         <label class="col-sm-3 control-label">Service Icon</label>
                         <div class="col-sm-9">
                             <ul class="list-group list-group-horizontal iconServiceList">
-                                <li class="list-group-item arrowContainer">
+                                <li (click)="onPrevClick()" class="list-group-item arrowContainer">
                                   <i class="fas fa-2x fa-angle-left serviceIcon"></i>
                                 </li>
-                                <li class="list-group-item noBorderItem">
-                                   <i class="fas fa-bullhorn serviceIcon " style="color: #d5d5d5"></i>
+                                <li class="list-group-item noBorderItem" #firstIcon>
+                                   <i  class="serviceIcon " style="color: #d5d5d5" ></i>
                                 </li>
-                                <li class="list-group-item scdItem">
-                                    <i class="fas fa-2x fa-bullhorn serviceIcon " style="color: #474747"></i>
+                                <li class="list-group-item scdItem" #scdIcon>
+                                    <i class="fa-2x serviceIcon " style="color: #474747"></i>
                                 </li>
-                                <li class="list-group-item activeItem">
-                                    <i class="fas fa-3x fa-bullhorn serviceIcon " ></i>
+                                <li class="list-group-item activeItem" #thirdIcon>
+                                    <i class="fa-3x serviceIcon " ></i>
                                 </li>
-                                <li class="list-group-item noBorderItem">
-                                    <i class="fas fa-2x fa-bullhorn serviceIcon " style="color: #474747"></i>
+                                <li class="list-group-item noBorderItem" #fourthIcon >
+                                    <i class="fa-2x serviceIcon " style="color: #474747"></i>
                                 </li>
-                                <li class="list-group-item scdItem" >
-                                    <i class="fas fa-bullhorn serviceIcon " style="color: #d5d5d5"></i>
+                                <li class="list-group-item scdItem" #fifthIcon >
+                                    <i class="serviceIcon " style="color: #d5d5d5"></i>
                                 </li>
-                                <li class="list-group-item arrowContainer">
+                                <li (click)="onNextClick()" class="list-group-item arrowContainer">
                                     <i class="fas fa-2x fa-angle-right serviceIcon"></i>
                                 </li>
                             </ul>
