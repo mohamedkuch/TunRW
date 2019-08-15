@@ -243,3 +243,7 @@ opacity: 0.5;
     padding-top: 0px;
   }
 }
+header {
+  background-color: #232323;
+  height: 100vh;
+}

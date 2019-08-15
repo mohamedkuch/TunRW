@@ -15,6 +15,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
   @ViewChild('thirdIcon', {static: false}) thirdIcon: ElementRef;
   @ViewChild('fourthIcon', {static: false}) fourthIcon: ElementRef;
   @ViewChild('fifthIcon', {static: false}) fifthIcon: ElementRef;
+  @ViewChild('activeIcon', {static: false}) activeIcon: ElementRef;
 
   title = '';
   description = '';
@@ -69,6 +70,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       this.activeSliderCounter = 50;
       this.activeCounterStart = this.activeSliderCounter -2;
     }
+
   }
   onChangeSlider(event){
     this.activeCounterStart = event.value -2;
@@ -100,6 +102,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.setServicesIcons();
 
   }
+
 
   ngAfterViewChecked(){
     if(this.firstIcon){
@@ -165,7 +168,10 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.thirdIcon.nativeElement.firstChild.className = "fa-3x serviceIcon ";
     this.fourthIcon.nativeElement.firstChild.className = "fa-2x serviceIcon ";
     this.fifthIcon.nativeElement.firstChild.className = "serviceIcon";
-  
+
+
+    this.activeIcon.nativeElement.firstChild.className = "fa-4x mb-4 ";
+    this.activeIcon.nativeElement.firstChild.style.color = "#e71425";
     // first Icon
     if(this.activeCounterStart >= 0) {
       const spaceIndex = this.activeIconList[0].indexOf(' ');
@@ -196,8 +202,13 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       var splitted = this.activeIconList[2].split(" ", 2); 
       this.thirdIcon.nativeElement.firstChild.classList.add(splitted[0]);
       this.thirdIcon.nativeElement.firstChild.classList.add(splitted[1]);
+
+      this.activeIcon.nativeElement.firstChild.classList.add(splitted[0]);
+      this.activeIcon.nativeElement.firstChild.classList.add(splitted[1]);
     }else {
       this.thirdIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
+
+      this.activeIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
     }
 
     //Fourth Icon
