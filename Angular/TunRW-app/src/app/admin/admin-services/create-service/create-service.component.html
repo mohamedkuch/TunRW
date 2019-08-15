@@ -26,19 +26,19 @@
                                   <i class="fas fa-2x fa-angle-left serviceIcon"></i>
                                 </li>
                                 <li class="list-group-item noBorderItem" #firstIcon>
-                                   <i  class="serviceIcon " style="color: #d5d5d5" ></i>
+                                   <i  class="serviceIcon "(click)="onClickFirst()"  style="color: #d5d5d5" ></i>
                                 </li>
                                 <li class="list-group-item scdItem" #scdIcon>
-                                    <i class="fa-2x serviceIcon " style="color: #474747"></i>
+                                    <i class="fa-2x serviceIcon "  (click)="onClickSecond()" style="color: #474747"></i>
                                 </li>
                                 <li class="list-group-item activeItem" #thirdIcon>
                                     <i class="fa-3x serviceIcon " ></i>
                                 </li>
                                 <li class="list-group-item noBorderItem" #fourthIcon >
-                                    <i class="fa-2x serviceIcon " style="color: #474747"></i>
+                                    <i class="fa-2x serviceIcon " (click)="onClickFourth()" style="color: #474747"></i>
                                 </li>
                                 <li class="list-group-item scdItem" #fifthIcon >
-                                    <i class="serviceIcon " style="color: #d5d5d5"></i>
+                                    <i class="serviceIcon "  (click)="onClickFifth()" style="color: #d5d5d5"></i>
                                 </li>
                                 <li (click)="onNextClick()" class="list-group-item arrowContainer">
                                     <i class="fas fa-2x fa-angle-right serviceIcon"></i>
@@ -51,7 +51,7 @@
                             value="{{activeSliderCounter}}"
                             step="1"
                             min="0"
-                            (input)="onChangeSlider($event)"
+                            (input)="onChangeSlider($event.value)"
                             max="{{fontAwesomeList.length -1}}"></mat-slider>
                         </div>
                       </div>

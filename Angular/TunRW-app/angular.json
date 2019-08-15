@@ -23,8 +23,12 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "src/my-theme.scss"
+              },
               "src/styles.css",
               "src/assets/css/spacing.min.css"
+            
             ],
             "scripts": [
               "src/assets/js/theme-scripts.js"

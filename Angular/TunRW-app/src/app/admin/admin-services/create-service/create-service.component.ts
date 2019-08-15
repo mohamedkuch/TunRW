@@ -10,6 +10,7 @@ import { AdminService } from '../adminService.service';
 })
 
 export class CreateServiceComponent implements OnInit, AfterViewChecked {
+
   @ViewChild('firstIcon', {static: false}) private firstIcon: any;;
   @ViewChild('scdIcon', {static: false}) scdIcon: ElementRef;
   @ViewChild('thirdIcon', {static: false}) thirdIcon: ElementRef;
@@ -32,6 +33,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
   activeSliderCounter = 2;
 
   constructor(public adminService: AdminService,
+              private ngZone: NgZone,
               public route: ActivatedRoute) {
 
               }
@@ -56,33 +58,27 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
                         title: postData.title,  creator:postData.creator};
           this.form.setValue({title: this.service.title ,  description: this.service.description });
         });
-  
+        this.onChangeSlider(50);
 
       } else {
         this.mode = 'create';
         this.serviceId = null;
       }
- 
    
     });
 
-    if( this.mode == 'edit') {
-      this.activeSliderCounter = 50;
-      this.activeCounterStart = this.activeSliderCounter -2;
-    }
-
   }
-  onChangeSlider(event){
-    this.activeCounterStart = event.value -2;
-    this.activeSliderCounter = event.value;
+  onChangeSlider(value){
+    this.activeCounterStart = value -2;
+    this.activeSliderCounter = value;
     if(this.activeCounterStart >= 0) {
       this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart+ 5);
     }else if(this.activeCounterStart < 0 ){
       this.activeIconList = this.fontAwesomeList.slice(0,4);
-      this.activeIconList.unshift("");
+      this.activeIconList.unshift("noClass");
 
       if(this.activeCounterStart == -2)
-        this.activeIconList.unshift("");
+        this.activeIconList.unshift("noClass");
 
     }
     // previous Last Element
@@ -102,8 +98,28 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.setServicesIcons();
 
   }
-
-
+  onClickFirst(){
+    if(this.activeSliderCounter > 0){
+      this.onChangeSlider(this.activeSliderCounter - 2);
+    }
+  }
+  onClickSecond(){
+    if(this.activeSliderCounter > 0){
+      this.onChangeSlider(this.activeSliderCounter - 1);
+    }
+  }
+  onClickFourth(){
+    if(this.activeSliderCounter < this.fontAwesomeList.length - 1){
+      console.log("setting", this.activeSliderCounter);
+      this.onChangeSlider(this.activeSliderCounter +1);
+    }
+  }
+  onClickFifth(){
+    if(this.activeSliderCounter < this.fontAwesomeList.length - 1){
+      console.log("setting", this.activeSliderCounter);
+      this.onChangeSlider(this.activeSliderCounter +2);
+    }
+  }
   ngAfterViewChecked(){
     if(this.firstIcon){
       this.setServicesIcons();
@@ -115,7 +131,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       this.activeSliderCounter++;
       if(this.activeSliderCounter == 1){
         this.activeIconList = this.fontAwesomeList.slice(0,4);
-        this.activeIconList.unshift("");
+        this.activeIconList.unshift("noClass");
       }
       if(this.activeSliderCounter == this.fontAwesomeList.length-1){
         this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart + 3);
@@ -138,11 +154,11 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       this.activeSliderCounter--;
       if(this.activeSliderCounter == 1){
         this.activeIconList = this.fontAwesomeList.slice(0,4);
-        this.activeIconList.unshift("");
+        this.activeIconList.unshift("noClass");
       }else if(this.activeSliderCounter == 0){
         this.activeIconList = this.fontAwesomeList.slice(0,3);
-        this.activeIconList.unshift("");
-        this.activeIconList.unshift("");
+        this.activeIconList.unshift("noClass");
+        this.activeIconList.unshift("noClass");
       }else if(this.activeSliderCounter == this.fontAwesomeList.length - 2) {
         this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart + 4);
         this.activeIconList.push("noClass");
@@ -173,7 +189,6 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.activeIcon.nativeElement.firstChild.className = "fa-4x mb-4 ";
     this.activeIcon.nativeElement.firstChild.style.color = "#e71425";
     // first Icon
-    if(this.activeCounterStart >= 0) {
       const spaceIndex = this.activeIconList[0].indexOf(' ');
       if( spaceIndex >= 0){
         var splitted = this.activeIconList[0].split(" ", 2); 
@@ -182,10 +197,8 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       }else {
         this.firstIcon.nativeElement.firstChild.classList.add(this.activeIconList[0]);
       }
-    }
 
     //scd Icon
-    if(this.activeCounterStart >= -1) {
       const spaceIndex2 = this.activeIconList[1].indexOf(' ');
       if( spaceIndex2 >= 0){
         var splitted = this.activeIconList[1].split(" ", 2); 
@@ -194,7 +207,6 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       }else {
         this.scdIcon.nativeElement.firstChild.classList.add(this.activeIconList[1]);
       }
-    }
 
     //Third Icon
     const spaceIndex3 = this.activeIconList[2].indexOf(' ');
