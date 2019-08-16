@@ -9,7 +9,7 @@ router.get('', serviceController.getAllServices);
 
 router.get('/:id',  serviceController.getOneService);
 
-router.put('/:id',  serviceController.updateService);
+router.put('/:id', checkAuth, serviceController.updateService);
 
 router.delete('/:id',checkAuth, serviceController.deleteService);
 

@@ -68,7 +68,7 @@ exports.createPartner = (req,res,next) => {
       creator: req.body.userId
     });
     console.log(post);
-    Partner.updateOne( post).then(result =>{
+    Partner.updateOne({ _id: req.params.id }, post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {

@@ -84,8 +84,7 @@ exports.createService = (req,res,next) => {
       description : req.body.description,
       creator: req.body.userId
     });
-    console.log(post);
-    Service.updateOne( post).then(result =>{
+    Service.updateOne({ _id: req.params.id }, post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {
@@ -93,7 +92,8 @@ exports.createService = (req,res,next) => {
       }
      }).catch(error => {
       res.status(500).json({
-        message : "Update Service Failed!"
+        message : "Update Service Failed!",
+        err: error
       });
     });
   }

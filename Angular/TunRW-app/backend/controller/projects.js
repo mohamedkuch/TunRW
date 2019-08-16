@@ -80,7 +80,7 @@ exports.createProject = (req,res,next) => {
       creator: req.body.userId
     });
     console.log(post);
-    Project.updateOne( post).then(result =>{
+    Project.updateOne( { _id: req.params.id }, post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {

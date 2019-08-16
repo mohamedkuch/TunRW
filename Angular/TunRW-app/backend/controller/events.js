@@ -80,7 +80,7 @@ exports.createEvent = (req,res,next) => {
       creator: req.body.userId
     });
     console.log(post);
-    Event.updateOne( post).then(result =>{
+    Event.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
       }else {

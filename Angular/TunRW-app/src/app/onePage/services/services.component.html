@@ -11,65 +11,18 @@
         <br/>
         <div class="container mt-2 mb-2">
           <div class="row ">
-            <div class="col-lg-3 col-md-6 text-center">
+            <div *ngFor="let service of services" class="col-lg-3 col-md-6 text-center">
               <div class="service-box mt-5 mx-auto">
-                <i class="fas fa-4x fa-bullhorn text-primary mb-3 sr-icon-1"></i>
-                <h3 class="mb-3">Events</h3>
+                <i class="{{service.icon}} fa-4x text-primary mb-3 sr-icon-1"></i>
+                <h3 class="mb-3">{{service.title}} </h3>
                 <hr class="serviceSeperator"/>
                 <p  class="text-muted mb-0">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua.
-                    At vero eos et accusam et
+                  {{service.description}} 
                 </p>
               </div>
-              <span class="iconNumber"><i class="fas fa-bullhorn"></i> </span>
+              <span class="iconNumber"><i class="{{service.icon}}"></i> </span>
             </div>
-            <div class="col-lg-3 col-md-6 text-center">
-              <div class="service-box mt-5 mx-auto">
-                <i class="fas fa-4x fa-gem text-primary mb-3 sr-icon-2"></i>
-                <h3 class="mb-3">Projects</h3>
-                <hr class="serviceSeperator"/>
-                <p class="text-muted mb-0">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua.
-                    At vero eos et accusam et</p>
-              </div>
-              <span class="iconNumber"><i class="fas fa-gem"></i> </span>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-              <div class="service-box mt-5 mx-auto">
-
-                <i class="fas fa-4x fa-handshake text-primary mb-3 sr-icon-3"></i>
-                <h3 class="mb-3">Culture</h3>
-                <hr class="serviceSeperator"/>
-                <p class="text-muted mb-0">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua.
-                    At vero eos et accusam et
-
-                </p>
-              </div>
-              <span class="iconNumber"><i class="fas fa-handshake"></i> </span>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-              <div class="service-box mt-5 mx-auto">
-                <i class="fas fa-4x fa-heart text-primary mb-3 sr-icon-4"></i>
-                <h3 class="mb-3">Connect</h3>
-                <hr class="serviceSeperator"/>
-                <p class="text-muted mb-0">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                    sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                    magna aliquyam erat, sed diam voluptua.
-                    At vero eos et accusam et
-                  </p>
-
-              </div>
-              <span class="iconNumber"><i class="fas fa-heart"></i> </span>
-
-            </div>
+          
           </div>
         </div>
       </section>
