@@ -9,13 +9,13 @@ import { AdminService } from '../adminService.service';
   styleUrls : ['./create-service.component.scss']
 })
 
-export class CreateServiceComponent implements OnInit, AfterViewChecked {
+export class CreateServiceComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('firstIcon', {static: false}) private firstIcon: any;;
-  @ViewChild('scdIcon', {static: false}) scdIcon: ElementRef;
-  @ViewChild('thirdIcon', {static: false}) thirdIcon: ElementRef;
-  @ViewChild('fourthIcon', {static: false}) fourthIcon: ElementRef;
-  @ViewChild('fifthIcon', {static: false}) fifthIcon: ElementRef;
+  firstIcon: string;
+  scdIcon: string;
+  thirdIcon: string;
+  fourthIcon: string;
+  fifthIcon: string;
 
   title = '';
   description = '';
@@ -61,6 +61,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
           this.form.setValue({title: this.service.title ,  description: this.service.description , icon: this.service.icon});
           const iconIndex =this.fontAwesomeList.indexOf(this.service.icon);
           this.onChangeSlider(iconIndex);
+          this.defaultIconClass = this.fontAwesomeList[iconIndex];
         });
        
 
@@ -97,8 +98,6 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       this.activeIconList.push("noClass");
     }
 
-    console.log("setting up", this.fontAwesomeList.length, this.activeSliderCounter);
-    console.log("Array", this.activeIconList);
     this.setServicesIcons();
 
   }
@@ -114,20 +113,16 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
   }
   onClickFourth(){
     if(this.activeSliderCounter < this.fontAwesomeList.length - 1){
-      console.log("setting", this.activeSliderCounter);
       this.onChangeSlider(this.activeSliderCounter +1);
     }
   }
   onClickFifth(){
     if(this.activeSliderCounter < this.fontAwesomeList.length - 1){
-      console.log("setting", this.activeSliderCounter);
       this.onChangeSlider(this.activeSliderCounter +2);
     }
   }
-  ngAfterViewChecked(){
-    if(this.firstIcon){
+  ngAfterViewInit(){
       this.setServicesIcons();
-    }
   }
   onNextClick(){
     if(this.activeSliderCounter < this.fontAwesomeList.length -1) {
@@ -173,79 +168,55 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       }
       else {
         this.activeIconList = this.fontAwesomeList.slice(this.activeCounterStart,this.activeCounterStart+ 5);
-        this.setServicesIcons();
+    
       }
+      this.setServicesIcons();
      
     }
 
 
   }
+  initializeIcons(){
+    this.firstIcon = "";
+    this.scdIcon = "";
+    this.thirdIcon = "";
+    this.fourthIcon = "";
+    this.fifthIcon = "";
+
+    this.firstIcon = "serviceIcon";
+    this.scdIcon = "fa-2x serviceIcon ";
+    this.thirdIcon = "fa-3x serviceIcon ";
+    this.fourthIcon = "fa-2x serviceIcon ";
+    this.fifthIcon = "serviceIcon";
+
+
+  }
   setServicesIcons(){
-    console.log("setting up" ,this.activeIconList);
+    console.log("setting up" ,this.activeIconList, this.activeSliderCounter) ;
+    this.initializeIcons();
 
-    this.firstIcon.nativeElement.firstChild.className = "serviceIcon";
-    this.scdIcon.nativeElement.firstChild.className = "fa-2x serviceIcon ";
-    this.thirdIcon.nativeElement.firstChild.className = "fa-3x serviceIcon ";
-    this.fourthIcon.nativeElement.firstChild.className = "fa-2x serviceIcon ";
-    this.fifthIcon.nativeElement.firstChild.className = "serviceIcon";
-
-
+  
+    this.defaultIconClass = this.fontAwesomeList[this.activeSliderCounter];
     // this.activeIcon.nativeElement.firstChild.className = "fa-4x mb-4 ";
     // this.activeIcon.nativeElement.firstChild.style.color = "#e71425";
     // first Icon
-      const spaceIndex = this.activeIconList[0].indexOf(' ');
-      if( spaceIndex >= 0){
-        var splitted = this.activeIconList[0].split(" ", 2); 
-        this.firstIcon.nativeElement.firstChild.classList.add(splitted[0]);
-        this.firstIcon.nativeElement.firstChild.classList.add(splitted[1]);
-      }else {
-        this.firstIcon.nativeElement.firstChild.classList.add(this.activeIconList[0]);
-      }
+    this.firstIcon = this.activeIconList[0];
 
     //scd Icon
-      const spaceIndex2 = this.activeIconList[1].indexOf(' ');
-      if( spaceIndex2 >= 0){
-        var splitted = this.activeIconList[1].split(" ", 2); 
-        this.scdIcon.nativeElement.firstChild.classList.add(splitted[0]);
-        this.scdIcon.nativeElement.firstChild.classList.add(splitted[1]);
-      }else {
-        this.scdIcon.nativeElement.firstChild.classList.add(this.activeIconList[1]);
-      }
+    this.scdIcon = this.activeIconList[1];
+
+
 
     //Third Icon
-    const spaceIndex3 = this.activeIconList[2].indexOf(' ');
-    if( spaceIndex3 >= 0){
-      var splitted = this.activeIconList[2].split(" ", 2); 
-      this.thirdIcon.nativeElement.firstChild.classList.add(splitted[0]);
-      this.thirdIcon.nativeElement.firstChild.classList.add(splitted[1]);
+    this.thirdIcon = this.activeIconList[2];
 
-     //  this.activeIcon.nativeElement.firstChild.classList.add(splitted[0]);
-     //  this.activeIcon.nativeElement.firstChild.classList.add(splitted[1]);
-    }else {
-      this.thirdIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
-
-      // this.activeIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
-    }
 
     //Fourth Icon
-    const spaceIndex4 = this.activeIconList[3].indexOf(' ');
-    if( spaceIndex4 >= 0){
-      var splitted = this.activeIconList[3].split(" ", 2); 
-      this.fourthIcon.nativeElement.firstChild.classList.add(splitted[0]);
-      this.fourthIcon.nativeElement.firstChild.classList.add(splitted[1]);
-    }else {
-      this.fourthIcon.nativeElement.firstChild.classList.add(this.activeIconList[3]);
-    }
+    this.fourthIcon  = this.activeIconList[3];
 
-    //Fourth Icon
-    const spaceIndex5 = this.activeIconList[4].indexOf(' ');
-    if( spaceIndex5 >= 0){
-      var splitted = this.activeIconList[4].split(" ", 2); 
-      this.fifthIcon.nativeElement.firstChild.classList.add(splitted[0]);
-      this.fifthIcon.nativeElement.firstChild.classList.add(splitted[1]);
-    }else {
-      this.fifthIcon.nativeElement.firstChild.classList.add(this.activeIconList[4]);
-    }
+ 
+    //Fifth Icon
+    this.fifthIcon  = this.activeIconList[4];
     
   }
   onSaveService() {

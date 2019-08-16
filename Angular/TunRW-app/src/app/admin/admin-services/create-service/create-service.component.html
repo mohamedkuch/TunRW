@@ -25,20 +25,20 @@
                                 <li (click)="onPrevClick()" class="list-group-item arrowContainer">
                                   <i class="fas fa-2x fa-angle-left serviceIcon"></i>
                                 </li>
-                                <li class="list-group-item noBorderItem" #firstIcon>
-                                   <i  class="serviceIcon "(click)="onClickFirst()"  style="color: #d5d5d5" ></i>
+                                <li class="list-group-item noBorderItem">
+                                   <i  class="{{firstIcon}}  serviceIcon "(click)="onClickFirst()"  style="color: #d5d5d5" ></i>
                                 </li>
-                                <li class="list-group-item scdItem" #scdIcon>
-                                    <i class="fa-2x serviceIcon "  (click)="onClickSecond()" style="color: #474747"></i>
+                                <li class="list-group-item scdItem" >
+                                    <i class="{{scdIcon}} fa-2x serviceIcon "  (click)="onClickSecond()" style="color: #474747"></i>
                                 </li>
-                                <li class="list-group-item activeItem" #thirdIcon>
-                                    <i class="fa-3x serviceIcon " ></i>
+                                <li class="list-group-item activeItem" >
+                                    <i class="{{thirdIcon}} fa-3x serviceIcon" ></i>
                                 </li>
-                                <li class="list-group-item noBorderItem" #fourthIcon >
-                                    <i class="fa-2x serviceIcon " (click)="onClickFourth()" style="color: #474747"></i>
+                                <li class="list-group-item noBorderItem"  >
+                                    <i class="{{fourthIcon}} fa-2x  serviceIcon" (click)="onClickFourth()" style="color: #474747"></i>
                                 </li>
-                                <li class="list-group-item scdItem" #fifthIcon >
-                                    <i class="serviceIcon "  (click)="onClickFifth()" style="color: #d5d5d5"></i>
+                                <li class="list-group-item scdItem"  >
+                                    <i class="{{fifthIcon}} serviceIcon"  (click)="onClickFifth()" style="color: #d5d5d5"></i>
                                 </li>
                                 <li (click)="onNextClick()" class="list-group-item arrowContainer">
                                     <i class="fas fa-2x fa-angle-right serviceIcon"></i>
@@ -95,9 +95,8 @@
    
              <div class="servicePreview">
                     <span >
-                        <i *ngIf="mode == 'edit'" style="color: #e71425" class="{{form.value.icon}} fa-4x mb-4"></i>
 
-                        <i *ngIf="mode == 'create'" style="color: #e71425" class="{{defaultIconClass}} fa-4x mb-4"></i>
+                        <i  style="color: #e71425" class="{{defaultIconClass}} fa-4x mb-4"></i>
 
                     </span>
                   <h3 class="mb-3">{{form.value.title}}</h3>
