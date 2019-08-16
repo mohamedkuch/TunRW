@@ -2,27 +2,40 @@ const Service = require("../models/services");
 
 exports.createService = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
-    const post = new Service({
-      icon: req.body.icon,
-      title : req.body.title,
-      description : req.body.description,
-      creator: req.userData.userId
-    });
-    console.log(post);
-    post.save().then(result => {
-      res.status(201).json({
-        message: 'Post added Successfully',
-        serive: {
-          ...result,
-          id: result._id
-        }
-      });
-    })
-    .catch(err =>{
-      res.status(500).json({
-        message : "Creating Service Failed!"
-      });
-      console.log("zaab ", err);
+    const postQuery = Service.find();
+
+    // 4 services only
+    postQuery.find().then(count =>{
+      if(count.length >= 4) {
+        res.status(401).json({
+          message : "Creating Service Failed , you reach the limit !"
+        });
+      }else {
+
+        const post = new Service({
+          icon: req.body.icon,
+          title : req.body.title,
+          description : req.body.description,
+          creator: req.userData.userId
+        });
+    
+        post.save().then(result => {
+          res.status(201).json({
+            message: 'Post added Successfully',
+            serive: {
+              ...result,
+              id: result._id
+            }
+          });
+        }).catch(err =>{
+          res.status(500).json({
+            message : "Creating Service Failed!"
+          });
+    
+        });
+
+      }
+  
 
     });
   }
