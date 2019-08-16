@@ -55,6 +55,7 @@
                             max="{{fontAwesomeList.length -1}}"></mat-slider>
                         </div>
                       </div>
+                      <input name="icon" type="hidden" formControlName="icon" value="test" >
                     <hr class="serviceSeperator"/>
                      <div class="form-group">
                        <label class="col-sm-3 control-label">Service Title</label>
@@ -93,8 +94,11 @@
          </div>
    
              <div class="servicePreview">
-                    <span #activeIcon>
-                        <i class=""></i>
+                    <span >
+                        <i *ngIf="mode == 'edit'" style="color: #e71425" class="{{form.value.icon}} fa-4x mb-4"></i>
+
+                        <i *ngIf="mode == 'create'" style="color: #e71425" class="{{defaultIconClass}} fa-4x mb-4"></i>
+
                     </span>
                   <h3 class="mb-3">{{form.value.title}}</h3>
                   <hr class="serviceSeperator"/>

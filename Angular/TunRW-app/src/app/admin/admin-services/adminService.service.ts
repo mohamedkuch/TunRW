@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { Service } from './services.modal';
+import { ICON_REGISTRY_PROVIDER } from '@angular/material';
 
 const BACKEND_URL = environment.apiUrl + "/services";
 @Injectable({providedIn: 'root'})
@@ -23,6 +24,7 @@ export class AdminService {
               return {
                 id : post._id,
                 title : post.title,
+                icon: post.icon,
                 description : post.description,
                 creator: post.creator
               };
@@ -41,16 +43,18 @@ export class AdminService {
   getSingleService(id: string){
     return this.http.get<{_id: string;
         title: string;
+        icon: string;
         description: string;
         creator: string
       }>(BACKEND_URL + "/" + id);
   }
 
   // Add New Service
-  addService(title: string,description: string) {
+  addService(title: string,description: string, icon:string) {
     let postData: any;
     postData = {
          title: title,
+         icon:icon,
          description: description
     }
     this.http.post<{message: string, service: Service}>(BACKEND_URL, postData)
@@ -61,11 +65,12 @@ export class AdminService {
   }
 
   // update Service
-  updateService(id: string ,title: string,description: string) {
+  updateService(id: string ,title: string,description: string, icon:string) {
     let postData: Service | FormData;
        postData = {
             id : id,
             title: title,
+            icon: icon ,
             description: description,
         creator: null
       }

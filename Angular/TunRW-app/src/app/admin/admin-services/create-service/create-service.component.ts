@@ -16,10 +16,10 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
   @ViewChild('thirdIcon', {static: false}) thirdIcon: ElementRef;
   @ViewChild('fourthIcon', {static: false}) fourthIcon: ElementRef;
   @ViewChild('fifthIcon', {static: false}) fifthIcon: ElementRef;
-  @ViewChild('activeIcon', {static: false}) activeIcon: ElementRef;
 
   title = '';
   description = '';
+  icon = '';
   mode = 'create';
   private serviceId: string;
   errorFlag = false;
@@ -31,10 +31,12 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
   activeIconList : any;
   activeCounterStart = 0;
   activeSliderCounter = 2;
+  defaultIconClass :string;
 
   constructor(public adminService: AdminService,
               private ngZone: NgZone,
               public route: ActivatedRoute) {
+                this.defaultIconClass = this.fontAwesomeList[this.activeSliderCounter];
 
               }
 
@@ -44,7 +46,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.form = new FormGroup({
       title : new FormControl(null, {validators: [Validators.required , Validators.minLength(0)]}),
       description: new FormControl(null, {validators: [Validators.required ]}),
-      
+      icon: new FormControl(null, {validators: [Validators.required ]}),
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -54,11 +56,13 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
         this.isLoading = true;
         this.adminService.getSingleService(this.serviceId).subscribe(postData => {
           this.isLoading = false;
-          this.service = {id: postData._id, description: postData.description,
+          this.service = {id: postData._id, description: postData.description,icon: postData.icon,
                         title: postData.title,  creator:postData.creator};
-          this.form.setValue({title: this.service.title ,  description: this.service.description });
+          this.form.setValue({title: this.service.title ,  description: this.service.description , icon: this.service.icon});
+          const iconIndex =this.fontAwesomeList.indexOf(this.service.icon);
+          this.onChangeSlider(iconIndex);
         });
-        this.onChangeSlider(50);
+       
 
       } else {
         this.mode = 'create';
@@ -186,8 +190,8 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.fifthIcon.nativeElement.firstChild.className = "serviceIcon";
 
 
-    this.activeIcon.nativeElement.firstChild.className = "fa-4x mb-4 ";
-    this.activeIcon.nativeElement.firstChild.style.color = "#e71425";
+    // this.activeIcon.nativeElement.firstChild.className = "fa-4x mb-4 ";
+    // this.activeIcon.nativeElement.firstChild.style.color = "#e71425";
     // first Icon
       const spaceIndex = this.activeIconList[0].indexOf(' ');
       if( spaceIndex >= 0){
@@ -215,12 +219,12 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
       this.thirdIcon.nativeElement.firstChild.classList.add(splitted[0]);
       this.thirdIcon.nativeElement.firstChild.classList.add(splitted[1]);
 
-      this.activeIcon.nativeElement.firstChild.classList.add(splitted[0]);
-      this.activeIcon.nativeElement.firstChild.classList.add(splitted[1]);
+     //  this.activeIcon.nativeElement.firstChild.classList.add(splitted[0]);
+     //  this.activeIcon.nativeElement.firstChild.classList.add(splitted[1]);
     }else {
       this.thirdIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
 
-      this.activeIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
+      // this.activeIcon.nativeElement.firstChild.classList.add(this.activeIconList[2]);
     }
 
     //Fourth Icon
@@ -245,6 +249,7 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     
   }
   onSaveService() {
+    this.form.controls.icon.setValue(this.activeIconList[2]);
     if (this.form.invalid) {
       this.errorFlag = true;
       return;
@@ -252,13 +257,13 @@ export class CreateServiceComponent implements OnInit, AfterViewChecked {
     this.isLoading = true;
     if (this.mode === 'create') {
       this.adminService.addService( this.form.value.title,
-        this.form.value.description
+        this.form.value.description, this.form.value.icon
         );
 
 
     } else {
       this.adminService.updateService(this.serviceId, this.form.value.title,
-        this.form.value.description
+        this.form.value.description, this.form.value.icon
         );
     }
     this.errorFlag = false;

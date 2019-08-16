@@ -3,6 +3,7 @@ const Service = require("../models/services");
 exports.createService = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
     const post = new Service({
+      icon: req.body.icon,
       title : req.body.title,
       description : req.body.description,
       creator: req.userData.userId
@@ -65,6 +66,7 @@ exports.createService = (req,res,next) => {
   exports.updateService = (req, res, next) => {
     const post = new Service({
       _id: req.body.id,
+      icon: req.body.icon,
       title : req.body.title,
       description : req.body.description,
       creator: req.body.userId
