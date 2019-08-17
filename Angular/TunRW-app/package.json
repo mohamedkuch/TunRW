@@ -34,6 +34,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "multer": "^1.4.1",
     "ng2-charts": "^2.2.3",
+    "ngx-slick": "^0.2.1",
     "ngx-wow": "^2.0.1",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",

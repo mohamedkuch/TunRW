@@ -102,21 +102,6 @@ section {
 4.1. About
 --------------------*/
 
-.slick-dots{
-  bottom: -50px !important;
-}
-.slick-dots li button {
-  height:   50%  !important;
-  width: 100% !important;
-  background-color: #d9d9d9 !important;
-  border-radius: 2px;
-}
-.slick-dots .slick-active button {
-  background-color: #232323 !important;
-}
-.slick-dots li button:before {
-  display: none!important;
-}
 .spacingEvent {
   max-width: 10% !important;
   height: 5px;
@@ -146,9 +131,7 @@ section {
   -webkit-transition: 1s; /* Safari */
   transition: 1s;
 }
-.slick-prev, .slick-next {
-  top: 42% !important;
-}
+
 @media (min-width: 768px) {
   .slick-arrow {
     background-color: #232323 !important;
