@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector : 'app-about',
@@ -6,33 +7,50 @@ import { Component } from '@angular/core';
   styleUrls : ['./about.component.scss']
 })
 
-export class AboutComponent{
+export class AboutComponent implements AfterViewInit{
+  ngAfterViewInit(): void {
+    this.slickModal.slickGoTo(3);
+  }
+  @ViewChild('slickModal', {static: false}) slickModal: SlickCarouselComponent;
   title = 'ngSlick';
- 
+  
  
   slides = [
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"},
-    {img: "http://placehold.it/350x150/777777"}
+    {img: "http://placehold.it/350x350/777777"},
+    {img: "http://placehold.it/350x350/777777"},
+    {img: "http://placehold.it/350x350/777777"},
+    {img: "http://placehold.it/350x350/777777"},
+    {img: "http://placehold.it/350x350/777777"},
+    {img: "http://placehold.it/350x350/777777"},
 
   ];
  
   slideConfig = {
-    "slidesToShow": 4, 
+    "slidesToShow": 3, 
     "slidesToScroll": 1,
-    "nextArrow":"<div class='nav-btn next-slide'></div>",
-    "prevArrow":"<div class='nav-btn prev-slide'></div>",
     "dots":true,
-    "infinite": true
+    "autoplay":true, "autoplaySpeed": 1500,
+    "infinite": true,
+    "responsive": [
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
   };
   constructor(){
-
+   
   }
   
   addSlide() {

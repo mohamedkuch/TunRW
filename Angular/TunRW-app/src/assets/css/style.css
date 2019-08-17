@@ -663,3 +663,15 @@ and (max-width : 480px) {
     font-size: 20px;
 }
 }
+.slick-dots li button::before{
+    display: none !important;
+}
+.slick-dots .slick-active button {
+    background-color: #232323 !important;
+}
+.slick-dots li button {
+    width: 100% !important;
+    height: 40% !important;
+    border-radius: 2px;
+    background-color: #d9d9d9 !important;
+  }
