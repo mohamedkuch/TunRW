@@ -8,6 +8,7 @@ const userRoutes = require("./routes/user");
 const projectsRoutes = require("./routes/projects");
 const partnersRoutes = require("./routes/partners");
 const servicesRoutes = require("./routes/services");
+const teamMembersRoutes = require("./routes/teamMembers");
 const app = express();
 
 mongoose
@@ -42,5 +43,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/projects", projectsRoutes);
 app.use("/api/partners", partnersRoutes);
 app.use("/api/services", servicesRoutes);
+app.use("/api/teamMembers", teamMembersRoutes);
 
 module.exports = app;
