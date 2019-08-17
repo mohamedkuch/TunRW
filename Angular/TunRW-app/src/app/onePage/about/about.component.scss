@@ -1,0 +1,39 @@
+#QuoteSection{
+    background-image: url("../../../assets/images/bgAbout.png");
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-position-x: 5%;
+
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.69);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.69);
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.69);
+}
+.slick-slider {
+  width: 90%;
+  margin: auto;
+  background: #000;
+}
+
+
+.nav-btn {
+  height: 47px;
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+  top: 100px !important;
+}
+ 
+.prev-slide.slick-disabled,
+.next-slide.slick-disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+ 
+.prev-slide:hover {
+  background-position: 0px -53px;
+}
+ 
+.next-slide:hover {
+  background-position: -24px -53px;
+}
