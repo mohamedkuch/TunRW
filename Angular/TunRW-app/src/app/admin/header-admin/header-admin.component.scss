@@ -12,19 +12,7 @@
   padding: 8px;
 
 }
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus,
- .navbar-inverse .navbar-nav>.active>a:hover {
-   border-bottom: 2px solid #e71425;
- }
- .navbar-fixed-top {
 
-  border-width: 0 0 0px !important;
- }
- .navAdmin li a {
-   border-left: 1px solid #343434;
-   border-bottom: 2px solid #222;
-   transition: 0.8s all;
- }
 
  .logoutButton{
   cursor: pointer;
@@ -42,6 +30,7 @@
   -webkit-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
   -moz-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
   box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
+  transition: 0.35s all ease-in-out;
 }
 .navItemContainer, .logoContainer{
   width: 80%;
@@ -90,10 +79,7 @@
   height: 1px;
   background: #fdfdfd;
   opacity: 0.15;
-  margin-left: 10%;
-}
-.firstItem{
-  margin-top: 70px;
+  margin:auto;
 }
 .navItemContainer:hover {
   background: #505050;
@@ -112,4 +98,41 @@
 .logoContainer :hover {
     color: white;
     
+}
+.mainNavbarContainer:hover{
+  width: 150px;
+  height: 100vh;
+  background: #343434;
+}
+a {
+  text-decoration: none !important;
+}
+.navbarItemText{
+  color: white !important;
+  margin-bottom: 10px;
+
+}
+.navbarItemTextActive {
+  color: #e71425 !important;
+
+}
+.navbarLogoTextActive {
+  color: white !important;
+
+}
+.downNavbar{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.downItem{
+  margin-bottom: 5px !important;
+}
+.userNameNavbar{
+ position: relative;
+ bottom: 20px;
+ padding: 10px;
+ background: #e71425;
+ border-radius: 4px;
+ color: white;
 }

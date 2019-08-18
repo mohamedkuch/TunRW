@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Member } from '../admin-members/member.model';
@@ -9,6 +9,8 @@ import { Member } from '../admin-members/member.model';
 })
 
 export class HeaderAdminComponent implements OnInit {
+  @ViewChild("navBar", {static:false}) navBarElement: ElementRef;
+  
   currentUrl: string;
   currentUser: Member;
 
@@ -38,6 +40,9 @@ export class HeaderAdminComponent implements OnInit {
   aboutEditFlag = false;
 
   userIsAuthenticated = false;
+
+  bigNavbarFlag = false;
+  smallNavbarFlag = true;
 
   constructor(private router: Router,
               private authService: AuthService ) {
@@ -126,4 +131,21 @@ export class HeaderAdminComponent implements OnInit {
     this.authService.logout();
     console.log('user Logged out !', this.authService.getAuthStatus());
   }
+
+  mouseEnter(){
+    setTimeout(() => {
+      if(this.navBarElement.nativeElement.offsetWidth == 150) {
+        this.bigNavbarFlag = true;
+        this.smallNavbarFlag = false;
+      }
+    }, 350);
+  
+
+
+  }
+  mouseLeave(){
+      this.bigNavbarFlag = false;
+      this.smallNavbarFlag = true;
+  }
+
 }
