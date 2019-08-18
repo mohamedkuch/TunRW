@@ -8,10 +8,10 @@ router.post('', checkAuth, extractFile, partnersController.createPartner);
 
 router.get('', partnersController.getAllPartners);
 
-router.get('/:id', extractFile, partnersController.getOnePartner);
+router.get('/:id',  partnersController.getOnePartner);
 
-router.put('/:id', extractFile, partnersController.updatePartner);
+router.put('/:id',  checkAuth, extractFile, partnersController.updatePartner);
 
-router.delete('/:id', partnersController.deletePartner);
+router.delete('/:id',checkAuth,  partnersController.deletePartner);
 
 module.exports = router;

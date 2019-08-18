@@ -22,7 +22,7 @@ export class TeamMembersService {
             teamMembers : data.teamMembers.map(post => {
               return {
                 id : post._id,
-                name : post.name,
+                title : post.title,
                 position : post.position,
                 imagePath: post.imagePath,
                 creator: post.creator
@@ -41,7 +41,7 @@ export class TeamMembersService {
   // get one Team Member
   getSingleTeamMember(id: string){
     return this.http.get<{_id: string;
-       name: string;
+       title: string;
        position: string;
           imagePath: string;
         creator: string
@@ -49,11 +49,13 @@ export class TeamMembersService {
   }
 
   // Add New Team Member
-  addTeamMember(name: string, position: string, image: File) {
+  addTeamMember(title: string, position: string, image: File) {
     const postData = new FormData();
-    postData.append('name', name);
+    postData.append('title', title);
     postData.append('position', position);
-    postData.append('image', image, name);
+    postData.append('image', image, title);
+    console.log("adding Team member", title, image, position);
+
     this.http.post<{message: string, teamMembers: TeamMembers}>(BACKEND_URL, postData)
     .subscribe((data) => {
       this.router.navigate(['/admin/About']);
@@ -62,19 +64,19 @@ export class TeamMembersService {
   }
 
   // update Team Member
-  updateTeamMember(id: string ,name: string, position: string, image: File | string) {
+  updateTeamMember(id: string ,title: string, position: string, image: File | string) {
     let postData: TeamMembers | FormData;
     if(typeof(image) === 'object') {
        postData = new FormData();
       postData.append("id", id);
-      postData.append("name", name);
+      postData.append("title", title);
       postData.append("position", position);
-      postData.append("image", image, name);
+      postData.append("image", image, title);
 
     } else {
        postData = {
             id : id,
-            name: name,
+            title: title,
             position: position,
         imagePath: image,
         creator: null

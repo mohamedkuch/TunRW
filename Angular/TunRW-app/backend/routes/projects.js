@@ -8,10 +8,10 @@ router.post("", checkAuth, extractFile,projectController.createProject);
 
 router.get('', projectController.getAllProjects);
 
-router.get('/:id', extractFile, projectController.getOneProject);
+router.get('/:id', projectController.getOneProject);
 
-router.put('/:id', extractFile, projectController.updateProject);
+router.put('/:id', checkAuth ,extractFile, projectController.updateProject);
 
-router.delete('/:id', projectController.deleteProject);
+router.delete('/:id',  checkAuth, projectController.deleteProject);
 
 module.exports = router;

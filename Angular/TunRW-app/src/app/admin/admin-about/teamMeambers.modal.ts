@@ -1,6 +1,6 @@
 export interface TeamMembers {
     id: string;
-    name: string;
+    title: string;
     position: string;
 imagePath: string;
 creator: string;

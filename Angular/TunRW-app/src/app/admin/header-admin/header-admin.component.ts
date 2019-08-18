@@ -33,6 +33,10 @@ export class HeaderAdminComponent implements OnInit {
   membersFlag = false;
   membersCreateFlag = false;
 
+  aboutFlag = false;
+  aboutCreateFlag = false;
+  aboutEditFlag = false;
+
   userIsAuthenticated = false;
 
   constructor(private router: Router,
@@ -50,6 +54,9 @@ export class HeaderAdminComponent implements OnInit {
     }
     if (this.currentUrl.includes('/admin/Services/edit')) {
       this.servicesEditFlag = true;
+    }
+    if (this.currentUrl.includes('/admin/About/edit')) {
+      this.aboutEditFlag = true;
     }
     switch(this.currentUrl) {
       case '/admin': {
@@ -76,6 +83,10 @@ export class HeaderAdminComponent implements OnInit {
         this.membersFlag = true;
         break;
       }
+      case '/admin/About': {
+        this.aboutFlag = true;
+        break;
+      }
       case '/admin/Members/create':{
         this.membersCreateFlag = true;
         break;
@@ -96,6 +107,10 @@ export class HeaderAdminComponent implements OnInit {
           this.partnersCreateFlag  = true;
           break;
       }
+      case '/admin/About/create': {
+        this.aboutCreateFlag  = true;
+        break;
+    }
       default: {
          break;
       }

@@ -60,6 +60,8 @@ export class EventService {
     postData.append('adress', adress);
     postData.append('description', description);
     postData.append('image', image, title);
+    console.log("adding Team Event", title, image);
+
     this.http.post<{message: string, event: Event}>(BACKEND_URL, postData)
     .subscribe((data) => {
       this.router.navigate(['/admin/Events']);

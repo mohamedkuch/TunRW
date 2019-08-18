@@ -8,10 +8,10 @@ router.post('', checkAuth, extractFile,eventController.createEvent);
 
 router.get('', eventController.getAllEvents);
 
-router.get('/:id', extractFile, eventController.getOneEvent);
+router.get('/:id', eventController.getOneEvent);
 
-router.put('/:id', extractFile, eventController.updateEvent);
+router.put('/:id', checkAuth, extractFile, eventController.updateEvent);
 
-router.delete('/:id', eventController.deleteEvent);
+router.delete('/:id', checkAuth, eventController.deleteEvent);
 
 module.exports = router;

@@ -3,7 +3,7 @@ const TeamMember = require("../models/teamMembers");
 exports.createTeamMember = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
     const post = new TeamMember({
-      name : req.body.name,
+      title : req.body.title,
       position : req.body.position,
       imagePath: url + "/images/" + req.file.filename,
       creator: req.userData.userId
@@ -64,7 +64,7 @@ exports.createTeamMember = (req,res,next) => {
     }
     const post = new TeamMember({
       _id: req.body.id,
-      name : req.body.name,
+      title : req.body.title,
       position : req.body.position,
       imagePath : imageURL,
       creator: req.body.userId
