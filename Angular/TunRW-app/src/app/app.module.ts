@@ -51,6 +51,7 @@ import { CreateServiceComponent } from './admin/admin-services/create-service/cr
 
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { AdminAboutComponent } from './admin/admin-about/admin-about.component';
 @NgModule({
   declarations: [
     OnePageComponent,
@@ -83,6 +84,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     AdminListProjectsComponent,
     AdminListPartnersComponent,
     AdminListServicesComponent,
+
+    AdminAboutComponent,
 
     LoginComponent,
     HeaderAdminComponent,

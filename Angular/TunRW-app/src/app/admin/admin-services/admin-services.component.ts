@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Service } from './services.modal';
 import { Subscription } from 'rxjs';
 import { AdminService } from './adminService.service';
@@ -7,7 +7,8 @@ import { AdminService } from './adminService.service';
   templateUrl: './admin-services.component.html',
   styleUrls : ['./admin-services.component.scss']
 })
-export class AdminServicesComponent implements OnInit {
+export class AdminServicesComponent implements OnInit, OnDestroy{
+
   services: Service[] = [];
   membersCount: number;
   private servicesSub: Subscription;
@@ -30,4 +31,9 @@ export class AdminServicesComponent implements OnInit {
           this.services = serviceData.services;
         });
   }
+
+  ngOnDestroy(): void {
+    this.servicesSub.unsubscribe();
+  }
+
 }

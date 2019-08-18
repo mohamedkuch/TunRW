@@ -1,4 +1,5 @@
-   <!-- Fixed navbar -->
+    <!-- 
+  
    <nav class="navbar  navbar-inverse navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
@@ -13,46 +14,146 @@
       <div id="navbar" class="navbar-collapse collapse">
 
         <ul class="nav navbar-nav navbar-right navAdmin">
-          <!-- Services Flag -->
           <li *ngIf="!(servicesFlag || servicesCreateFlag || servicesEditFlag) ">
             <a routerLink="/admin/Services"><i class="fas fa-dice-d6 mr-3"></i>Services</a>
           </li>
           <li *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" class="active">
               <a routerLink="/admin/Services"><i class="fas fa-dice-d6 mr-3"></i>Services</a>
           </li>
-          <!-- Events Flag -->
           <li *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
               <a routerLink="/admin/Events"><i class="fas fa-bullhorn mr-3"></i>Events</a>
             </li>
           <li *ngIf="eventFlag || eventCreateFlag || eventEditFlag" class="active">
               <a routerLink="/admin/Events"><i class="fas fa-bullhorn mr-3"></i>Events</a>
           </li>
-           <!-- Projects Flag -->
           <li *ngIf="!(projectFlag || projectCreateFlag || projectEditFlag) ">
             <a routerLink="/admin/Projects"><i class="fas fa-gem mr-3"></i>Projects</a>
           </li>
           <li *ngIf="projectFlag || projectCreateFlag || projectEditFlag" class="active">
               <a routerLink="/admin/Projects"><i class="fas fa-gem mr-3"></i>Projects</a>
           </li>
-            <!-- Partners Flag -->
             <li *ngIf="!(partnersFlag || partnersCreateFlag || partnersEditFlag) ">
                 <a routerLink="/admin/Partners"><i class="fas fa-hands-helping mr-3"></i>Partners</a>
               </li>
             <li *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag" class="active">
                 <a routerLink="/admin/Partners"><i class="fas fa-hands-helping mr-3"></i>Partners</a>
             </li>
-           <!-- Members Flag -->
           <li *ngIf="!(membersFlag || membersCreateFlag)">
               <a routerLink="/admin/Members"><i class="fas fa-users mr-3"></i>Members</a>
           </li>
           <li *ngIf="membersFlag || membersCreateFlag" class="active" >
               <a routerLink="/admin/Members" > <i class="fas fa-users mr-3"></i>Members</a>
           </li>
-          <li><a class="logoutButton " (click)="onLogout()"> <i class="fas fa-power-off "></i></a></li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
     </div>
   </nav>
+-->
+  <div class="mainNavbarContainer">
+            <a  routerLink="/admin" routerLinkActive="active">
+               <div class="logoContainer text-center">
+                 <i class="fas fa-layer-group logoIcon p-2"></i>
+              </div>
+            
+            </a>
+        <div class="navSeperator"></div>
+
+        <!--Services-->
+        <div *ngIf="!(servicesFlag || servicesCreateFlag || servicesEditFlag) " >
+          <a routerLink="/admin/Services">
+            <div class="navItemContainer firstItem text-center p-4 ">
+                <i class="fas fa-dice-d6 "></i>
+            </div>
+          </a>
+        </div>
+        <div *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" >
+            <a routerLink="/admin/Services">
+              <div class="navItemContaineractive firstItem text-center p-4">
+                  <i class="fas fa-dice-d6 "></i>
+              </div>
+            </a>
+        </div>
+        <div class="navSeperator">  </div>
+
+        <!-- Events -->
+        <div *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
+            <a routerLink="/admin/Events">
+              <div  class="navItemContainer text-center p-4">
+                <i class="fas fa-bullhorn "></i>
+              </div>
+            </a>
+        </div>
+        <div *ngIf="eventFlag || eventCreateFlag || eventEditFlag">
+            <a routerLink="/admin/Events">
+              <div  class="navItemContaineractive  text-center p-4">
+                  <i class="fas fa-bullhorn "></i>
+              </div>
+            </a>
+        </div>
+        <div class="navSeperator">  </div>
+
+        <!-- projects -->
+        <div *ngIf="!(projectFlag || projectCreateFlag || projectEditFlag) "  >
+          <a routerLink="/admin/Projects">
+            <div class="navItemContainer text-center p-4">
+                <i class="fas fa-gem "></i>
+            </div>
+          </a>
+        </div>
+        <div *ngIf="projectFlag || projectCreateFlag || projectEditFlag" >
+            <a routerLink="/admin/Projects">
+              <div  class="navItemContaineractive  text-center p-4">
+                  <i class="fas fa-gem "></i>
+              </div>
+            </a>
+        </div>
+        <div class="navSeperator">  </div>
+
+          <!-- partners -->
+          <div *ngIf="!(partnersFlag || partnersCreateFlag || partnersEditFlag) " >
+              <a routerLink="/admin/Partners">
+                <div class="navItemContainer text-center p-4">
+                    <i class="fas fa-hands-helping "></i>
+                </div>
+              </a>
+            </div>
+          <div *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag">
+              <a routerLink="/admin/Partners">
+                <div  class="navItemContaineractive  text-center p-4" >
+                    <i class="fas fa-hands-helping "></i>
+                </div>
+              </a>
+          </div>
+        <div class="navSeperator">  </div>
+
+         <!-- members -->
+        <div *ngIf="!(membersFlag || membersCreateFlag)">
+            <a routerLink="/admin/Members">
+              <div  class="navItemContainer text-center p-4">
+                  <i class="fas fa-users "></i>
+              </div>
+            </a>
+        </div>
+        <div *ngIf="membersFlag || membersCreateFlag" class="active" >
+            <a routerLink="/admin/Members" >
+                <div class="navItemContaineractive  text-center p-4">
+                    <i class="fas fa-users "></i>
+                </div>
+              </a>
+        </div>
+
+
+    
+  
+        
+          <a class="logoutButton " (click)="onLogout()"> 
+            <div class="logoutContainer navItemContainer  text-center p-4">
+                <i class="fas fa-power-off "></i>
+            </div>
+
+          </a>
+  
+  </div>
    <!-- Sub Menu Section -->
   <div class="subHeaderWrapper mb-2">
    <div class="container subHeaderContainer">

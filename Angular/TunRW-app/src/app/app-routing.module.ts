@@ -15,6 +15,7 @@ import { AdminPartnersComponent } from './admin/admin-partners/admin-partners.co
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
 import { AdminServicesComponent } from './admin/admin-services/admin-services.component';
 import { CreateServiceComponent } from './admin/admin-services/create-service/create-service.component';
+import { AdminAboutComponent } from './admin/admin-about/admin-about.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
@@ -36,6 +37,8 @@ const appRoutes: Routes = [
   { path: 'admin/Partners', component: AdminPartnersComponent, canActivate: [AuthGuard] },
   { path: 'admin/Partners/create', component: CreatePartnerComponent, canActivate: [AuthGuard] },
   { path: 'admin/Partners/edit/:partnerId', component: CreatePartnerComponent, canActivate: [AuthGuard] },
+
+  { path: 'admin/About', component: AdminAboutComponent, canActivate: [AuthGuard] },
 
   { path: 'admin/Members', component: MembersAdminComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members/create', component: CreateMemberComponent, canActivate: [AuthGuard] },

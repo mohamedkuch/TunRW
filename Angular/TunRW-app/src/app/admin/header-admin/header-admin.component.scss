@@ -1,0 +1,105 @@
+.subMenuTitle i { color: #e71425;}
+.subHeaderWrapper{
+
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1030;
+}
+
+.subHeaderContainer{
+  border-bottom: 1px solid #d5d5d5;
+  padding: 8px;
+
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus,
+ .navbar-inverse .navbar-nav>.active>a:hover {
+   border-bottom: 2px solid #e71425;
+ }
+ .navbar-fixed-top {
+
+  border-width: 0 0 0px !important;
+ }
+ .navAdmin li a {
+   border-left: 1px solid #343434;
+   border-bottom: 2px solid #222;
+   transition: 0.8s all;
+ }
+
+ .logoutButton{
+  cursor: pointer;
+  border-right: 1px solid #343434;
+}
+.adminNavbar{
+  min-width: 800px !important;
+}
+.mainNavbarContainer{
+  width: 65px;
+  height: 100vh;
+  position:fixed;
+  background: #343434;
+  z-index: 1;
+  -webkit-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
+  -moz-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
+  box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
+}
+.navItemContainer, .logoContainer{
+  width: 80%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 15px;
+  transition: 1s all;
+  cursor: pointer;
+
+
+}
+
+.navItemContaineractive {
+  width: 80%;
+  height: auto;
+  background: white;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 15px;
+  transition: 1s all;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
+  -moz-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
+  box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
+
+}
+.navItemContaineractive i{
+  font-size: 15px;
+  color:#e71425;
+
+}
+.logoIcon{
+  color: white;
+  font-size: 22px !important;
+}
+.navItemContainer i {
+  font-size: 15px;
+  color: white;
+}
+.navSeperator{
+  width: 80%;
+  height: 1px;
+  background: #fdfdfd;
+  opacity: 0.15;
+  margin-left: 10%;
+}
+.firstItem{
+  margin-top: 70px;
+}
+.navItemContainer:hover {
+  background: #505050;
+}
+
+.logoutContainer{
+  position: absolute;
+  bottom: 5px;
+  left: 10%;
+}
