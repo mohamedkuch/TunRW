@@ -78,6 +78,7 @@
   }
 
 }
+
 .previewIcon {
   color: #e71425;
 }
@@ -85,13 +86,13 @@
   border:1px solid #e71425;
   border-radius: 20px;
   color: #e71425;
-  padding: 1.3rem;
+  padding: 2rem;
+  background: white;
 }
-.iconNumber{
-  padding: 10px 20px 10px 20px;
-  border-radius: 0px 0px 10px 10px;
-  -moz-border-radius: 0px 0px 10px 10px;
-  -webkit-border-radius: 0px 0px 10px 10px;
-  background: #e71425;
-  color: white;
+.adminSeperator{
+  max-width: 80%;
+  border-width: 1px;
+  border-color: #c7c7c7;
+  position: relative;
+  top: 60px;
 }

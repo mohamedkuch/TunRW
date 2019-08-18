@@ -45,4 +45,20 @@
     text-decoration: none;
     transition: 0.5s all;
   }
-  
+  .previewIcon {
+    color: #e71425;
+  }
+  .previewContainer {
+    border:1px solid #e71425;
+    border-radius: 20px;
+    color: #e71425;
+    padding: 2rem;
+    background: white;
+  }
+  .adminSeperator{
+    max-width: 80%;
+    border-width: 1px;
+    border-color: #c7c7c7;
+    position: relative;
+    top: 60px;
+  }

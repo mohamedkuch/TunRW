@@ -77,8 +77,9 @@
 
 }
 .logoIcon{
-  color: white;
+  color: #a7a7a7;
   font-size: 22px !important;
+  transition: 1s all;
 }
 .navItemContainer i {
   font-size: 15px;
@@ -102,4 +103,13 @@
   position: absolute;
   bottom: 5px;
   left: 10%;
+}
+.activeLogo i{
+  color: white;
+  text-shadow: 2px 2px 2px #000000;
+  
+}
+.logoContainer :hover {
+    color: white;
+    
 }

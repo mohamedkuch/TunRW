@@ -1,10 +1,12 @@
 
   <div class="mainNavbarContainer">
             <a  routerLink="/admin" >
-               <div class="logoContainer text-center">
+               <div *ngIf="!homeFlag" class="logoContainer text-center">
                  <i class="fas fa-layer-group logoIcon p-2"></i>
               </div>
-            
+              <div *ngIf="homeFlag" class="logoContainer activeLogo  text-center">
+                  <i class="fas fa-layer-group logoIcon p-2"></i>
+               </div>
             </a>
         <div class="navSeperator"></div>
 
