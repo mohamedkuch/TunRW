@@ -57,7 +57,7 @@
                <div *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid" class="imagePreview">
                  <img class="img-fluid" [src]="imagePreview" [alt]="form.value.title"/>
                </div>
-               <div *ngIf="mode == 'edit' && imagePreview == ''">
+               <div class="previewContainer" *ngIf="mode == 'edit' && imagePreview == ''">
                   <img class="img-fluid" [src]="form.value.image" [alt]="form.value.title"/>
                </div>
    
