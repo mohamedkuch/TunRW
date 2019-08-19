@@ -48,6 +48,8 @@
   border-radius: 15px;
   transition: 1s all;
   cursor: pointer;
+  border: 2px solid transparent;
+
 }
 .slideContainer:hover{
   border-radius: 5px;
@@ -59,4 +61,25 @@
 }
 .arrowNav{
   width: 100%;
+}
+.prevIcon{
+  left: 0;
+  position: absolute;
+  background: #232323;
+}
+.navArrows{
+  width: 100%;
+}
+
+.nextIcon  {
+  right: 0;
+  position: absolute;
+  background: #232323;
+}
+.iconArrow{
+  color: white;
+}
+.navArrows{
+  position: absolute;
+  top: 10%;
 }
