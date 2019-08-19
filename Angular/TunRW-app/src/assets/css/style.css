@@ -266,8 +266,8 @@ figcaption {
 }
 
 figure.effect-bubba {
-	background: #000;
-	margin-bottom: 30px;
+    background-color: rgba(0,0,0,.9);
+    margin-bottom: 30px;
 }
 
 figure.effect-bubba img {
