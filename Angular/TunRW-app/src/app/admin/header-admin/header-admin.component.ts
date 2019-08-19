@@ -9,7 +9,7 @@ import { Member } from '../admin-members/member.model';
 })
 
 export class HeaderAdminComponent implements OnInit {
-  @ViewChild("navBar", {static:false}) navBarElement: ElementRef;
+  @ViewChild("navBarButton", {static:false}) navBarElement: ElementRef;
   
   currentUrl: string;
   currentUser: Member;
@@ -43,6 +43,8 @@ export class HeaderAdminComponent implements OnInit {
 
   bigNavbarFlag = false;
   smallNavbarFlag = true;
+
+  navWidth = 65;
 
   constructor(private router: Router,
               private authService: AuthService ) {
@@ -132,20 +134,20 @@ export class HeaderAdminComponent implements OnInit {
     console.log('user Logged out !', this.authService.getAuthStatus());
   }
 
-  mouseEnter(){
+  openBigNav(){
+    this.navWidth = 150;
     setTimeout(() => {
-      if(this.navBarElement.nativeElement.offsetWidth == 150) {
+      if(this.navWidth == 150) {
         this.bigNavbarFlag = true;
         this.smallNavbarFlag = false;
       }
     }, 350);
-  
-
 
   }
-  mouseLeave(){
-      this.bigNavbarFlag = false;
-      this.smallNavbarFlag = true;
+  closeBigNav(){
+    this.navWidth = 65;
+    this.bigNavbarFlag = false;
+    this.smallNavbarFlag = true;
   }
 
 }

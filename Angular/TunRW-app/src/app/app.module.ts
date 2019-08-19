@@ -41,6 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
+import {MatChipsModule} from '@angular/material/chips';
 import { GestureConfig } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
@@ -104,6 +105,7 @@ import { CreateTeamMemberComponent } from './admin/admin-about/create-team-membe
     ReactiveFormsModule,
     FormsModule,
     AngularMaterialModule,
+    MatChipsModule,
     HttpClientModule,
     MatSliderModule,
     SlickCarouselModule,
