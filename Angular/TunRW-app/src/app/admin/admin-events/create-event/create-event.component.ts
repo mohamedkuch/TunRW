@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { EventService } from '../events.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Event } from '../events.model';
@@ -22,9 +22,10 @@ export class CreateEventComponent implements OnInit {
   event: Event;
   isLoading = false;
   form: FormGroup;
-  imagePreview: any;
+  imagePreviewList: any;
 
   constructor(public eventsService: EventService,
+              private formBuilder: FormBuilder,
               public route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -33,10 +34,7 @@ export class CreateEventComponent implements OnInit {
       adress: new FormControl(null, {validators: [Validators.required ]}),
       date: new FormControl(null, {validators: [Validators.required ]}),
       description: new FormControl(null, {validators: [Validators.required ]}),
-      image: new FormControl(null, {
-        validators: [Validators.required ] ,
-        asyncValidators: [mimeType]
-      }
+      image: new FormControl(null, this.formBuilder.array([])
         )
     });
 
@@ -51,24 +49,31 @@ export class CreateEventComponent implements OnInit {
                         , date: postData.date , adress: postData.adress, title: postData.title, imagePath: postData.imagePath , creator:postData.creator};
           this.form.setValue({title: this.event.title , adress: this.event.adress ,
                                       description: this.event.description , date: this.event.date, image: this.event.imagePath});
+          console.log("zz", this.form);
+          this.imagePreviewList = this.event.imagePath;
         });
       } else {
         this.mode = 'create';
         this.eventId = null;
+        this.imagePreviewList = [];
       }
     });
-    this.imagePreview = '';
   }
   onImagePicked(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({image: file});
-    this.form.get('image').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result;
-    };
-    reader.readAsDataURL(file);
-    this.imagePreview = this.imagePreview.toString();
+    let files = event.target.files;
+    this.form.patchValue({image: files});
+    if (files) {
+      for (let file of files) {
+         let reader = new FileReader();
+         reader.onload = (e: any) => {
+              this.imagePreviewList.push(reader.result.toString());
+          }
+          reader.readAsDataURL(file);
+      }
+    }
+    console.log("zaab", this.imagePreviewList);
+
+ 
   
   }
   onSaveEvent() {
@@ -79,11 +84,11 @@ export class CreateEventComponent implements OnInit {
     this.isLoading = true;
     if (this.mode === 'create') {
       this.eventsService.addEvent( this.form.value.title,
-        this.form.value.date,
-        this.form.value.adress,
-        this.form.value.description,
-        this.form.value.image
-        );
+      this.form.value.date,
+      this.form.value.adress,
+      this.form.value.description,
+      this.form.value.image
+    );
 
 
     } else {

@@ -22,15 +22,7 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
   currentPage = 1;
   pageSizeOptions = [1, 2 , 5, 10];
  
-  slides = [
-    {img: "http://placehold.it/350x350/777777"},
-    {img: "http://placehold.it/350x350/777777"},
-    {img: "http://placehold.it/350x350/777777"},
-    {img: "http://placehold.it/350x350/777777"},
-    {img: "http://placehold.it/350x350/777777"},
-    {img: "http://placehold.it/350x350/777777"},
 
-  ];
  
   slideConfig = {
     "slidesToShow": 3, 
@@ -76,30 +68,30 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
     this.teamMembersSub.unsubscribe();
   }
   ngAfterViewInit(): void {
-    this.slickModal.slickGoTo(3);
+    //this.slickModal.slickGoTo(3);
   }
   addSlide() {
-    this.slides.push({img: "http://placehold.it/350x150/777777"})
+    //this.slides.push({img: "http://placehold.it/350x150/777777"})
   }
   
   removeSlide() {
-    this.slides.length = this.slides.length - 1;
+    //this.slides.length = this.slides.length - 1;
   }
   
   slickInit(e) {
-    console.log('slick initialized');
+    // console.log('slick initialized');
   }
   
   breakpoint(e) {
-    console.log('breakpoint');
+    //console.log('breakpoint');
   }
   
   afterChange(e) {
-    console.log('afterChange');
+    //console.log('afterChange');
   }
   
   beforeChange(e) {
-    console.log('beforeChange');
+    //console.log('beforeChange');
   }
  
 }

@@ -9,8 +9,16 @@
 
             <div *ngFor="let event of events " class="col-lg-6 mt-5">
                 <div class="eventShell">
-                    <img class="img-fluid eventImage" [src]="event.imagePath" [alt]="event.title"/>
 
+                    <ngx-slick-carousel class="slideContainer" 
+                    #slickModal="slick-carousel" 
+                    [config]="slideConfig" 
+                    >
+                  <div ngxSlickItem *ngFor="let singlePath of event.imagePath" class="slideContainer">
+                        <img class="slideContainer img-fluid" src="{{singlePath}}" alt="" width="100%">
+                  </div>
+                 
+                  </ngx-slick-carousel>
                     <div class="eventDescBG ">
                       <p class="titleEvent">
                           {{event.title}}

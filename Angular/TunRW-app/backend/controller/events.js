@@ -2,12 +2,23 @@ const Event = require("../models/events");
 
 exports.createEvent = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
+    var imagesArray = new Array();
+
+    var imagesArray = []; 
+
+    
+    var output = req.files.filter(function(value, index, arr){
+      let imageFullPath = url + "/images/" + value["filename"] ; 
+      imagesArray.push(imageFullPath); // add at the end 
+    });
+
+
     const post = new Event({
       title : req.body.title,
       date : req.body.date,
       adress : req.body.adress,
       description : req.body.description,
-      imagePath: url + "/images/" + req.file.filename,
+      imagePath: imagesArray,
       creator: req.userData.userId
     });
     post.save().then(result => {
@@ -66,10 +77,21 @@ exports.createEvent = (req,res,next) => {
 
   exports.updateEvent = (req, res, next) => {
     let imageURL = req.body.imagePath;
-    if(req.file){
+
+
+    if(req.files){
+      var imagesArray = new Array();
+      var imagesArray = []; 
       const url = req.protocol + '://' + req.get("host");
-      imageURL = url + "/images/" + req.file.filename;
+      
+      var output = req.files.filter(function(value, index, arr){
+        let imageFullPath = url + "/images/" + value["filename"] ; 
+        imagesArray.push(imageFullPath); // add at the end 
+      });
+      imageURL = imagesArray;
     }
+  
+
     const post = new Event({
       _id: req.body.id,
       title : req.body.title,

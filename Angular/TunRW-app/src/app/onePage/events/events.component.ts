@@ -15,6 +15,18 @@ export class EventsComponent implements OnInit , OnDestroy{
   currentPage = 1;
   totalEvents = 0;
   eventsRequested = 0;
+   
+  slideConfig = {
+    "slidesToShow": 1, 
+    "slidesToScroll": 1,
+    "dots":true,
+  
+    "autoplay":true, 
+    "autoplaySpeed": 2500,
+    "infinite": true,
+    "arrows": false
+
+  };
 
   constructor(public eventsService: EventService) {
     this.eventsService.getEvent(this.postsPerPage, this.currentPage);
@@ -27,6 +39,7 @@ export class EventsComponent implements OnInit , OnDestroy{
     if (this.totalEvents > 0 ) {
         this.eventsRequested += this.postsPerPage;
     }
+
   }
 
   ngOnInit() {
@@ -42,6 +55,6 @@ export class EventsComponent implements OnInit , OnDestroy{
   }
   ngOnDestroy() {
     this.eventsSub.unsubscribe();
-
+    
   }
 }

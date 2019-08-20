@@ -47,20 +47,25 @@ export class EventService {
        date: string;
         adress: string;
          description: string;
-          imagePath: string;
+          imagePath: string[50];
         creator: string
       }>(BACKEND_URL + "/" + id);
   }
 
   // Add New Event
-  addEvent(title: string, date: string, adress: string, description: string, image: File) {
+  addEvent(title: string, date: string, adress: string, description: string, image: FileList) {
     const postData = new FormData();
     postData.append('title', title);
     postData.append('date', date);
     postData.append('adress', adress);
     postData.append('description', description);
-    postData.append('image', image, title);
-    console.log("adding Team Event", title, image);
+
+    for (var i = 0; i < image.length; i++) {
+      var file = image[i];
+      // Add the file to the request.
+      postData.append('image', file, title);
+    }
+    console.log("adding Event", image);
 
     this.http.post<{message: string, event: Event}>(BACKEND_URL, postData)
     .subscribe((data) => {
@@ -70,7 +75,7 @@ export class EventService {
   }
 
   // update Event
-  updateEvent(id: string ,title: string, date: string, adress: string, description: string, image: File | string) {
+  updateEvent(id: string ,title: string, date: string, adress: string, description: string, image: FileList | string[50]) {
     let postData: Event | FormData;
     if(typeof(image) === 'object') {
        postData = new FormData();
@@ -79,7 +84,13 @@ export class EventService {
       postData.append("date", date);
       postData.append("adress", adress);
       postData.append("description", description);
-      postData.append("image", image, title);
+      for (var i = 0; i < image.length; i++) {
+        var file = image[i];
+        // Add the file to the request.
+        postData.append('image', file, title);
+      }
+      console.log("updating Event", image);
+
 
     } else {
        postData = {
