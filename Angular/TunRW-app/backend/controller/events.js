@@ -2,11 +2,17 @@ const Event = require("../models/events");
 
 exports.createEvent = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
-    let imagesArray;
+    var imagesArray = new Array();
 
-    req.files.forEach(function(value){
-      imagesArray = value.filename;
+    var imagesArray = []; 
+
+    
+    var output = req.files.filter(function(value, index, arr){
+      let imageFullPath = url + "/images/" + value["filename"] ; 
+      imagesArray.push(imageFullPath); // add at the end 
     });
+
+
     const post = new Event({
       title : req.body.title,
       date : req.body.date,
@@ -15,7 +21,6 @@ exports.createEvent = (req,res,next) => {
       imagePath: imagesArray,
       creator: req.userData.userId
     });
-    console.log("zaab", post);
     post.save().then(result => {
       res.status(201).json({
         message: 'Post added Successfully',

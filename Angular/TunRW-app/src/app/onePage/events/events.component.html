@@ -9,7 +9,7 @@
 
             <div *ngFor="let event of events " class="col-lg-6 mt-5">
                 <div class="eventShell">
-                    <img class="img-fluid eventImage" [src]="event.imagePath" [alt]="event.title"/>
+                    <img class="img-fluid eventImage" [src]="event.imagePath[1]" [alt]="event.title"/>
 
                     <div class="eventDescBG ">
                       <p class="titleEvent">
