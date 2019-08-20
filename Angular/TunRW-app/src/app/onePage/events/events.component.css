@@ -10,3 +10,13 @@
   -moz-border-radius: 5px 5px 0px 0px;
   -webkit-border-radius: 5px 5px 0px 0px;
 }
+.upcomingIcon{
+  background: url("../../../assets/images/upcomingIcon.png");
+  background-size: 60px 60px;
+  width: 60px !important; 
+  height: 60px !important;
+  text-indent: -9999px;     
+  position: absolute;
+  right: 20px;
+  z-index: 1;
+}

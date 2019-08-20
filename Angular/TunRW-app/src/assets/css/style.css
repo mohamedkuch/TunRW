@@ -668,10 +668,11 @@ and (max-width : 480px) {
 }
 .slick-dots .slick-active button {
     background-color: #232323 !important;
+    border: 1px solid #d9d9d9 !important;
+
 }
 .slick-dots li button {
-    width: 100% !important;
-    height: 40% !important;
+    height: 10px !important;
     border-radius: 2px;
     background-color: #d9d9d9 !important;
   }
