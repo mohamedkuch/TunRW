@@ -3,6 +3,8 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { TeamMembers } from 'src/app/admin/admin-about/teamMeambers.modal';
 import { Subscription } from 'rxjs';
 import { TeamMembersService } from 'src/app/admin/admin-about/teamMembers.service';
+import { AboutText } from 'src/app/admin/admin-about/aboutText.modal';
+import { AboutTextService } from 'src/app/admin/admin-about/adminText.service';
 
 @Component({
   selector : 'app-about',
@@ -15,9 +17,12 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
   @ViewChild('slickModal', {static: false}) slickModal: SlickCarouselComponent;
   title = 'ngSlick';
   teamMembers: TeamMembers[] = [];
+  aboutText: AboutText[] = [];
   private teamMembersSub: Subscription;
+  private aboutTextSub: Subscription;
   isLoading = false;
   totalTeamMembers = 0;
+  totalAboutText = 0;
   postsPerPage = 10;
   currentPage = 1;
   pageSizeOptions = [1, 2 , 5, 10];
@@ -49,7 +54,8 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
       // instead of a settings object
     ]
   };
-  constructor(public teamMembersService:TeamMembersService){
+  constructor(public teamMembersService:TeamMembersService,
+              private aboutTextService: AboutTextService){
    
   }
   ngOnInit() {
@@ -62,6 +68,15 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
           this.totalTeamMembers = teamMemberData.postCount;
           this.teamMembers = teamMemberData.teamMembers;
           console.log("teamMembers", this.teamMembers);
+        });
+    this.aboutTextService.getAboutText(100,1);
+    this.aboutTextSub = this.aboutTextService.getAboutTextUpdateListener()
+      .subscribe(
+        (AboutTextData:{ AboutText : AboutText[] ,postCount : number } ) => {
+          this.isLoading = false;
+          this.totalAboutText = AboutTextData.postCount;
+          this.aboutText = AboutTextData.AboutText;
+          console.log("teamMembers", this.aboutText);
         });
   }
   ngOnDestroy() {
