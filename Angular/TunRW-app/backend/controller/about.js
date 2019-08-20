@@ -2,7 +2,8 @@ const About = require("../models/about");
 
 exports.createAboutText = (req,res,next) => {
     const post = new About({
-      text : req.body.text
+      text : req.body.text,
+      creator: req.userData.userId
     });
     post.save().then(result => {
       res.status(201).json({
@@ -59,7 +60,7 @@ exports.createAboutText = (req,res,next) => {
       text : req.body.text,
       creator: req.body.userId
     });
-    console.log(post);
+    console.log("updaating", post);
     About.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
         res.status(200).json({ message: "Update Successful !"});
