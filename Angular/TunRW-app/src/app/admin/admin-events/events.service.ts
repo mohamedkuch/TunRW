@@ -65,7 +65,7 @@ export class EventService {
       // Add the file to the request.
       postData.append('image', file, title);
     }
-    console.log("adding Team Event", image);
+    console.log("adding Event", image);
 
     this.http.post<{message: string, event: Event}>(BACKEND_URL, postData)
     .subscribe((data) => {
@@ -84,7 +84,13 @@ export class EventService {
       postData.append("date", date);
       postData.append("adress", adress);
       postData.append("description", description);
-      //postData.append("image", image);
+      for (var i = 0; i < image.length; i++) {
+        var file = image[i];
+        // Add the file to the request.
+        postData.append('image', file, title);
+      }
+      console.log("updating Event", image);
+
 
     } else {
        postData = {

@@ -79,12 +79,15 @@ exports.createEvent = (req,res,next) => {
     let imageURL = req.body.imagePath;
 
 
-    if(req.file){
-      let imagesArray = String [50];
+    if(req.files){
+      var imagesArray = new Array();
+      var imagesArray = []; 
       const url = req.protocol + '://' + req.get("host");
-      for( entry in req.files.filename) {
-        imagesArray.push( url + "/images/" + req.file.filename);
-      }
+      
+      var output = req.files.filter(function(value, index, arr){
+        let imageFullPath = url + "/images/" + value["filename"] ; 
+        imagesArray.push(imageFullPath); // add at the end 
+      });
       imageURL = imagesArray;
     }
   

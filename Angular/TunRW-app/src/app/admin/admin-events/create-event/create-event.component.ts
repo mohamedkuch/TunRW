@@ -71,7 +71,7 @@ export class CreateEventComponent implements OnInit {
           reader.readAsDataURL(file);
       }
     }
-  
+    console.log("zaab", this.imagePreviewList);
 
  
   
