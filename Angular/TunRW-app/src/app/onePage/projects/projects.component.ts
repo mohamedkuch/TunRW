@@ -65,13 +65,24 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {
-      var navbar = document.getElementsByClassName("navbar")[0].classList.add("hidden");
-      navbar
-      console.log("zzzz", navbar);
+      if(document.getElementsByClassName("navbar")[0]) {
+        document.getElementsByClassName("navbar")[0].classList.add("hidden");
+      }else {
+        document.getElementsByClassName("mainNavbarContainer")[0].classList.add("hidden");
+      }
+
+      dialogRef.afterClosed().subscribe(result => {
+        document.getElementsByClassName("mainNavbarContainer")[0].classList.remove("hidden");
+        document.getElementsByClassName("navbar")[0].classList.remove("hidden");
+
+      });
+      
     }
 
   onNoClick(): void {
     this.dialogRef.close();
+    document.getElementsByClassName("mainNavbarContainer")[0].classList.remove("hidden");
+
   }
 
 }
