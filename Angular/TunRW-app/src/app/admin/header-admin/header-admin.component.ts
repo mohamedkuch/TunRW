@@ -41,8 +41,8 @@ export class HeaderAdminComponent implements OnInit {
 
   userIsAuthenticated = false;
 
-  bigNavbarFlag = false;
-  smallNavbarFlag = true;
+  bigNavbarFlag = true;
+  smallNavbarFlag = false;
 
   constructor(private router: Router,
               private authService: AuthService ) {
@@ -132,20 +132,5 @@ export class HeaderAdminComponent implements OnInit {
     console.log('user Logged out !', this.authService.getAuthStatus());
   }
 
-  mouseEnter(){
-    setTimeout(() => {
-      if(this.navBarElement.nativeElement.offsetWidth == 150) {
-        this.bigNavbarFlag = true;
-        this.smallNavbarFlag = false;
-      }
-    }, 350);
-  
-
-
-  }
-  mouseLeave(){
-      this.bigNavbarFlag = false;
-      this.smallNavbarFlag = true;
-  }
 
 }

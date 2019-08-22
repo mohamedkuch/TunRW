@@ -683,3 +683,6 @@ and (max-width : 480px) {
   .slick-dotted.slick-slider {
     margin-bottom: 0px !important;
 }
+.mainContainerEvent ,.subHeaderWrapper, .previewWrapper{
+    padding-left: 130px;
+}

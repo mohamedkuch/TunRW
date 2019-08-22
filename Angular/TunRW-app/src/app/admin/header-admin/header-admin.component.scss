@@ -22,7 +22,7 @@
   min-width: 800px !important;
 }
 .mainNavbarContainer{
-  width: 65px;
+  width: 130px;
   min-height: 650px;
   height: 100vh;
   position:fixed;
@@ -99,11 +99,6 @@
 .logoContainer :hover {
     color: white;
     
-}
-.mainNavbarContainer:hover{
-  width: 150px;
-  height: 100vh;
-  background: #343434;
 }
 a {
   text-decoration: none !important;

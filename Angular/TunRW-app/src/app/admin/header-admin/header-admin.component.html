@@ -1,5 +1,5 @@
 
-  <div class="mainNavbarContainer"  (mouseenter) ="mouseEnter() " (mouseleave) ="mouseLeave()" #navBar>
+  <div class="mainNavbarContainer"  #navBar>
             <a  routerLink="/admin" >
                <div *ngIf="!homeFlag" class="logoContainer text-center">
                  <i class="fas fa-layer-group logoIcon p-2"></i>
@@ -19,7 +19,7 @@
         <!--Services-->
         <div *ngIf="!(servicesFlag || servicesCreateFlag || servicesEditFlag) " >
           <a routerLink="/admin/Services">
-            <div class="navItemContainer  text-center p-4 ">
+            <div class="navItemContainer  text-center pb-4 pl-1 pr-1 pt-4">
                 <i class="fas fa-dice-d6 "></i>
                 <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                     Services
@@ -30,7 +30,7 @@
         </div>
         <div *ngIf="servicesFlag || servicesCreateFlag || servicesEditFlag" >
             <a routerLink="/admin/Services">
-              <div class="navItemContaineractive firstItem text-center p-4">
+              <div class="navItemContaineractive firstItem text-center pb-4 pl-1 pr-1 pt-4">
                   <i class="fas fa-dice-d6 "></i>
                   <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                       Services
@@ -44,7 +44,7 @@
         <!-- Events -->
         <div *ngIf="!(eventFlag || eventCreateFlag || eventEditFlag) ">
             <a routerLink="/admin/Events">
-              <div  class="navItemContainer text-center p-4">
+              <div  class="navItemContainer text-center pb-4 pl-1 pr-1 pt-4">
                 <i class="fas fa-bullhorn "></i>
                 <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                     Events
@@ -54,7 +54,7 @@
         </div>
         <div *ngIf="eventFlag || eventCreateFlag || eventEditFlag">
             <a routerLink="/admin/Events">
-              <div  class="navItemContaineractive  text-center p-4">
+              <div  class="navItemContaineractive  text-center pb-4 pl-1 pr-1 pt-4">
                   <i class="fas fa-bullhorn "></i>
                   <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                       Events
@@ -67,7 +67,7 @@
         <!-- projects -->
         <div *ngIf="!(projectFlag || projectCreateFlag || projectEditFlag) "  >
           <a routerLink="/admin/Projects">
-            <div class="navItemContainer text-center p-4">
+            <div class="navItemContainer text-center pb-4 pl-1 pr-1 pt-4">
                 <i class="fas fa-gem "></i>
                 <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                     Projects
@@ -77,7 +77,7 @@
         </div>
         <div *ngIf="projectFlag || projectCreateFlag || projectEditFlag" >
             <a routerLink="/admin/Projects">
-              <div  class="navItemContaineractive  text-center p-4">
+              <div  class="navItemContaineractive  text-center pb-4 pl-1 pr-1 pt-4">
                   <i class="fas fa-gem "></i>
                   <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                       Projects
@@ -90,7 +90,7 @@
           <!-- partners -->
           <div *ngIf="!(partnersFlag || partnersCreateFlag || partnersEditFlag) " >
               <a routerLink="/admin/Partners">
-                <div class="navItemContainer text-center p-4">
+                <div class="navItemContainer text-center pb-4 pl-1 pr-1 pt-4">
                     <i class="fas fa-hands-helping "></i>
                     <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                         Partners
@@ -100,7 +100,7 @@
             </div>
           <div *ngIf="partnersFlag || partnersCreateFlag || partnersEditFlag">
               <a routerLink="/admin/Partners">
-                <div  class="navItemContaineractive  text-center p-4" >
+                <div  class="navItemContaineractive  text-center pb-4 pl-1 pr-1 pt-4" >
                     <i class="fas fa-hands-helping "></i>
                     <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                         Partners
@@ -113,21 +113,17 @@
          <!-- members -->
         <div *ngIf="!(membersFlag || membersCreateFlag)">
             <a routerLink="/admin/Members">
-              <div  class="navItemContainer text-center p-4">
+              <div  class="navItemContainer text-center pb-4 pl-1 pr-1 pt-4">
                   <i class="fas fa-users "></i>
-                  <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
-                      Members
-                    </span>
+                  <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">Members</span>
               </div>
             </a>
         </div>
         <div *ngIf="membersFlag || membersCreateFlag" class="active" >
             <a routerLink="/admin/Members" >
-                <div class="navItemContaineractive  text-center p-4">
+                <div class="navItemContaineractive  text-center pb-4 pl-1 pr-1 pt-4">
                     <i class="fas fa-users "></i>
-                    <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
-                        Members
-                      </span>
+                    <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">Members</span>
                 </div>
               </a>
         </div>
@@ -135,7 +131,7 @@
         <!-- About -->
         <div *ngIf="!(aboutFlag || aboutCreateFlag || aboutEditFlag) " >
             <a routerLink="/admin/About">
-              <div class="navItemContainer text-center p-4">
+              <div class="navItemContainer text-center pb-4 pl-1 pr-1 pt-4">
                   <i class="fas fa-info-circle"></i>
                   <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                       About
@@ -145,7 +141,7 @@
           </div>
         <div *ngIf="aboutFlag || aboutCreateFlag || aboutEditFlag">
             <a routerLink="/admin/About">
-              <div  class="navItemContaineractive  text-center p-4" >
+              <div  class="navItemContaineractive  text-center pb-4 pl-1 pr-1 pt-4" >
                   <i class="fas fa-info-circle"></i>
                   <span class="navbarItemTextActive ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                       About
@@ -165,7 +161,7 @@
             <a class="logoutButton mt-3" (click)="onLogout()"> 
             <div class="navSeperator">  </div>
 
-                <div class=" navItemContainer downItem  text-center p-3">
+                <div class=" navItemContainer downItem  text-center pb-4 pl-1 pr-1 pt-4">
                     <i class="fas fa-power-off "></i>
                     <span class="navbarItemText ml-3" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                         Logout
