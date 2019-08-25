@@ -38,10 +38,11 @@ import { AdminMemberListComponent } from './admin/admin-members/list-members/lis
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
-import { GestureConfig, MatButtonModule } from '@angular/material';
+import { GestureConfig, MatButtonModule, MatTooltipModule, MatBadgeModule, MatIconModule, MatDividerModule, MatListModule } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
@@ -112,6 +113,12 @@ import { AdminListAboutTextComponent } from './admin/admin-about/list-about-text
     MatSliderModule,
     MatButtonModule,
     SlickCarouselModule,
+    MatTooltipModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    ClickOutsideModule,
     ChartsModule
   ],
   providers: [

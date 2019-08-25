@@ -300,6 +300,23 @@
    </div>
   </div>
 
-  <div class="notificationWrapper">
-    <i class="fas fa-bell"></i>
+  <div (click)="showNotification = !showNotification" (clickOutside)="showNotification = false" class="notificationWrapper">
+ 
+      <mat-icon matBadge="15" matBadgeColor="warn">notifications</mat-icon>
+  </div>
+
+  <div @fadeIn *ngIf="showNotification" class="notificationContainer">
+      <mat-list>
+          <mat-list-item style="color: white; font-size: 12px; font-style: italic">
+              <div class="textNotification" >ipsum dolor sit amet, consetetur sadipscing elitr</div> 
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item style="color: white; font-size: 12px; font-style: italic">
+              <div class="textNotification" >ipsum dolor sit amet, consetetur sadipscing elitr</div> 
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item style="color: white; font-size: 12px; font-style: italic">
+              <div class="textNotification" >ipsum dolor sit amet, consetetur sadipscing elitr</div> 
+          </mat-list-item>
+        </mat-list>
   </div>

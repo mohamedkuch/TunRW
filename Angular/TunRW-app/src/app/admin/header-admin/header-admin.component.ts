@@ -2,15 +2,29 @@ import { Component , OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Member } from '../admin-members/member.model';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 @Component ({
   selector : 'app-header-admin',
   templateUrl : './header-admin.component.html',
-  styleUrls : ['./header-admin.component.scss']
+  styleUrls : ['./header-admin.component.scss'],
+  animations : [
+    trigger('fadeIn', [
+        transition(':enter', [
+            style({ opacity: 0}),
+            animate('350ms', style({opacity:1}))
+        ]),
+        transition(':leave', [
+          style({ opacity: 1}),
+          animate('350ms', style({opacity:0}))
+      ])
+    ])
+  ]
 })
 
 export class HeaderAdminComponent implements OnInit {
   @ViewChild("navBar", {static:false}) navBarElement: ElementRef;
-  
+  showNotification = false;
   currentUrl: string;
   currentUser: Member;
 

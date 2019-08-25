@@ -141,11 +141,42 @@ a {
   right: 1%;
   top: 5px;
   z-index: 2;
-  border-radius: 50%;
+  border-radius: 5px;
   cursor: pointer;
-  opacity: 0.7;
   transition: 1s all;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.35);
 }
-.notificationWrapper:hover{
-  opacity: 1;
+.notificationContainer{
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  position: fixed;
+  right: 1%;
+  top:55px;
+  background: #5e5e5e;
+  color: white !important;
+  z-index: 5;
+}
+mat-list{
+  padding-top: 0px !important;
+}
+mat-divider{
+  border-color: rgb(104, 104, 104);
+}
+.bubbleNotification{
+  width: 6%;
+  position: relative;
+  left: 12px;
+  color: white;
+}
+mat-list-item {
+  position: relative;
+  left: 0;
+  transition: 0.3s all;
+}
+mat-list-item:hover {
+  left: 6px;
 }
