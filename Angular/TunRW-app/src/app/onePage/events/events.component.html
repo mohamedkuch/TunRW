@@ -7,9 +7,9 @@
           <hr class="my-4 pb-4">
           <div class="row "  *ngIf="events.length > 0">
 
-            <div *ngFor="let event of events " class="col-lg-6 mt-5">
+            <div *ngFor="let event of events; let j = index " class="col-lg-6 mt-5">
                 <div class="eventShell">
-                    <div class="upcomingIcon">.
+                    <div class="upcomingIcon" *ngIf="j == 0">.
 
                       </div>
                     <ngx-slick-carousel class="slideContainer" 
