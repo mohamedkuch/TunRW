@@ -41,7 +41,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ChartsModule } from 'ng2-charts';
 import { AngularMaterialModule } from './angular-material.module';
-import { GestureConfig } from '@angular/material';
+import { GestureConfig, MatButtonModule } from '@angular/material';
 import {MatSliderModule} from '@angular/material/slider';
 import { AdminListPartnersComponent } from './admin/admin-partners/list-partner/list-partner.component';
 import { CreatePartnerComponent } from './admin/admin-partners/create-partner/create-partner.component';
@@ -110,6 +110,7 @@ import { AdminListAboutTextComponent } from './admin/admin-about/list-about-text
     AngularMaterialModule,
     HttpClientModule,
     MatSliderModule,
+    MatButtonModule,
     SlickCarouselModule,
     ChartsModule
   ],

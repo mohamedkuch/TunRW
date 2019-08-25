@@ -132,3 +132,20 @@ a {
  border-radius: 4px;
  color: white;
 }
+
+.notificationWrapper{
+  padding: 10px 12px 10px 12px;
+  background: #343434;
+  color: white;
+  position: fixed;
+  right: 1%;
+  top: 5px;
+  z-index: 2;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 1s all;
+}
+.notificationWrapper:hover{
+  opacity: 1;
+}
