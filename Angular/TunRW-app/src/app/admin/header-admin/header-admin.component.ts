@@ -162,6 +162,18 @@ export class HeaderAdminComponent implements OnInit {
 
         });
   }
+  triggerNotification(){
+    this.showNotification = !this.showNotification;
+    if(this.showNotification && this.notWatchedNotification > 0){
+      for(let i=0; i< this.notificationList.length; i++){
+        
+        if(this.notificationList[i].watched == false){
+          this.notificationService.updateNotification(this.notificationList[i].id);
+        }
+
+      }
+    }
+  }
   onLogout(){
     this.authService.logout();
     console.log('user Logged out !', this.authService.getAuthStatus());
