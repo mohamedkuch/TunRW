@@ -4,21 +4,26 @@ const Notification = require("../models/notifications");
   exports.getAllNotifications= (req, res, next) => {
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
-    const postQuery = Notification.find();
+    const postQuery = Notification.find().sort({_id: -1});
     let fetchedPosts;
+    let notWatchedPost;
+    Notification.count({ watched: false }, function (err, count) {
+      notWatchedPost = count;
+    });
     if( pageSize && currentPage) {
       postQuery
         .skip(pageSize * (currentPage - 1))
         .limit(pageSize);
     }
     postQuery.find().then(documents => {
-          fetchedPosts = documents
+          fetchedPosts = documents;
           return Notification.count();
-      }).then(count =>{
+      }).then(data =>{
         res.status(200).json({
           message: 'Notifications fetched Succesfully!',
           notifications: fetchedPosts,
-          maxPosts: count
+          maxPosts: data,
+          notWatchedPost: notWatchedPost,
         });
       });
   

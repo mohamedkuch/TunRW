@@ -7,7 +7,7 @@ exports.createAboutText = (req,res,next) => {
       creator: req.userData.userId
     });
     const notification = new Notification({
-      text : 'created new Text in About Section',
+      text : 'created a new text in About Section',
       section : "About",
       watched : false,
       creator : req.userData.username

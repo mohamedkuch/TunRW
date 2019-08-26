@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Member } from '../admin-members/member.model';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { NotificationService } from './notifications.service';
+import { Subscription } from 'rxjs';
+import { Notification } from './notifications.modal';
 
 @Component ({
   selector : 'app-header-admin',
@@ -27,7 +30,12 @@ export class HeaderAdminComponent implements OnInit {
   showNotification = false;
   currentUrl: string;
   currentUser: Member;
+  notificationList: Notification[]= [];
+  notificationSub: Subscription;
+  totalNotification : Number;
+  notWatchedNotification : Number;
 
+  isLoading : Boolean;
   eventCreateFlag = false;
   eventEditFlag = false;
   eventFlag = false;
@@ -59,7 +67,8 @@ export class HeaderAdminComponent implements OnInit {
   smallNavbarFlag = false;
 
   constructor(private router: Router,
-              private authService: AuthService ) {
+              private authService: AuthService ,
+              private notificationService: NotificationService) {
     this.currentUrl = this.router.url;
     console.log(this.currentUrl);
     if (this.currentUrl.includes('/admin/Events/edit')) {
@@ -140,6 +149,18 @@ export class HeaderAdminComponent implements OnInit {
     this.currentUser = this.authService.getcurrentUser();
     console.log('user', this.currentUser);
     console.log('user', this.authService.getTokenExpirationDate());
+    this.isLoading = true;
+    this.notificationService.getNotification(5, 1);
+    this.notificationSub = this.notificationService.getNotificationUpdateListener()
+      .subscribe(
+        (data:{ notifications : Notification[] ,postCount : number, notWatchedPost: number} ) => {
+          this.isLoading = false;
+          this.totalNotification = data.postCount;
+          this.notificationList = data.notifications;
+          this.notWatchedNotification = data.notWatchedPost;
+
+
+        });
   }
   onLogout(){
     this.authService.logout();
