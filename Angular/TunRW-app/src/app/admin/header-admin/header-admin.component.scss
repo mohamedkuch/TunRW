@@ -64,6 +64,21 @@
 .navItemContaineractive i{
   font-size: 15px;
   color:#e71425;
+}
+.textNotification{
+  width: 90%;
+     /* css-3 */
+word-wrap: break-word;       /* Internet Explorer 5.5+ */
+word-break: break-all;
+}
+.newTag{
+  background: #e71425;
+  color: white;
+  padding: 4px;
+  border-radius: 8px;
+  position: relative;
+  left : 10px;
+  font-size: 9px;
 
 }
 .logoIcon{

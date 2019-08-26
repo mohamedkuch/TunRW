@@ -1,17 +1,34 @@
 const About = require("../models/about");
+const Notification = require("../models/notifications");
 
 exports.createAboutText = (req,res,next) => {
     const post = new About({
       text : req.body.text,
       creator: req.userData.userId
     });
+    const notification = new Notification({
+      text : 'created new Text in About Section',
+      section : "About",
+      watched : false,
+      creator : req.userData.username
+    });
     post.save().then(result => {
-      res.status(201).json({
-        message: 'Post added Successfully',
-        about: {
-          ...result,
-          id: result._id
-        }
+  
+      // save notification
+      notification.save().then(notResult => {
+     
+        res.status(201).json({
+          message: 'Post added Successfully',
+          about: {
+            ...result,
+            id: result._id
+          },
+          notification: {
+            ...notResult,
+            id: notResult._id
+          }
+        });
+
       });
     })
     .catch(err =>{
