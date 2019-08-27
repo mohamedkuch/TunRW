@@ -150,7 +150,7 @@ a {
 
 .notificationWrapper{
   padding: 10px 12px 10px 12px;
-  background: #334433;
+  background: #343434;
   color: white;
   position: fixed;
   right: 1%;
@@ -190,8 +190,12 @@ mat-divider{
 mat-list-item {
   position: relative;
   left: 0;
-  transition: 0.2s all;
+  transition: 0.5s all;
 }
 mat-list-item:hover {
-  left: 6px;
+  background: #343434;
+  border-radius: 5px;
+}
+.noNotification {
+  color: #f1f1f1;
 }

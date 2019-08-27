@@ -301,8 +301,9 @@
   </div>
 
   <div (click)="triggerNotification()" (clickOutside)="showNotification = false" class="notificationWrapper">
- 
+
       <mat-icon matBadge="{{notWatchedNotification}}" matBadgeColor="warn">notifications</mat-icon>
+
   </div>
 
   <div @fadeIn *ngIf="showNotification" class="notificationContainer">
@@ -312,7 +313,7 @@
                 <div class="textNotification" ><strong style="text-transform: uppercase">{{notification.creator}}</strong> {{notification.text}}</div> 
                 <div *ngIf="!notification.watched" class="newTag text-center">new</div>
             </mat-list-item>
-            <mat-divider *ngIf="j != notificationList.length -1 && notificationList.length > 1 "></mat-divider>
+            <mat-divider class="mb-1 mt-1" *ngIf="j != notificationList.length -1 && notificationList.length > 1 "></mat-divider>
         </div>
     
          

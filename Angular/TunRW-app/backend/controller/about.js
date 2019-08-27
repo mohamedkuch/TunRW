@@ -77,10 +77,25 @@ exports.createAboutText = (req,res,next) => {
       text : req.body.text,
       creator: req.body.userId
     });
+    const notification = new Notification({
+      text : 'updated a text in About Section',
+      section : "About",
+      watched : false,
+      creator : req.userData.username
+    });
+
     console.log("updaating", post);
     About.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "Update Successful !"});
+        notification.save().then(notResult => {
+          res.status(200).json({ 
+            message: "Update Successful !",
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+        });
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
@@ -92,9 +107,24 @@ exports.createAboutText = (req,res,next) => {
   }
 
   exports.deleteAboutText = (req, res, next) => {
+    const notification = new Notification({
+      text : 'deleted a text in About Section',
+      section : "About",
+      watched : false,
+      creator : req.userData.username
+    });
+
     About.deleteOne().then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "About Text Deleted !"});
+        notification.save().then(notResult => {
+          res.status(200).json({ 
+            message: "About Text Deleted !",
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+        });
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
