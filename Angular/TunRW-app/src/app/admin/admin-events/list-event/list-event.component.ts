@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material';
 import { AuthService } from '../../auth/auth.service';
 import { Member } from '../../admin-members/member.model';
+import { NotificationService } from '../../header-admin/notifications.service';
 
 @Component({
   selector: 'app-admin-list-event',
@@ -24,6 +25,7 @@ export class AdminListEventsComponent implements OnInit, OnDestroy {
   currentPage = 1;
   pageSizeOptions = [1, 2 , 5, 10];
   constructor(public eventsService: EventService,
+    private notificationService : NotificationService,
     private authService: AuthService) {}
 
 
@@ -44,6 +46,7 @@ export class AdminListEventsComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.eventsService.deleteEvent(eventId).subscribe(() => {
       this.eventsService.getEvent(this.postsPerPage, this.currentPage);
+      this.notificationService.getNotification(5,1);
     });
   }
   private buildMembers(){

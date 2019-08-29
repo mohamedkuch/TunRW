@@ -302,7 +302,8 @@
 
   <div (click)="triggerNotification()" (clickOutside)="showNotification = false" class="notificationWrapper">
 
-      <mat-icon matBadge="{{notWatchedNotification}}" matBadgeColor="warn">notifications</mat-icon>
+    <mat-icon *ngIf="notWatchedNotification > 0" matBadge="{{notWatchedNotification}}" matBadgeColor="warn">notifications</mat-icon>
+    <mat-icon *ngIf="notWatchedNotification == 0" >notifications</mat-icon>
 
   </div>
 

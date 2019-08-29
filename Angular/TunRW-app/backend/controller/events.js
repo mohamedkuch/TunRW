@@ -1,4 +1,5 @@
 const Event = require("../models/events");
+const Notification = require("../models/notifications");
 
 exports.createEvent = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
@@ -12,7 +13,12 @@ exports.createEvent = (req,res,next) => {
       imagesArray.push(imageFullPath); // add at the end 
     });
 
-
+    const notification = new Notification({
+      text : 'created a new Event',
+      section : "Event",
+      watched : false,
+      creator : req.userData.username
+    });
     const post = new Event({
       title : req.body.title,
       date : req.body.date,
@@ -22,18 +28,20 @@ exports.createEvent = (req,res,next) => {
       creator: req.userData.userId
     });
     post.save().then(result => {
-      res.status(201).json({
-        message: 'Post added Successfully',
-        event: {
-         /*
-          title: result.title,
-          date: result.date,     // Equal To
-          adress: result.adress,
-          description: result.description,
-          imagePath: result.imagePath*/
-          ...result,
-          id: result._id
-        }
+      // save notification
+      notification.save().then(notResult => {
+        res.status(201).json({
+          message: 'Post added Successfully',
+          event: {
+            ...result,
+            id: result._id
+          },
+          notification: {
+            ...notResult,
+            id: notResult._id
+          }
+        });
+
       });
     })
     .catch(err =>{
@@ -78,6 +86,12 @@ exports.createEvent = (req,res,next) => {
   exports.updateEvent = (req, res, next) => {
     let imageURL = req.body.imagePath;
 
+    const notification = new Notification({
+      text : 'updated an Event',
+      section : "Event",
+      watched : false,
+      creator : req.userData.username
+    });
 
     if(req.files){
       var imagesArray = new Array();
@@ -104,7 +118,15 @@ exports.createEvent = (req,res,next) => {
     console.log(post);
     Event.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "Update Successful !"});
+        notification.save().then(notResult => {
+          res.status(200).json({ 
+            message: "Update Successful !",
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+        });
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
@@ -116,9 +138,25 @@ exports.createEvent = (req,res,next) => {
   }
 
   exports.deleteEvent = (req, res, next) => {
+
+    const notification = new Notification({
+      text : 'deleted an Event',
+      section : "Event",
+      watched : false,
+      creator : req.userData.username
+    });
+
     Event.deleteOne().then(result =>{
       if(result.n > 0){
-        res.status(200).json({ message: "Event Deleted !"});
+        notification.save().then(notResult => {
+          res.status(200).json({ 
+            message: "Event Deleted !",
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+        });
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }

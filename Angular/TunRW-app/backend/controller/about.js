@@ -84,7 +84,6 @@ exports.createAboutText = (req,res,next) => {
       creator : req.userData.username
     });
 
-    console.log("updaating", post);
     About.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
         notification.save().then(notResult => {
