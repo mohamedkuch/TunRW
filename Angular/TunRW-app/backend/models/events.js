@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-var singleImg = mongoose.Schema({type: String});
-
 const eventSchema = mongoose.Schema({
         title:  {type : String, required: true},
          date:  {type : String, required: true},

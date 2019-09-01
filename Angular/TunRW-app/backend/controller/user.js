@@ -88,7 +88,7 @@ exports.getOneMember = (req, res, next) => {
      if(userData){
         res.status(200).json(userData);
      } else {
-       res.status(404).json({message: 'Event not found!'});
+       res.status(404).json({message: 'Member not found!'});
      }
     });
   }

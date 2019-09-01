@@ -1,54 +1,63 @@
 const Event = require("../models/events");
 const Notification = require("../models/notifications");
+const User = require("../models/user");
 
 exports.createEvent = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
     var imagesArray = new Array();
 
     var imagesArray = []; 
-
+ 
     
     var output = req.files.filter(function(value, index, arr){
       let imageFullPath = url + "/images/" + value["filename"] ; 
       imagesArray.push(imageFullPath); // add at the end 
     });
 
-    const notification = new Notification({
-      text : 'created a new Event',
-      section : "Event",
-      watched : false,
-      creator : req.userData.username
-    });
-    const post = new Event({
-      title : req.body.title,
-      date : req.body.date,
-      adress : req.body.adress,
-      description : req.body.description,
-      imagePath: imagesArray,
-      creator: req.userData.userId
-    });
-    post.save().then(result => {
-      // save notification
-      notification.save().then(notResult => {
-        res.status(201).json({
-          message: 'Post added Successfully',
-          event: {
-            ...result,
-            id: result._id
-          },
-          notification: {
-            ...notResult,
-            id: notResult._id
-          }
+    User.find().select('_id')
+    .then(documents => {
+
+      const notification = new Notification({
+        text : 'created a new Event',
+        section : "Event",
+        watched : documents,
+        creator : req.userData.username
+      });
+      const post = new Event({
+        title : req.body.title,
+        date : req.body.date,
+        adress : req.body.adress,
+        description : req.body.description,
+        imagePath: imagesArray,
+        creator: req.userData.userId
+      });
+      post.save().then(result => {
+        // save notification
+        notification.save().then(notResult => {
+          res.status(201).json({
+            message: 'Post added Successfully',
+            event: {
+              ...result,
+              id: result._id
+            },
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+
         });
 
       });
+
     })
     .catch(err =>{
       res.status(500).json({
         message : "Creating Event Failed!"
       });
     });
+
+
   }
   exports.getAllEvents = (req, res, next) => {
     const pageSize = +req.query.pageSize;
@@ -84,14 +93,8 @@ exports.createEvent = (req,res,next) => {
   }
 
   exports.updateEvent = (req, res, next) => {
-    let imageURL = req.body.imagePath;
 
-    const notification = new Notification({
-      text : 'updated an Event',
-      section : "Event",
-      watched : false,
-      creator : req.userData.username
-    });
+    let imageURL = req.body.imagePath;
 
     if(req.files){
       var imagesArray = new Array();
@@ -115,7 +118,18 @@ exports.createEvent = (req,res,next) => {
       imagePath : imageURL,
       creator: req.body.userId
     });
-    console.log(post);
+
+    User.find().select('_id')
+    .then(documents => {
+   
+   
+    const notification = new Notification({
+      text : 'updated an Event',
+      section : "Event",
+      watched : documents,
+      creator : req.userData.username
+    });
+
     Event.updateOne({ _id: req.params.id },  post).then(result =>{
       if(result.n > 0){
         notification.save().then(notResult => {
@@ -135,16 +149,23 @@ exports.createEvent = (req,res,next) => {
         message : "Update Event Failed!"
       });
     });
+
+    });
   }
 
   exports.deleteEvent = (req, res, next) => {
 
-    const notification = new Notification({
-      text : 'deleted an Event',
-      section : "Event",
-      watched : false,
-      creator : req.userData.username
-    });
+   
+
+    User.find().select('_id')
+    .then(documents => {
+
+      const notification = new Notification({
+        text : 'deleted an Event',
+        section : "Event",
+        watched : documents,
+        creator : req.userData.username
+      });
 
     Event.deleteOne().then(result =>{
       if(result.n > 0){
@@ -165,5 +186,6 @@ exports.createEvent = (req,res,next) => {
         message : "Deleting Event Failed!"
       });
     });
+  });
   
   }

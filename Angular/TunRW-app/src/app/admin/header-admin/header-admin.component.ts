@@ -159,20 +159,38 @@ export class HeaderAdminComponent implements OnInit {
           this.notificationList = data.notifications;
           this.notWatchedNotification = data.notWatchedPost;
 
-
+          console.log("Notifications", this.notificationList);
         });
   }
   triggerNotification(){
     this.showNotification = !this.showNotification;
     if(this.showNotification && this.notWatchedNotification > 0){
       for(let i=0; i< this.notificationList.length; i++){
-        
-        if(this.notificationList[i].watched == false){
-          this.notificationService.updateNotification(this.notificationList[i].id);
-        }
+        let watchedArray = this.notificationList[i].watched;
+          for(let j=0; j< watchedArray.length; j++){
+
+            if(watchedArray[j]["_id"]== this.currentUser.id){
+              console.log("updating", this.notificationList[i]);
+
+              this.notificationService.updateNotification(this.notificationList[i].id);
+              break;
+            }
+          }
 
       }
     }
+  }
+  watchVerification(notification){
+    let watchedArray = notification.watched;
+
+    for(let j=0; j < watchedArray.length; j++){
+      if(this.currentUser.id == watchedArray[j]._id){
+        return true;
+      }
+    }
+
+
+    return false;
   }
   onLogout(){
     this.authService.logout();

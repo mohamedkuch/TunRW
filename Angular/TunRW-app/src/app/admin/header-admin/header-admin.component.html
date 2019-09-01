@@ -312,7 +312,7 @@
         <div *ngFor="let notification of notificationList; let j = index">
             <mat-list-item style="color: white; font-size: 12px; font-style: italic">
                 <div class="textNotification" ><strong style="text-transform: uppercase">{{notification.creator}}</strong> {{notification.text}}</div> 
-                <div *ngIf="!notification.watched" class="newTag text-center">new</div>
+                <div *ngIf="watchVerification(notification)" class="newTag text-center">new</div>
             </mat-list-item>
             <mat-divider class="mb-1 mt-1" *ngIf="j != notificationList.length -1 && notificationList.length > 1 "></mat-divider>
         </div>

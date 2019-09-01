@@ -6,9 +6,18 @@ const Notification = require("../models/notifications");
     const currentPage = +req.query.page;
     const postQuery = Notification.find().sort({_id: -1});
     let fetchedPosts;
-    let notWatchedPost;
-    Notification.count({ watched: false }, function (err, count) {
-      notWatchedPost = count;
+    let notWatchedPost = 0;
+    
+    Notification.find( function (err, documents) {
+      for(let i=0; i < documents.length; i++){
+        let watchedArray = documents[i].watched;
+        for(let j=0; j < watchedArray.length; j++){
+          if(req.userData.userId == watchedArray[j]._id){
+            notWatchedPost++;
+            break;
+          }
+        }
+      }
     });
     if( pageSize && currentPage) {
       postQuery
@@ -44,9 +53,16 @@ const Notification = require("../models/notifications");
     
   }
   exports.updateNotification = (req, res, next) => {
+
     Notification.findById(req.params.id).then(post =>{
         if(post){
-            post.watched = true;
+            let watchedArray = post.watched;
+            for(let j=0; j < watchedArray.length; j++){
+              if(req.userData.userId == watchedArray[j]._id){
+                post.watched.splice(j,1);
+                break;
+              }
+            }
             Notification.updateOne({ _id: req.params.id },  post).then(result =>{
                 if(result.n > 0){
                   res.status(200).json({ message: "Update Successful !"});

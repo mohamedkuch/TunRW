@@ -6,10 +6,14 @@ exports.createAboutText = (req,res,next) => {
       text : req.body.text,
       creator: req.userData.userId
     });
+    var watched = {
+      id: "zzzz",
+      ver: false
+    }
     const notification = new Notification({
       text : 'created a new text in About Section',
       section : "About",
-      watched : false,
+      watched : watched,
       creator : req.userData.username
     });
     post.save().then(result => {
