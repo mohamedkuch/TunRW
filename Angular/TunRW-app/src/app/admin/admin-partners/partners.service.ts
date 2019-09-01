@@ -51,6 +51,7 @@ export class PartnerService {
     const postData = new FormData();
     postData.append('title', title);
     postData.append('image', image, title);
+    console.log("adding partner", postData);
     this.http.post<{message: string, partner: Partner}>(BACKEND_URL, postData)
     .subscribe((data) => {
       this.router.navigate(['/admin/Partners']);

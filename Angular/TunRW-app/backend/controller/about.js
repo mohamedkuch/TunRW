@@ -1,19 +1,20 @@
 const About = require("../models/about");
 const Notification = require("../models/notifications");
+const User = require("../models/user");
 
 exports.createAboutText = (req,res,next) => {
     const post = new About({
       text : req.body.text,
       creator: req.userData.userId
     });
-    var watched = {
-      id: "zzzz",
-      ver: false
-    }
+
+    User.find().select('_id')
+    .then(documents => {
+
     const notification = new Notification({
       text : 'created a new text in About Section',
       section : "About",
-      watched : watched,
+      watched : documents,
       creator : req.userData.username
     });
     post.save().then(result => {
@@ -39,6 +40,8 @@ exports.createAboutText = (req,res,next) => {
       res.status(500).json({
         message : "Creating About Text Failed!"
       });
+    });
+
     });
   }
   exports.getAllAboutText = (req, res, next) => {
@@ -81,60 +84,66 @@ exports.createAboutText = (req,res,next) => {
       text : req.body.text,
       creator: req.body.userId
     });
-    const notification = new Notification({
-      text : 'updated a text in About Section',
-      section : "About",
-      watched : false,
-      creator : req.userData.username
-    });
+    User.find().select('_id')
+    .then(documents => {
 
-    About.updateOne({ _id: req.params.id },  post).then(result =>{
-      if(result.n > 0){
-        notification.save().then(notResult => {
-          res.status(200).json({ 
-            message: "Update Successful !",
-            notification: {
-              ...notResult,
-              id: notResult._id
-            }
+      const notification = new Notification({
+        text : 'updated a text in About Section',
+        section : "About",
+        watched : documents,
+        creator : req.userData.username
+      });
+
+      About.updateOne({ _id: req.params.id },  post).then(result =>{
+        if(result.n > 0){
+          notification.save().then(notResult => {
+            res.status(200).json({ 
+              message: "Update Successful !",
+              notification: {
+                ...notResult,
+                id: notResult._id
+              }
+            });
           });
+        }else {
+          res.status(401).json({  message : "Not Authorized!"});
+        }
+      }).catch(error => {
+        res.status(500).json({
+          message : "Update About Failed!"
         });
-      }else {
-        res.status(401).json({  message : "Not Authorized!"});
-      }
-     }).catch(error => {
-      res.status(500).json({
-        message : "Update About Failed!"
       });
     });
   }
 
   exports.deleteAboutText = (req, res, next) => {
-    const notification = new Notification({
-      text : 'deleted a text in About Section',
-      section : "About",
-      watched : false,
-      creator : req.userData.username
-    });
-
-    About.deleteOne().then(result =>{
-      if(result.n > 0){
-        notification.save().then(notResult => {
-          res.status(200).json({ 
-            message: "About Text Deleted !",
-            notification: {
-              ...notResult,
-              id: notResult._id
-            }
-          });
-        });
-      }else {
-        res.status(401).json({  message : "Not Authorized!"});
-      }
-    }).catch(error => {
-      res.status(500).json({
-        message : "Deleting About Text Failed!"
+    User.find().select('_id')
+    .then(documents => {
+      const notification = new Notification({
+        text : 'deleted a text in About Section',
+        section : "About",
+        watched : documents,
+        creator : req.userData.username
       });
-    });
-  
+
+      About.deleteOne().then(result =>{
+        if(result.n > 0){
+          notification.save().then(notResult => {
+            res.status(200).json({ 
+              message: "About Text Deleted !",
+              notification: {
+                ...notResult,
+                id: notResult._id
+              }
+            });
+          });
+        }else {
+          res.status(401).json({  message : "Not Authorized!"});
+        }
+      }).catch(error => {
+        res.status(500).json({
+          message : "Deleting About Text Failed!"
+        });
+      });
+  });
   }

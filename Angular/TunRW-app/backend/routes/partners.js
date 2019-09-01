@@ -4,7 +4,7 @@ const extractFile = require('../middleware/file');
 const partnersController = require("../controller/partners");
 const router = express.Router();
 
-router.post('', checkAuth, extractFile, partnersController.createPartner);
+router.post("", checkAuth, extractFile, partnersController.createPartner);
 
 router.get('', partnersController.getAllPartners);
 
