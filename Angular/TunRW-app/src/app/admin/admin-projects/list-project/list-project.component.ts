@@ -5,6 +5,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Member } from '../../admin-members/member.model';
 import { Project } from '../projects.modal';
 import { ProjectService } from '../projects.service';
+import { NotificationService } from '../../header-admin/notifications.service';
 
 @Component({
   selector: 'app-admin-list-project',
@@ -24,7 +25,8 @@ export class AdminListProjectsComponent implements OnInit, OnDestroy {
   currentPage = 1;
   pageSizeOptions = [1, 2 , 5, 10];
   constructor(public projectService: ProjectService,
-    private authService: AuthService) {}
+              public notificationService : NotificationService,
+              private authService: AuthService) {}
 
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class AdminListProjectsComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.projectService.deleteProject(projectId).subscribe(() => {
       this.projectService.getProject(this.postsPerPage, this.currentPage);
+      this.notificationService.getNotification(5,1);
     });
   }
   private buildMembers(){
