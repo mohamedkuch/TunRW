@@ -10,13 +10,15 @@ const BACKEND_URL = environment.apiUrl + "/notifications";
 @Injectable({providedIn: 'root'})
 export class NotificationService {
   private notifications: Notification[] = [];
-  private notificationsUpdated = new Subject<{notifications: Notification[] , postCount: number, notWatchedPost:number}>();
+  private notWatchedNot: any;
+  private notificationsUpdated = new Subject<{notifications: Notification[] , postCount: number}>();
+  private notificationsNotWatchedUpdated = new Subject<{notWatchedPost: number}>();
 
   constructor(private http: HttpClient, private router: Router) {}
   // get All Notifications
   getNotification(postsPerPage: number, currentPage: number) {
     const queryParams = `?pageSize=${postsPerPage}&page=${currentPage}`;
-    this.http.get<{message: string, notifications: any, maxPosts: number, notWatchedPost: number}>(BACKEND_URL + queryParams)
+    this.http.get<{message: string, notifications: any, maxPosts: number}>(BACKEND_URL + queryParams)
       .pipe(map((data) => {
           return {
             notifications : data.notifications.map(post => {
@@ -29,15 +31,27 @@ export class NotificationService {
               };
             }) ,
             maxPosts : data.maxPosts,
-            notWatchedPost: data.notWatchedPost
         };
       }))
       .subscribe((finalData) => {
             this.notifications = finalData.notifications;
-            this.notificationsUpdated.next({notifications: [...this.notifications] , postCount : finalData.maxPosts, notWatchedPost : finalData.notWatchedPost});
+            this.notificationsUpdated.next({notifications: [...this.notifications] , postCount : finalData.maxPosts});
       });
   }
 
+
+  getNotWatchedNotification() {
+    this.http.get<{message: string, notWatchedPost: number}>(BACKEND_URL + "/notWatched")
+    .pipe(map((data) => {
+      console.log("zzzz", data);
+      return data;
+    
+    }))
+    .subscribe((finalData) => {
+          this.notWatchedNot = finalData.notWatchedPost;
+          this.notificationsNotWatchedUpdated.next({notWatchedPost : finalData.notWatchedPost});
+    });
+  }
 
 
   // update Notification
@@ -53,6 +67,9 @@ export class NotificationService {
   // Notification Update Listener (listen on every change)
   getNotificationUpdateListener() {
     return this.notificationsUpdated.asObservable();
+  }
+  getNotWatchedNotificationUpdateListener() {
+    return this.notificationsNotWatchedUpdated.asObservable();
   }
 
 }

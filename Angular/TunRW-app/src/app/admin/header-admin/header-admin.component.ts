@@ -34,6 +34,8 @@ export class HeaderAdminComponent implements OnInit {
   notificationSub: Subscription;
   totalNotification : Number;
   notWatchedNotification : Number;
+  notWatchedNotificationSub : Subscription;
+
 
   isLoading : Boolean;
   eventCreateFlag = false;
@@ -150,6 +152,7 @@ export class HeaderAdminComponent implements OnInit {
     console.log('user', this.currentUser);
     console.log('user', this.authService.getTokenExpirationDate());
     this.isLoading = true;
+    // get notifications
     this.notificationService.getNotification(5, 1);
     this.notificationSub = this.notificationService.getNotificationUpdateListener()
       .subscribe(
@@ -157,10 +160,15 @@ export class HeaderAdminComponent implements OnInit {
           this.isLoading = false;
           this.totalNotification = data.postCount;
           this.notificationList = data.notifications;
-          this.notWatchedNotification = data.notWatchedPost;
-
           console.log("Notifications", this.notificationList);
         });
+    // get not watched notifications
+    this.notificationService.getNotWatchedNotification();
+    this.notWatchedNotificationSub = this.notificationService.getNotWatchedNotificationUpdateListener()
+        .subscribe((data) => {
+          console.log("zzzz", data);
+          this.notWatchedNotification = data.notWatchedPost;
+    });
   }
   triggerNotification(){
     this.showNotification = !this.showNotification;

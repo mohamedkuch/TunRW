@@ -1,24 +1,33 @@
 const Notification = require("../models/notifications");
 
+exports.getNotWatchedNotifications = (req, res, next) => {
+  const postQuery = Notification.find().sort({_id: -1});
+  let notWatchedPost = 0;
+  postQuery.find().then(documents => {
+      // notWatched Notification
+        for(let i=0; i < documents.length; i++){
+          let watchedArray = documents[i].watched;
+          for(let j=0; j < watchedArray.length; j++){
+            if(req.userData.userId == watchedArray[j]._id){
+              notWatchedPost++;
+              break;
+            }
+          }
+        }
+      }).then(data =>{
+      res.status(200).json({
+        message: 'Not Watched notifications fetched Succesfully!',
+        notWatchedPost: notWatchedPost,
+      });
+  });
+}
 
   exports.getAllNotifications= (req, res, next) => {
     const pageSize = +req.query.pageSize;
     const currentPage = +req.query.page;
     const postQuery = Notification.find().sort({_id: -1});
     let fetchedPosts;
-    let notWatchedPost = 0;
-    
-    Notification.find( function (err, documents) {
-      for(let i=0; i < documents.length; i++){
-        let watchedArray = documents[i].watched;
-        for(let j=0; j < watchedArray.length; j++){
-          if(req.userData.userId == watchedArray[j]._id){
-            notWatchedPost++;
-            break;
-          }
-        }
-      }
-    });
+   
     if( pageSize && currentPage) {
       postQuery
         .skip(pageSize * (currentPage - 1))
@@ -32,7 +41,6 @@ const Notification = require("../models/notifications");
           message: 'Notifications fetched Succesfully!',
           notifications: fetchedPosts,
           maxPosts: data,
-          notWatchedPost: notWatchedPost,
         });
       });
   

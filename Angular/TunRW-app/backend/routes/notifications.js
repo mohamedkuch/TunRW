@@ -4,7 +4,8 @@ const notificationController = require("../controller/notifications");
 const router = express.Router();
 
 
-router.get('', checkAuth, notificationController.getAllNotifications);
+router.get('', notificationController.getAllNotifications);
+router.get('/notWatched',checkAuth, notificationController.getNotWatchedNotifications);
 router.delete('', notificationController.deleteNotifications);
 router.put('/:id', checkAuth, notificationController.updateNotification);
 
