@@ -47,6 +47,7 @@ export class AdminListEventsComponent implements OnInit, OnDestroy {
     this.eventsService.deleteEvent(eventId).subscribe(() => {
       this.eventsService.getEvent(this.postsPerPage, this.currentPage);
       this.notificationService.getNotification(5,1);
+      this.notificationService.getNotWatchedNotification();
     });
   }
   private buildMembers(){

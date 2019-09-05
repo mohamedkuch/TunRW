@@ -47,6 +47,7 @@ export class AdminListProjectsComponent implements OnInit, OnDestroy {
     this.projectService.deleteProject(projectId).subscribe(() => {
       this.projectService.getProject(this.postsPerPage, this.currentPage);
       this.notificationService.getNotification(5,1);
+      this.notificationService.getNotWatchedNotification();
     });
   }
   private buildMembers(){

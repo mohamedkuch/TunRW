@@ -47,6 +47,7 @@ export class AdminListAboutTextComponent implements OnInit, OnDestroy {
     this.aboutTextService.deleteAboutText(aboutTextId).subscribe(() => {
       this.aboutTextService.getAboutText(this.postsPerPage, this.currentPage);
       this.notificationService.getNotification(5,1);
+      this.notificationService.getNotWatchedNotification();
     });
   }
   private buildMembers(){
