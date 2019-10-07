@@ -1,155 +1,156 @@
 <app-header-admin></app-header-admin>
    <div class="mainContainerEvent">
-     <!-- Card Section -->
-     <div class="container mt-5">
-       <div class="row">
-         <div class="col-xs-4">
-           <div class="cardContainer">
-             <h2 class="cardValue">23</h2>
-             <h1 class="cardIcon pl-4 mt-5"><i class="fas fa-users"></i></h1>
-             <br/>
-             <h1 class="ml-5 mt-5">Members</h1>
-           </div>
-         </div>
-         <div class="col-xs-4">
-           <div class="cardContainer">
-             <h2 class="cardValueDate">25/05</h2>
-             <h1 class="cardIcon pl-4 mt-5"><i class="fas fa-bullhorn"></i></h1>
-             <br/>
-             <h1 class="ml-5 mt-5">Next Event</h1>
-           </div>
-         </div>
-         <div class="col-xs-4">
-           <div class="cardContainer">
-             <h2 class="cardValue">23</h2>
-             <h1 class="cardIcon pl-4 mt-5" ><i class="fas fa-gem"></i></h1>
-             <br/>
-             <h1 class="ml-5 mt-5">Project</h1>
-           </div>
-         </div>
+   
+   <!-- Card Section 1 -->
+   <div class="container mt-5">
+      <div class="row">
+       
+     
+        <div class="col-xs-4">
+            <div class="cardContainer">
+              <div class="top">
+                  <h2 class="cardValue">3</h2>
+                  <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-dice-d6"></i></h1>
+              </div>
+              <div class="cardTitle">
+                  Services
+              </div>
 
-       </div>
+            </div>
+          </div>
+        <div class="col-xs-4">
+            <div class="cardContainer">
+              <div class="top">
+                  <h2 class="cardValue">5</h2>
+                  <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-bullhorn"></i></h1>
+              </div>
+              <div class="cardTitle">
+                  Events
+              </div>
 
-     </div>
+            </div>
+          </div>
+       
+        <div class="col-xs-4">
+            <div class="cardContainer">
+              <div class="top">
+                  <h2 class="cardValue">20</h2>
+                  <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-gem"></i></h1>
+              </div>
+              <div class="cardTitle">
+                  Project
+              </div>
+
+            </div>
+          </div>
+      </div>
+
+    </div>
+      <!-- Card Section 2 -->
+      <div class="container mt-5">
+          <div class="row">
+           
+         
+            <div class="col-xs-4">
+                <div class="cardContainer">
+                  <div class="top">
+                      <h2 class="cardValue">3</h2>
+                      <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-hands-helping"></i></h1>
+                  </div>
+                  <div class="cardTitle">
+                      Partners
+                  </div>
+
+                </div>
+              </div>
+            <div class="col-xs-4">
+                <div class="cardContainer">
+                  <div class="top">
+                      <h2 class="cardValue">23</h2>
+                      <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-users"></i></h1>
+                  </div>
+                  <div class="cardTitle">
+                      Members
+                  </div>
+
+                </div>
+              </div>
+           
+            <div class="col-xs-4">
+                <div class="cardContainer">
+                  <div class="top">
+                      <h2 class="cardValue">10</h2>
+                      <h1 class="cardIcon pl-5 mt-5"><i class="fas fa-info-circle"></i></h1>
+                  </div>
+                  <div class="cardTitle">
+                      About
+                  </div>
+
+                </div>
+              </div>
+          </div>
+    
+        </div>
+          
 
      <!-- Main Tabs -->
      <div class="container mt-5">
        <div class="row">
-         <!-- History Tab -->
-         <div class="col-xs-7 ">
-           <div class=" historyTab">
-             <div class="widgetTitleWrapper pb-2">
-               <h3 class="widgetTitle pl-3">History</h3>
-             </div>
-             <div style="display: block">
-               <canvas baseChart
-                       [datasets]="barChartData"
-                       [labels]="barChartLabels"
-                       [options]="barChartOptions"
-                       [legend]="barChartLegend"
-                       [chartType]="barChartType">
-               </canvas>
-             </div>
-           </div>
-         </div>
+     
 
-         <!-- Activity Tab -->
-         <div class="col-xs-5 ">
-           <div class="eventTab">
-             <div class="widgetTitleWrapper pb-2">
-               <h3 class="widgetTitle pl-3">Latest Events</h3>
-               <a routerLink="/admin/Events" class="viewAllBadge"><i class="fas fa-edit"></i> Edit</a>
-             </div>
+        <hr class="normalHr"/>
+    
+          <!-- notification Tab -->
+        <div class="col-xs-6 mt-5 mb-5">
+          <div class="membersTab">
+            <div class="widgetTitleWrapper pb-2 mb-5">
+              <h3 class="widgetTitle pl-3">Notifications</h3>
+              <a routerLink="" class="viewAllBadge" ><i class="fas fa-glasses mr-2"></i>Read All</a>
+            </div>
 
-             <div class="widgetTitleWrapper pb-2">
-               <span class="eventDate"><i class="fas fa-calendar-alt pr-1 pl-1"></i>11/07</span>
-               <h3 class="ml-4">Event Title</h3>
-             </div>
-             <div class="widgetTitleWrapper pb-2">
-               <span class="eventDate"><i class="fas fa-calendar-alt pr-1 pl-1"></i>11/07</span>
-               <h3 class="ml-4">Event Title</h3>
-             </div>
-             <div class="widgetTitleWrapper pb-2">
-               <span class="eventDate"><i class="fas fa-calendar-alt pr-1 pl-1"></i>11/07</span>
-               <h3 class="ml-4">Event Title</h3>
-             </div>
-             <div class="widgetTitleWrapper pb-2">
-               <span class="eventDate"><i class="fas fa-calendar-alt pr-1 pl-1"></i>11/07</span>
-               <h3 class="ml-4">Event Title</h3>
-             </div>
-             <div class="widgetTitleWrapper pb-2">
-               <span class="eventDate"><i class="fas fa-calendar-alt pr-1 pl-1"></i>11/07</span>
-               <h3 class="ml-4">Event Title</h3>
-             </div>
-           </div>
-         </div>
+                  <mat-spinner class="mt-5 mb-5" *ngIf="isLoadingNotifications"></mat-spinner>
+                  
+                      <div *ngFor="let notification of notificationList; let j = index">
+                          <div class="notificationItem">
+                              <span *ngIf="watchVerification(notification)" class="newTag"><i class="fas fa-star mr-2"></i>new</span>
+                              <span style="text-transform: uppercase" class="notCreator">{{notification.creator}}</span>
+                              <span class=" " > - {{notification.text}}</span>
+                          </div>
+                        <hr *ngIf="notificationList.length -1 != j" class="normalHr"/>
 
-         <!-- Members Tab -->
-         <div class="col-xs-12 mt-5">
-           <div class="membersTab">
-             <div class="widgetTitleWrapper pb-2">
-               <h3 class="widgetTitle pl-3">Members</h3>
-               <a routerLink="/admin/Events" class="viewAllBadge" ><i class="fas fa-edit"></i> Edit</a>
-             </div>
+                      </div>
 
-             <table class="table table-striped">
-               <thead>
-               <tr>
-                 <th scope="col">#</th>
-                 <th scope="col">Name</th>
-                 <th scope="col">Username</th>
-                 <th scope="col">Role</th>
-                 <th scope="col">Status</th>
-               </tr>
-               </thead>
-               <tbody>
-               <tr>
-                 <th scope="row">1</th>
-                 <td>Mark</td>
-                 <td>Otto</td>
-                 <td>@mdo</td>
-                 <td>Active</td>
-               </tr>
-               <tr>
-                 <th scope="row">2</th>
-                 <td>Jacob</td>
-                 <td>Thornton</td>
-                 <td>@fat</td>
-                 <td>Active</td>
-               </tr>
-               <tr>
-                 <th scope="row">3</th>
-                 <td>Larry</td>
-                 <td>the Bird</td>
-                 <td>@twitter</td>
-                 <td>Active</td>
-               </tr>
-               <tr>
-                 <th scope="row">4</th>
-                 <td>Mark</td>
-                 <td>Otto</td>
-                 <td>@mdo</td>
-                 <td>Active</td>
-               </tr>
-               <tr>
-                 <th scope="row">5</th>
-                 <td>Jacob</td>
-                 <td>Thornton</td>
-                 <td>@fat</td>
-                 <td>Active</td>
-               </tr>
-               <tr>
-                 <th scope="row">6</th>
-                 <td>Larry</td>
-                 <td>the Bird</td>
-                 <td>@twitter</td>
-                 <td>Active</td>
-               </tr>
-               </tbody>
-             </table>
-           </div>
-         </div>
+              <div class="row mt-5 mb-5" *ngIf="notificationList.length == 0 && !isLoadingNotifications">
+                  <h3 class="text-center"> No Notifications found !</h3>
+              </div>
+              <mat-paginator class="mt-5" style="border-top: 1px solid #d8d8d8;"  *ngIf="notificationList.length > 0 " [length]="totalNotifications" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangePage($event)"></mat-paginator>
 
-       </div>
+
+          </div>
+        </div>
+            
+        <!-- History Tab 
+        <div class="col-xs-7  mt-5 mb-5">
+            <div class=" historyTab">
+              <div class="widgetTitleWrapper pb-2">
+                <h3 class="widgetTitle pl-3">History</h3>
+              </div>
+              <div style="display: block">
+                <canvas baseChart
+                        [datasets]="barChartData"
+                        [labels]="barChartLabels"
+                        [options]="barChartOptions"
+                        [legend]="barChartLegend"
+                        [chartType]="barChartType">
+                </canvas>
+              </div>
+            </div>
+          </div>
+
+
+        -->
+       
+      
+      </div>
      </div>
    </div>

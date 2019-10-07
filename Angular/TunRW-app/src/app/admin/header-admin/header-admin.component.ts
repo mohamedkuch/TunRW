@@ -30,7 +30,7 @@ export class HeaderAdminComponent implements OnInit {
   showNotification = false;
   currentUrl: string;
   currentUser: Member;
-  notificationList: Notification[]= [];
+  notificationArray: Notification[]= [];
   notificationSub: Subscription;
   totalNotification : Number;
   notWatchedNotification : Number;
@@ -156,11 +156,11 @@ export class HeaderAdminComponent implements OnInit {
     this.notificationService.getNotification(5, 1);
     this.notificationSub = this.notificationService.getNotificationUpdateListener()
       .subscribe(
-        (data:{ notifications : Notification[] ,postCount : number, notWatchedPost: number} ) => {
+        (data:{ notifications : Notification[] ,postCount : number} ) => {
           this.isLoading = false;
           this.totalNotification = data.postCount;
-          this.notificationList = data.notifications;
-          console.log("Notifications", this.notificationList);
+          this.notificationArray = data.notifications;
+          console.log("Notifications", this.notificationArray);
         });
     // get not watched notifications
     this.notificationService.getNotWatchedNotification();
@@ -173,14 +173,14 @@ export class HeaderAdminComponent implements OnInit {
   triggerNotification(){
     this.showNotification = !this.showNotification;
     if(this.showNotification && this.notWatchedNotification > 0){
-      for(let i=0; i< this.notificationList.length; i++){
-        let watchedArray = this.notificationList[i].watched;
+      for(let i=0; i< this.notificationArray.length; i++){
+        let watchedArray = this.notificationArray[i].watched;
           for(let j=0; j< watchedArray.length; j++){
 
             if(watchedArray[j]["_id"]== this.currentUser.id){
-              console.log("updating", this.notificationList[i]);
+              console.log("updating", this.notificationArray[i]);
 
-              this.notificationService.updateNotification(this.notificationList[i].id);
+              this.notificationService.updateNotification(this.notificationArray[i].id);
               break;
             }
           }
