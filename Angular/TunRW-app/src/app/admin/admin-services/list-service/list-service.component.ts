@@ -6,6 +6,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Member } from '../../admin-members/member.model';
 import { Service } from '../services.modal';
 import { AdminService } from '../adminService.service';
+import { NotificationService } from '../../header-admin/notifications.service';
 
 @Component({
   selector: 'app-admin-list-service',
@@ -25,6 +26,7 @@ export class AdminListServicesComponent implements OnInit, OnDestroy {
   currentPage = 1;
   pageSizeOptions = [1, 2 , 5, 10];
   constructor(public adminService: AdminService,
+    public notificationService : NotificationService,
     private authService: AuthService) {}
 
 
@@ -45,6 +47,8 @@ export class AdminListServicesComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.adminService.deleteService(serviceId).subscribe(() => {
       this.adminService.getService(this.postsPerPage, this.currentPage);
+      this.notificationService.getNotification(5,1);
+      this.notificationService.getNotWatchedNotification();
     });
   }
   private buildMembers(){

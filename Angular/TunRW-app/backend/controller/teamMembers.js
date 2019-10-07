@@ -5,7 +5,7 @@ exports.createTeamMember = (req,res,next) => {
     const post = new TeamMember({
       title : req.body.title,
       position : req.body.position,
-      imagePath: url + "/images/" + req.file.filename,
+      imagePath: url + "/images/" + req.files[0].filename,
       creator: req.userData.userId
     });
     post.save().then(result => {

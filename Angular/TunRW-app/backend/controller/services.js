@@ -1,4 +1,6 @@
 const Service = require("../models/services");
+const Notification = require("../models/notifications");
+const User = require("../models/user");
 
 exports.createService = (req,res,next) => {
     const url = req.protocol + '://' + req.get("host");
@@ -11,29 +13,45 @@ exports.createService = (req,res,next) => {
           message : "Creating Service Failed , you reach the limit !"
         });
       }else {
-
-        const post = new Service({
-          icon: req.body.icon,
-          title : req.body.title,
-          description : req.body.description,
-          creator: req.userData.userId
-        });
-    
-        post.save().then(result => {
-          res.status(201).json({
-            message: 'Post added Successfully',
-            serive: {
-              ...result,
-              id: result._id
-            }
+        User.find().select('_id')
+        .then(documents => {
+          const notification = new Notification({
+            text : 'created a new Service',
+            section : "Service",
+            watched : documents,
+            creator : req.userData.username
           });
-        }).catch(err =>{
-          res.status(500).json({
-            message : "Creating Service Failed!"
+          const post = new Service({
+            icon: req.body.icon,
+            title : req.body.title,
+            description : req.body.description,
+            creator: req.userData.userId
           });
-    
-        });
+      
+          post.save().then(result => {
+              // save notification
+            notification.save().then(notResult => {
+              res.status(201).json({
+                message: 'Post added Successfully',
+                service: {
+                  ...result,
+                  id: result._id
+                },
+                notification: {
+                  ...notResult,
+                  id: notResult._id
+                }
+              });
 
+            });
+
+          }).catch(err =>{
+            res.status(500).json({
+              message : "Creating Service Failed!"
+            });
+      
+          });
+        });
       }
   
 
@@ -84,24 +102,62 @@ exports.createService = (req,res,next) => {
       description : req.body.description,
       creator: req.body.userId
     });
-    Service.updateOne({ _id: req.params.id }, post).then(result =>{
-      if(result.n > 0){
-        res.status(200).json({ message: "Update Successful !"});
-      }else {
-        res.status(401).json({  message : "Not Authorized!"});
-      }
-     }).catch(error => {
-      res.status(500).json({
-        message : "Update Service Failed!",
-        err: error
+    User.find().select('_id')
+    .then(documents => {
+      const notification = new Notification({
+        text : 'updated a Service',
+        section : "Service",
+        watched : documents,
+        creator : req.userData.username
+      });
+      Service.updateOne({ _id: req.params.id }, post).then(result =>{
+        if(result.n > 0){
+          notification.save().then(notResult => {
+            res.status(200).json({ 
+              message: "Update Successful !",
+              notification: {
+                ...notResult,
+                id: notResult._id
+              }
+            });
+          });
+        }else {
+          res.status(401).json({  message : "Not Authorized!"});
+        }
+      }).catch(error => {
+        res.status(500).json({
+          message : "Update Service Failed!",
+          err: error
+        });
       });
     });
   }
 
-  exports.deleteService = (req, res, next) => {
+exports.deleteService = (req, res, next) => {
+  User.find().select('_id')
+  .then(documents => {
+
+      const notification = new Notification({
+        text : 'deleted a Service',
+        section : "Service",
+        watched : documents,
+        creator : req.userData.username
+      });
+
+
     Service.deleteOne().then(result =>{
+
       if(result.n > 0){
-        res.status(200).json({ message: "Service Deleted !"});
+        notification.save().then(notResult => {
+          res.status(200).json({ 
+            message: "Service Deleted !",
+            notification: {
+              ...notResult,
+              id: notResult._id
+            }
+          });
+        });
+
       }else {
         res.status(401).json({  message : "Not Authorized!"});
       }
@@ -110,5 +166,7 @@ exports.createService = (req,res,next) => {
         message : "Deleting Service Failed!"
       });
     });
+
+  });
   
-  }
+}
