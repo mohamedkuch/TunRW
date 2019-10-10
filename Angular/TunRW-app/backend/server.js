@@ -11,7 +11,7 @@ const normalizePort = val => {
   }
 
   if (port >= 0) {
-    // port number
+    // port numbers
     return port;
   }
 
