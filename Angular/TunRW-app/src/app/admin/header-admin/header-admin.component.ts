@@ -188,6 +188,7 @@ export class HeaderAdminComponent implements OnInit {
       }
     }
   }
+  
   watchVerification(notification){
     let watchedArray = notification.watched;
 
@@ -203,6 +204,15 @@ export class HeaderAdminComponent implements OnInit {
   onLogout(){
     this.authService.logout();
     console.log('user Logged out !', this.authService.getAuthStatus());
+  }
+
+  onViewAllNotClick() {
+
+    this.router.navigate(['/admin/']).then(() => {
+        document.getElementById("notificationContainer").scrollIntoView({
+          behavior: "smooth"
+        });
+    });
   }
 
 

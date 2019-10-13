@@ -101,11 +101,12 @@
         <hr class="normalHr"/>
     
           <!-- notification Tab -->
-        <div class="col-xs-6 mt-5 mb-5">
+        <div id="notificationContainer" class="col-xs-12 mt-5 mb-5">
           <div class="membersTab">
+            <span class="widgetIcon"><mat-icon style="color:white">notifications</mat-icon></span>
             <div class="widgetTitleWrapper pb-2 mb-5">
-              <h3 class="widgetTitle pl-3">Notifications</h3>
-              <a routerLink="" class="viewAllBadge" ><i class="fas fa-glasses mr-2"></i>Read All</a>
+              <h3 class="widgetTitle">Notifications</h3>
+              <a class="viewAllBadge" (click)="readAllNotifications()" ><i class="fas fa-glasses mr-2"></i>Read All</a>
             </div>
 
                   <mat-spinner class="mt-5 mb-5" *ngIf="isLoadingNotifications"></mat-spinner>

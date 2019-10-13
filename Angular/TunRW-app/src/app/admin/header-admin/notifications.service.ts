@@ -11,8 +11,9 @@ const BACKEND_URL = environment.apiUrl + "/notifications";
 export class NotificationService {
   private notifications: Notification[] = [];
   private notWatchedNot: any;
+  private notWatchedPostList : any;
   private notificationsUpdated = new Subject<{notifications: Notification[] , postCount: number}>();
-  private notificationsNotWatchedUpdated = new Subject<{notWatchedPost: number}>();
+  private notificationsNotWatchedUpdated = new Subject<{notWatchedPost: number, notWatchedPostList:any}>();
 
   constructor(private http: HttpClient, private router: Router) {}
   // get All Notifications
@@ -41,7 +42,7 @@ export class NotificationService {
 
 
   getNotWatchedNotification() {
-    this.http.get<{message: string, notWatchedPost: number}>(BACKEND_URL + "/notWatched")
+    this.http.get<{message: string, notWatchedPost: number, notWatchedPostList:any}>(BACKEND_URL + "/notWatched")
     .pipe(map((data) => {
       console.log("zzzz", data);
       return data;
@@ -49,7 +50,8 @@ export class NotificationService {
     }))
     .subscribe((finalData) => {
           this.notWatchedNot = finalData.notWatchedPost;
-          this.notificationsNotWatchedUpdated.next({notWatchedPost : finalData.notWatchedPost});
+          this.notWatchedPostList = finalData.notWatchedPostList;
+          this.notificationsNotWatchedUpdated.next({notWatchedPost : finalData.notWatchedPost, notWatchedPostList: finalData.notWatchedPostList});
     });
   }
 
@@ -63,6 +65,8 @@ export class NotificationService {
        const oldNotificationIndex = updateNotification.findIndex(p => p.id === id);
       });
   }
+
+
 
   // Notification Update Listener (listen on every change)
   getNotificationUpdateListener() {

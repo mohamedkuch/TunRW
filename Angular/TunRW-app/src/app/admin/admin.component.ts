@@ -38,6 +38,8 @@ export class AdminComponent implements OnInit {
   notWatchedNotificationSub: Subscription;
   currentUser: Member;
 
+  notWatchedPostList : any;
+
   constructor(private authService: AuthService,
     private notificationService : NotificationService) { }
 
@@ -60,6 +62,7 @@ export class AdminComponent implements OnInit {
         .subscribe((data) => {
           console.log("not Watched Not", data);
           this.notWatchedNotification = data.notWatchedPost;
+          this.notWatchedPostList = data.notWatchedPostList;
     });
   }
 
@@ -81,5 +84,15 @@ export class AdminComponent implements OnInit {
 
     return false;
   }
+  readAllNotifications(){
+    //const allNot = this.notificationService.getNotification(this.totalNotifications, 1);
 
+    for(let j=0; j < this.notWatchedPostList.length; j++){
+
+      this.notificationService.updateNotification(this.notWatchedPostList[j]["_id"]);
+
+    }
+
+
+  }
 }

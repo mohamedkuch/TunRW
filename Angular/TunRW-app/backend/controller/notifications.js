@@ -3,6 +3,7 @@ const Notification = require("../models/notifications");
 exports.getNotWatchedNotifications = (req, res, next) => {
   const postQuery = Notification.find().sort({_id: -1});
   let notWatchedPost = 0;
+  let notWatchedPostList = [];
   postQuery.find().then(documents => {
       // notWatched Notification
         for(let i=0; i < documents.length; i++){
@@ -10,6 +11,7 @@ exports.getNotWatchedNotifications = (req, res, next) => {
           for(let j=0; j < watchedArray.length; j++){
             if(req.userData.userId == watchedArray[j]._id){
               notWatchedPost++;
+              notWatchedPostList.push(documents[i]);
               break;
             }
           }
@@ -18,6 +20,7 @@ exports.getNotWatchedNotifications = (req, res, next) => {
       res.status(200).json({
         message: 'Not Watched notifications fetched Succesfully!',
         notWatchedPost: notWatchedPost,
+        notWatchedPostList: notWatchedPostList
       });
   });
 }

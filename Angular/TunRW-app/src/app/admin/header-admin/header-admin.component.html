@@ -154,9 +154,9 @@
 
     
         <div class="downNavbar  text-center ">
-            <span class="navbarItemText ml-3 userNameNavbar" *ngIf="bigNavbarFlag && !smallNavbarFlag">
+            <div class="navbarItemText ml-4 userNameNavbar mr-4" *ngIf="bigNavbarFlag && !smallNavbarFlag">
                 {{currentUser.username}}
-               </span>
+               </div>
 
             <a class="logoutButton mt-3" (click)="onLogout()"> 
             <div class="navSeperator">  </div>
@@ -315,7 +315,10 @@
                 <div class="textNotification" ><strong style="text-transform: uppercase">{{notification.creator}}</strong> {{notification.text}}</div> 
                 <div *ngIf="watchVerification(notification)" class="newTag text-center">new</div>
             </mat-list-item>
-            <mat-divider class="mb-1 mt-1" *ngIf="j != notificationArray.length -1 && notificationArray.length > 1 "></mat-divider>
+            <mat-divider class="mb-1 mt-1" *ngIf="notificationArray.length > 1 "></mat-divider>
+        </div>
+        <div class="viewMoreButton" (click)="onViewAllNotClick()">
+          View all
         </div>
     
          
