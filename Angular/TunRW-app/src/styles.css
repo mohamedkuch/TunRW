@@ -170,10 +170,9 @@ box-shadow: inset -6px 8px 42px 0px rgba(0,0,0,0.26);
   text-transform: uppercase;
 }
 .statsSection{
-  background: #e71425;
-  -webkit-box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.12);
-  -moz-box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.12);
-  box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.12);
+  background: #7c0505;
+
+  
 }
 .eventDesc{
   font-size: 14px;

@@ -33,7 +33,7 @@ export class AboutComponent implements AfterViewInit, OnInit, OnDestroy{
     "slidesToShow": 3, 
     "slidesToScroll": 1,
     "dots":true,
-    "autoplay":true, "autoplaySpeed": 1000,
+    "autoplay":true, "autoplaySpeed": 1800,
     "infinite": true,
     "arrows": false,
     "responsive": [

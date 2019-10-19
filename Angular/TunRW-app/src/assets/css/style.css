@@ -562,14 +562,14 @@ font-size: 11px;
 
 .btn-xl:hover, .btn-xl:focus, .btn-xl:active, .btn-xl.active, .open .dropdown-toggle.btn-xl {
     color: #fff;
-    background-color: #e71425;
-    border-color: #96030f;
+    background-color: #E71425;
+    border-color: #E71425;
 }
 
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open .dropdown-toggle.btn {
     color: #fff;
-    background-color: #e71425;
-    border-color: #96030f;
+    background-color: #E71425;
+    border-color: #E71425;
 }
 
 .btn {
@@ -595,14 +595,14 @@ font-size: 11px;
 }
 
 .btn-xl {
-    color: #fff;
-    background-color: #e71425;
-    border-color: #e71425;
+    color: #2F4858;
+    background-color: #fff;
+    border-color: #fff;
     font-family: "Titillium Web",sans-serif;
     text-transform: uppercase;
-    border-radius: 100px;
-    font-size: 18px;
-    padding: 20px 40px;
+    font-size: 14px;
+    padding: 15px 30px;
+    transition:  0.6s all;
 }
 
 /* Back to top button
