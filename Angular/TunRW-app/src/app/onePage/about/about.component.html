@@ -1,9 +1,8 @@
 <section  id="about">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12 mx-auto text-center">
-          <h2 class="section-heading"><strong>The Team </strong></h2>
-          <hr class="my-4">
+      <div class="row mt-5 mb-5">
+        <div class="col-lg-12 mx-auto mt-4 ">
+          <h2 class="section-heading"><i class="fas fa-braille title-span"></i>The Team</h2>
         
         </div>
         <div class="col-lg-12 mx-auto mt-3">
@@ -17,7 +16,8 @@
             (afterChange)="afterChange($event)"
             (beforeChange)="beforeChange($event)">
           <div ngxSlickItem *ngFor="let teamMember of teamMembers" class="slide">
-            <div class=" pl-4 pr-4 pt-5 pb-5">
+            <div class="pl-4 pr-4 pt-5 pb-5">
+
                 <img class="slideContainer img-fluid" src="{{ teamMember.imagePath }}" alt="" width="100%">
 
                 <div class="text-center teamName pt-3 ">
@@ -40,7 +40,8 @@
   </section>
 
   <section class="statsSection" id="QuoteSection">
-    <div class="container mb-4">
+    <div class="curve curve-top"></div>
+    <div class="container quoteContainer mb-4">
       <div class="row">
         <div class="col-lg-10 col-lg-offset-1">
           <div class="row text-white">
@@ -65,6 +66,9 @@
       </div>
   
     </div>
+
+    <div class="curve curve-bottom"></div>
+
   
   </section>
   

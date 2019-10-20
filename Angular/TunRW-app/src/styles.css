@@ -217,14 +217,25 @@ opacity: 0.5;
 }
 .section-heading{
   width: fit-content;
-  margin: 0 auto;
-  padding-bottom: 1rem;
-  padding-top: 2rem;
-  font-size: 35px;
-  font-weight: bold;
+  left: -28px;
+  font-size: 40px;
+  position: relative;
+  bottom: 20px;
+  color: #232323;
+  border-radius: 1px;
 }
 .cdk-overlay-dark-backdrop {
   background: rgba(0,0,0,.72) !important;
+}
+.title-span{
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Safari prior 9.0 */
+  transform: rotate(-90deg); 
+  color: #141414;
+  font-size: 20px;
+  margin-right: 5px;
+  position: relative;
+  bottom: 8px;
 }
 
 
@@ -237,4 +248,78 @@ opacity: 0.5;
 }
 header {
   height: 100vh;
+}
+
+.seperator{
+  background: url(assets/images/seperator.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 150%;
+  height: 150px;
+  position: absolute;
+  bottom: -40px ;
+  left: -180px;
+
+
+-webkit-transform: rotate(-4deg);
+transform: rotate(-4deg);
+}
+
+/*
+##### Curve bottom #######
+*/
+
+.curve {
+  position: relative;
+  z-index: 7;
+}
+.curve.curve-bottom {
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+}
+.curve.curve-bottom:after, .curve.curve-bottom:before {
+  bottom: 0;
+}
+.curve:before {
+  left: 0;
+  border-right: 70vw solid transparent;
+}
+.curve.curve-bottom:after, .curve.curve-bottom:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-bottom: 40px solid #fff;
+  position: absolute;
+}
+.curve:after {
+  right: 0;
+  border-left: 30vw solid transparent;
+}
+
+/*
+##### Curve top #######
+*/
+.curve.curve-top {
+  left: 0;
+  top: -10px;
+  width: 100%;
+}
+.curve.curve-top:after, .curve.curve-top:before {
+  top: 0;
+}
+.curve.curve-top:before {
+  left: 0;
+  border-right: 30vw solid transparent;
+}
+.curve.curve-top:after {
+  right: 0;
+  border-left: 70vw solid transparent;
+}
+.curve.curve-top:after, .curve.curve-top:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 40px solid #fff;
+  position: absolute;
 }
