@@ -3,9 +3,18 @@
     <div class="container eventsContainer">
       <div class="row ">
 
-        <div class="col-lg-12 mx-auto text-center mt-5">
-          <h2 class="section-heading mt-5"><i style="color : white;" class="fas fa-braille title-span"></i>Events </h2>
-          <div class="row "  *ngIf="events.length > 0">
+        <div class="col-lg-12 mx-auto text-center mt-4">
+            <div class="col-lg-12 text-center section-head ">
+                <h2 class="mt-5 mb-5">
+                    Our Events 
+                </h2>
+                <h3 class="deviderSpan deviderSpanLeft">..</h3> 
+                <h3 class="deviderSpan deviderSpanRight">..</h3> 
+
+                <h5> New adventures </h5>
+
+            </div>
+          <div class="row eventsSpacer"  *ngIf="events.length > 0">
 
             <div *ngFor="let event of events; let j = index " class="col-lg-6 mt-5">
                 <div class="eventShell">
@@ -54,7 +63,7 @@
             </span>
           </div> -->
 
-          <div class="row" *ngIf="events.length == 0">
+          <div class="row mt-5" *ngIf="events.length == 0">
             <h3 class="text-center"> No events added yet !</h3>
 
           </div>

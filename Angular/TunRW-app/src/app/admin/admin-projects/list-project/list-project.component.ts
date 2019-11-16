@@ -43,6 +43,7 @@ export class AdminListProjectsComponent implements OnInit, OnDestroy {
     this.currentUser = this.authService.getcurrentUser();
   }
   onDelete(projectId: string) {
+
     this.isLoading = true;
     this.projectService.deleteProject(projectId).subscribe(() => {
       this.projectService.getProject(this.postsPerPage, this.currentPage);
