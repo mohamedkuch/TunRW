@@ -126,7 +126,7 @@ exports.createAboutText = (req,res,next) => {
         creator : req.userData.username
       });
 
-      About.deleteOne().then(result =>{
+      About.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result =>{
         if(result.n > 0){
           notification.save().then(notResult => {
             res.status(200).json({ 

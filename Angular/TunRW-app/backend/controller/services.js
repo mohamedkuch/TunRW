@@ -145,7 +145,7 @@ exports.deleteService = (req, res, next) => {
       });
 
 
-    Service.deleteOne().then(result =>{
+    Service.deleteOne({ _id: req.params.id, creator: req.userData.userId }).then(result =>{
 
       if(result.n > 0){
         notification.save().then(notResult => {
