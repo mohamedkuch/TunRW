@@ -2,36 +2,28 @@
 $("#back-top").hide();
 
 $(window).scroll(function() {
-    if ($(document).scrollTop() > 100) {
+    if ($(document).scrollTop() > 80) {
         $('.navbar').addClass('navbar-shrink');
         $('#back-top').fadeIn();
         $('#back-top').removeClass('hideButton');
+
+
+        $('.navbar-brand').addClass('darkLogo');
+        $('.navbar-brand').removeClass('lightLogo');
+
+        
     }
     else {
         $('.navbar').removeClass('navbar-shrink');
         $('#back-top').fadeOut();
         $('#back-top').addClass('hideButton');
 
+
+        $('.navbar-brand').addClass('lightLogo');
+        $('.navbar-brand').removeClass('darkLogo');
+
     }
 });
-
-$(function() {
-  $('a[href*=#]:not([href=#])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      console.log(target);
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-
-
 
 
   // fade in #back-top
@@ -39,7 +31,7 @@ $(function() {
   $(window).scroll(function () {
 
 
-    if ($(this).scrollTop() > 1000) {
+    if ($(this).scrollTop() > 80) {
       $('.counter').each(function() {
         var $this = $(this),
             countTo = $this.attr('data-count');

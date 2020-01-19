@@ -2,9 +2,19 @@
 /*--------------------
 2. Navigation
 --------------------*/
-.logoImg {
-  max-width: 175px ;
-  height: auto;
+.lightLogo {
+background: url("../../../assets/images/logoLight.png");
+  width: 175px ;
+  height: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.darkLogo {
+	background: url("../../../assets/images/logo.png");
+	  width: 175px ;
+	  height: 55px;
+	  background-size: contain;
+	  background-repeat: no-repeat;
 }
 .navbar-default {
 	background-color: rgb(250, 250, 250);
@@ -44,6 +54,17 @@
 	color: #e71425;
 	outline: 0
 }
+.navbar-default .nav li a,.navbar-default .nav li a {
+	color: white;
+}
+.navbar-default.navbar-shrink .nav li a,.navbar-default.navbar-shrink .nav li a {
+	color: black;
+}
+.navbar-default.navbar-shrink .nav li a:hover,.navbar-default.navbar-shrink .nav li a:focus {
+	color: #e71425;
+	outline: 0
+}
+
 
 .navbar-default .navbar-nav>.active>a {
 	border-radius: 0;
@@ -76,12 +97,13 @@
 	}
 	.navbar-default.navbar-shrink {
 		background-color: rgb(255, 255, 255);
-    padding: 10px 0;
-	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+		padding: 10px 0;
+		-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+		-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
 	}
 	.navbar-default.navbar-shrink .navbar-brand {
 		font-size: 1.5em
 	}
+
 }
