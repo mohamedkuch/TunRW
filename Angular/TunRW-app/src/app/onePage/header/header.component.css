@@ -8,7 +8,7 @@
 }
 .navbar-default {
 	background-color: rgb(250, 250, 250);
-	border-color: transparent
+	border-color: transparent;
 }
 .navbar-default .navbar-brand {
 	color: #fff;
@@ -32,10 +32,12 @@
 	background-color: #e71425
 }
 .navbar-default .nav li a {
-  font-family: 'Titillium Web', sans-serif;
+	font-family: 'Niramit', sans-serif;
 	text-transform: uppercase;
 	font-weight: 400;
 	letter-spacing: 1px;
+	margin-top: 2px;
+
 	color:rgb(27, 27, 27)
 }
 .navbar-default .nav li a:hover,.navbar-default .nav li a:focus {

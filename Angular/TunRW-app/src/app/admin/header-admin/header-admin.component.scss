@@ -16,54 +16,97 @@
 
  .logoutButton{
   cursor: pointer;
-  border-right: 1px solid #343434;
 }
 .adminNavbar{
   min-width: 800px !important;
 }
 .mainNavbarContainer{
-  width: 130px;
+  width: 180px;
+  background: white;
   min-height: 650px;
   height: 100vh;
   position:fixed;
-  background: #343434;
   z-index: 1;
-  -webkit-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
-  -moz-box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
-  box-shadow: 2px 0px 11px 0px rgba(0,0,0,0.39);
+  border-right: 1px solid #f0f0f0;
+  -webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.02);
+  -moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.02);
+  box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.02);
   transition: 0.35s all ease-in-out;
 }
-.navItemContainer, .logoContainer{
-  width: 80%;
+.navItemContainer{
   height: auto;
-  margin: auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  transition: 1s all;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 15px;
+  transition: 0.3s all;
   cursor: pointer;
+  color:black;
+  font-size: 14px;
+  border-right: 2px solid white;
 
+}
+.logoContainer{
+  margin-top:17px ;
+  padding-bottom:17px ;
+  text-align: center;
+  color:black;
+  cursor: pointer;
+  border-bottom: 1px solid #6868683b;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-family: 'Abel', sans-serif;
+}
+.logoAddon{
+  font-size: 12px;
+  top: 10px;
+  position: absolute;
+}
+.activeLogo{
+  color:#e71425;
+}
+.logoContainer :hover {
+  color:#e71425;
+}
 
+.navbarLogoTextActive {
+  color: #e71425 !important;
 }
 
 .navItemContaineractive {
-  width: 80%;
   height: auto;
-  background: white;
-  margin: auto;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
   transition: 1s all;
+  margin-left: 15px;
+  border-right: 2px solid #e71425;
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
-  -moz-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
-  box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.48);
+}
+
+.navItemContainer:hover {
+  border-right: 2px solid #e71425;
+  color:#e71425;
+}
+.lougoutContainer {
+
+  
+  height: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 15px;
+  transition: 0.3s all;
+  cursor: pointer;
+  color:#e71425;
+  font-size: 14px;
+  border-right: 2px solid white;
+  text-transform: uppercase;
 
 }
 .navItemContaineractive i{
-  font-size: 15px;
+  font-size: 10px;
+  width: 12%;
   color:#e71425;
+  text-align: center;
+
 }
 .textNotification{
   width: 90%;
@@ -81,24 +124,18 @@ word-break: break-all;
   font-size: 9px;
 
 }
-.logoIcon{
-  color: #a7a7a7;
-  font-size: 22px !important;
-  transition: 1s all;
-}
 .navItemContainer i {
-  font-size: 15px;
-  color: white;
+  font-size: 10px;
+  width: 12%;
+  text-align: center;
+
 }
 .navSeperator{
-  width: 80%;
+  width: 90%;
   height: 1px;
-  background: #fdfdfd;
-  opacity: 0.15;
+  background: #686868;
+  opacity: 0.1;
   margin:auto;
-}
-.navItemContainer:hover {
-  background: #505050;
 }
 
 .logoutContainer{
@@ -106,29 +143,16 @@ word-break: break-all;
   bottom: 5px;
   left: 10%;
 }
-.activeLogo i{
-  color: white;
-  text-shadow: 2px 2px 2px #000000;
-  
-}
-.logoContainer :hover {
-    color: white;
-    
-}
+
 a {
   text-decoration: none !important;
 }
 .navbarItemText{
-  color: white !important;
   margin-bottom: 10px;
 
 }
 .navbarItemTextActive {
   color: #e71425 !important;
-
-}
-.navbarLogoTextActive {
-  color: white !important;
 
 }
 .downNavbar{
@@ -143,9 +167,6 @@ a {
  position: relative;
  bottom: 2px;
  padding: 10px;
- background: #e71425;
- border-radius: 4px;
- color: white;
 }
 
 .notificationWrapper{
