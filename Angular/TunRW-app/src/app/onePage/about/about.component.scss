@@ -1,15 +1,17 @@
-#QuoteSection{
-    background-image: url("../../../assets/images/bgAbout.png");
-    background-repeat: no-repeat;
-    background-blend-mode: multiply;
-    background-position-x: 5%;
+#QuoteSection {
+  background-image: url("../../../assets/images/bgAbout.png");
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-position-x: 5%;
 
 }
-.quoteContainer{
+
+.quoteContainer {
   padding-bottom: 50px;
   padding-top: 50px;
 
 }
+
 .slick-slider {
   width: 100%;
   margin: auto;
@@ -23,71 +25,83 @@
   cursor: pointer;
   top: 100px !important;
 }
- 
+
 .prev-slide.slick-disabled,
 .next-slide.slick-disabled {
   pointer-events: none;
   opacity: 0.2;
 }
 
- 
+
 .prev-slide:hover {
   background-position: 0px -53px;
 }
- 
+
 .next-slide:hover {
   background-position: -24px -53px;
 }
-.slide:focus { outline: none; }
-.teamName{
+
+.slide:focus {
+  outline: none;
+}
+
+.teamName {
   font-size: 16px;
   font-weight: bold;
 }
-.teamPosition{
+
+.teamPosition {
   color: #808080;
 }
-.slideContainer{
+
+.slideContainer {
   border-radius: 15px;
   transition: 1s all;
   cursor: pointer;
   border: 2px solid transparent;
 
 }
-.slideContainer:hover{
+
+.slideContainer:hover {
   border-radius: 5px;
-  -webkit-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.13);
-  -moz-box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.13);
-  box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.13);
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.13);
   border: 2px solid #e71425;
 
 }
-.arrowNav{
+
+.arrowNav {
   width: 100%;
 }
-.prevIcon{
+
+.prevIcon {
   left: 0;
   position: absolute;
   background: #232323;
 }
-.navArrows{
+
+.navArrows {
   width: 100%;
 }
 
-.nextIcon  {
+.nextIcon {
   right: 0;
   position: absolute;
   background: #232323;
 }
-.iconArrow{
+
+.iconArrow {
   color: white;
 }
-.navArrows{
+
+.navArrows {
   position: absolute;
   top: 10%;
 }
 
 
-.deviderSpan{
+.deviderSpan {
   width: 50px;
   margin: 0 auto;
   text-align: center;
@@ -97,6 +111,7 @@
   background-color: #e71425;
   text-indent: -9999px;
 }
+
 .section-head h2 {
   letter-spacing: 2px;
   position: relative;
@@ -105,6 +120,7 @@
   font-size: 32px;
   font-family: 'Rubik', sans-serif;
 }
+
 .section-head h5 {
   font-size: 14px;
   letter-spacing: 5px;
@@ -112,12 +128,20 @@
   color: #3b3b3b;
 
 }
-.deviderSpanLeft{
+
+.deviderSpanLeft {
   right: 138px;
 
 }
+
 .deviderSpanRight {
   left: 130px;
   top: 19px;
 
+}
+
+.aboutUsTitle h2 {
+  color: white;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
 }

@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 
 @Component({
   selector : 'app-header',
@@ -7,4 +7,11 @@ import { Component, HostListener } from '@angular/core';
 })
 export class HeaderComponent{
 
+  constructor(public el: ElementRef) { }
+  @HostListener('window:scroll', ['$event'])
+    checkScroll() {
+      const componentPosition = this.el.nativeElement.offsetTop
+      const scrollPosition = window.pageYOffset
+      console.log(scrollPosition)
+    }
 }
