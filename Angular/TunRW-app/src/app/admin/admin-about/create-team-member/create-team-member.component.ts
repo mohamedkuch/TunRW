@@ -72,6 +72,7 @@ export class CreateTeamMemberComponent implements OnInit {
       return;
     }
     this.isLoading = true;
+    
     if (this.mode === 'create') {
       this.teamMembersService.addTeamMember( this.form.value.title,
         this.form.value.position,
@@ -80,6 +81,7 @@ export class CreateTeamMemberComponent implements OnInit {
 
 
     } else {
+
       this.teamMembersService.updateTeamMember(this.teamMemberId, this.form.value.title,
         this.form.value.position,
         this.form.value.image

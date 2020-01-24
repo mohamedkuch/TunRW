@@ -77,10 +77,13 @@ exports.createTeamMember = (req,res,next) => {
 
   exports.updateTeamMember = (req, res, next) => {
     let imageURL = req.body.imagePath;
-    if(req.file){
+
+    if(req.files){
       const url = req.protocol + '://' + req.get("host");
-      imageURL = url + "/images/" + req.file.filename;
+      imageURL = url + "/images/" + req.files[0].filename;
     }
+
+
     const post = new TeamMember({
       _id: req.body.id,
       title : req.body.title,

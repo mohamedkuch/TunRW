@@ -83,6 +83,7 @@ exports.createPartner = (req,res,next) => {
       const url = req.protocol + '://' + req.get("host");
       imageURL = url + "/images/" + req.files[0].filename;
     }
+    console.log("zaab", imageURL);
     
     const post = new Partner({
       _id: req.body.id,
