@@ -50,7 +50,9 @@ const appRoutes: Routes = [
   { path: 'admin/Members', component: MembersAdminComponent, canActivate: [AuthGuard] },
   { path: 'admin/Members/create', component: CreateMemberComponent, canActivate: [AuthGuard] },
 
-  { path: '', component: OnePageComponent },
+  { path: '', component: LoginComponent },
+  { path: 'preview', component: OnePageComponent },
+
   { path: '**', component : PageNotFoundComponent}
 ];
 

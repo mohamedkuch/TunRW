@@ -9,15 +9,24 @@ import { Router } from '@angular/router';
 export class ErrorComponent {
     message = "An unknown Error has occured !";
 
-
+    noAuth = false;
     constructor(private router: Router,
         public dialogRef: MatDialogRef<ErrorComponent>,
         @Inject(MAT_DIALOG_DATA) public data: {message: string}) {
             console.log(data.message);
+            if(this.data.message == "You are not authenticated!"){
+                this.noAuth = true;
+            }
         }
 
     onClose(): void {
         this.dialogRef.close();
-        this.router.navigate(['/admin']);
+
+        if(this.noAuth){
+            this.router.navigate(['/login']);
+        }else {
+            this.router.navigate(['/admin']);
+        }
+
     }
 }

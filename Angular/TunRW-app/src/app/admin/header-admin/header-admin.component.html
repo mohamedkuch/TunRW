@@ -155,7 +155,12 @@
 
   <div class="downNavbar  ">
     <div class="navbarItemText ml-4 userNameNavbar mr-4" *ngIf="bigNavbarFlag && !smallNavbarFlag">
-     user : {{currentUser.username}}
+      <p>
+        user : {{currentUser.username}} 
+      </p>
+     <p class="mt-1">
+      expires in : {{expiringTimer}} min
+     </p> 
     </div>
 
     <a class="logoutButton mt-3" (click)="onLogout()">

@@ -68,11 +68,12 @@ export class HeaderAdminComponent implements OnInit {
   bigNavbarFlag = true;
   smallNavbarFlag = false;
 
+  expiringTimer = 0;
+
   constructor(private router: Router,
               private authService: AuthService ,
               private notificationService: NotificationService) {
     this.currentUrl = this.router.url;
-    console.log(this.currentUrl);
     if (this.currentUrl.includes('/admin/Events/edit')) {
       this.eventEditFlag = true;
     }
@@ -149,8 +150,7 @@ export class HeaderAdminComponent implements OnInit {
   ngOnInit() {
     this.authService.autoAuthUser();
     this.currentUser = this.authService.getcurrentUser();
-    console.log('user', this.currentUser);
-    console.log('user', this.authService.getTokenExpirationDate());
+    this.expiringTimer = this.authService.getTokenExpirationDate() ;
     this.isLoading = true;
     // get notifications
     this.notificationService.getNotification(5, 1);
@@ -160,16 +160,19 @@ export class HeaderAdminComponent implements OnInit {
           this.isLoading = false;
           this.totalNotification = data.postCount;
           this.notificationArray = data.notifications;
-          console.log("Notifications", this.notificationArray);
         });
     // get not watched notifications
     this.notificationService.getNotWatchedNotification();
     this.notWatchedNotificationSub = this.notificationService.getNotWatchedNotificationUpdateListener()
         .subscribe((data) => {
-          console.log("zzzz", data);
           this.notWatchedNotification = data.notWatchedPost;
           this.notWatchedPostList = data.notWatchedPostList;
     });
+
+
+    // console logging
+    console.log('user', this.currentUser);
+    console.log('user expires in :', this.expiringTimer , 'minutes');
   }
   triggerNotification(){
     this.showNotification = !this.showNotification;

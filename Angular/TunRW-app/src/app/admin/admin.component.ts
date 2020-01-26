@@ -54,13 +54,11 @@ export class AdminComponent implements OnInit {
          this.isLoadingNotifications = false;
          this.totalNotifications = data.postCount;
          this.notificationList = data.notifications;
-         console.log("Notifications", this.notificationList);
        });
 
     this.notificationService.getNotWatchedNotification();
     this.notWatchedNotificationSub = this.notificationService.getNotWatchedNotificationUpdateListener()
         .subscribe((data) => {
-          console.log("not Watched Not", data);
           this.notWatchedNotification = data.notWatchedPost;
           this.notWatchedPostList = data.notWatchedPostList;
     });

@@ -44,7 +44,6 @@ export class NotificationService {
   getNotWatchedNotification() {
     this.http.get<{message: string, notWatchedPost: number, notWatchedPostList:any}>(BACKEND_URL + "/notWatched")
     .pipe(map((data) => {
-      console.log("zzzz", data);
       return data;
     
     }))
@@ -60,7 +59,6 @@ export class NotificationService {
   updateNotification(id: string) {
     this.http.put(BACKEND_URL + "/" +  id, id)
     .subscribe((data) => {
-        console.log("notification updated", data);
        const updateNotification = [...this.notifications];
        const oldNotificationIndex = updateNotification.findIndex(p => p.id === id);
       });

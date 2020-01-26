@@ -67,7 +67,7 @@ export class AuthService {
     if  (!tmp) {
       return;
     }
-    const finalDate = new Date(tmp.value);
+    const finalDate = Math.floor( ( new Date(tmp.value).getTime() - new Date().getTime() ) / 60000 );
     return finalDate;
   }
   getAuthStatus() {
